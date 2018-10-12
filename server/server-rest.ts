@@ -1,8 +1,15 @@
 import { Router } from './router';
-import * as express from "express";
-import * as http from 'http';
+import express from 'express';
+import http from 'http';
+import dotenv from 'dotenv';
 
-const PORT: number = 3000;
+const dotenvFilePath = './../.env';
+// To read dotenv file
+dotenv.config({
+  path:dotenvFilePath
+});
+
+const PORT =  Number(process.env.SERVER_PORT) || 3000;
 const PREFIX: string = "/";
 
 export class RestServer {
