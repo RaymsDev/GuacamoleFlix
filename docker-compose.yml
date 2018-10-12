@@ -4,17 +4,21 @@ services:
       restart: always
       build: ./client
       ports:
-        - "80:80"
+        - "80:4200"
     server:
       restart: always
       build: ./server
       ports:
         - "3000:3000"
+      depends_on: 
+        - mongo
       links:
         - mongo
     mongo:
       image: mongo
       volumes:
-        - ./data:/data/db
+        - mongo-data:/data/db
       ports:
         - "27017:27017"
+volumes:
+  mongo-data:
