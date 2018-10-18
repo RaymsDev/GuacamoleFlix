@@ -49,7 +49,10 @@ export class RestServer {
       return;
     }
 
-    mongoose.connect(MONGO_DB_URI, { useNewUrlParser: true });
+    mongoose.connect(MONGO_DB_URI, { useNewUrlParser: true })
+      .catch(error => {
+        console.error(error);
+      });;
 
 
   }
