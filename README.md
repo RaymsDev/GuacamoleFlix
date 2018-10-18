@@ -26,7 +26,9 @@ $ docker-compose up
 ## Environnement
 Voici un exemple de fichier d'environnement ".env" à placer à la racine du projet
 ```shell
-MONGODB_ADMINUSERNAME=root
-MONGODB_ADMINPASSWORD=MyStrongPassword
+MONGODB_USER=root
+MONGODB_PASS=MyStrongPassword
+MONGO_DB_HOST=mongodb://localhost:27017/guacamoleflix
 SERVER_PORT=3000
+ENV=dev
 ```
