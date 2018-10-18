@@ -1,5 +1,7 @@
 # GuacamoleFlix
 
+Projet d'école dans le cadre du cours Gestion de projet Fullstack
+
 ## Développement
 
 /!\ Le dossier client et server sont deux projets indépendants, pensez à faire un :
