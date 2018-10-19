@@ -1,11 +1,12 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import http from 'http';
+import HttpStatus from 'http-status-codes';
 import mongoose from "mongoose";
 import { Routes } from './routes';
+
 const PREFIX: string = "/";
 const MONGO_DB_URI: string = process.env.MONGODB_URI || "mongodb://localhost:27017/guacamoleflix";
-const SUCCESS_STATUS = 200;
 export class RestServer {
   public static start(app: express.Express, port: number, routePrefix: string = PREFIX): http.Server {
 
@@ -63,7 +64,7 @@ export class RestServer {
       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
       if ('OPTIONS' === req.method) {
-        res.sendStatus(SUCCESS_STATUS);
+        res.sendStatus(HttpStatus.OK);
       } else {
         console.log(`${req.ip} ${req.method} ${req.url}`);
         next();
