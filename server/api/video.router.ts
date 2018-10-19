@@ -1,12 +1,14 @@
+import { Request, Response, Router } from 'express';
 import { VideoController } from './../controllers/video.controller';
-import { Router, Request, Response } from 'express';
 
-import IVideoDBModel from '../schemas/video.schema';
 import { IRouter } from '../models/router.interface';
+import IVideoDBModel from '../schemas/video.schema';
 
+const ERROR_STATUS = 500;
+const SUCCESS_STATUS = 200;
 class VideoRouter implements IRouter {
 
-    public router: Router; en
+    public router: Router;
 
     constructor() {
         this.router = Router();
@@ -16,36 +18,36 @@ class VideoRouter implements IRouter {
     public list(req: Request, res: Response): void {
         VideoController.list()
             .then((data) => {
-                res.status(200).json({ data });
+                res.status(SUCCESS_STATUS).json({ data });
             })
             .catch((error) => {
-                res.status(500).json({ error });
+                res.status(ERROR_STATUS).json({ error });
             });
     }
 
     public select(req: Request, res: Response): void {
-        res.status(500).json({ error: "NOT IMPLEMENTED" });
+        res.status(ERROR_STATUS).json({ error: "NOT IMPLEMENTED" });
     }
 
     public create(req: Request, res: Response): void {
-        res.status(500).json({ error: "NOT IMPLEMENTED" });
+        res.status(ERROR_STATUS).json({ error: "NOT IMPLEMENTED" });
     }
 
     public update(req: Request, res: Response): void {
-        res.status(500).json({ error: "NOT IMPLEMENTED" });
+        res.status(ERROR_STATUS).json({ error: "NOT IMPLEMENTED" });
     }
 
     public remove(req: Request, res: Response): void {
-        res.status(500).json({ error: "NOT IMPLEMENTED" });
+        res.status(ERROR_STATUS).json({ error: "NOT IMPLEMENTED" });
     }
 
-    public routes() {
+    public routes(): void {
         this.router.get("/", this.list);
         this.router.get("/:id", this.list);
         this.router.post("/", this.create);
         this.router.put("/:id", this.update);
         this.router.delete("/:id", this.remove);
-    };
+    }
 
 }
 
