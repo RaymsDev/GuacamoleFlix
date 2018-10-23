@@ -14,7 +14,7 @@ dans chacun des dossiers pour pouvoir développer.
 Démarrage du container Docker MongoDB
 ```shell
 $ cd server
-$ npm run mongo
+$ docker-compose up mongo
 ```
 ## Docker
 

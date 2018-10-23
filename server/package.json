@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run server",
     "server": "npx ts-node-dev server.ts",
-    "mongo": "docker-compose -f ./../docker-compose.dev.yml up",
+    "mongo": "docker-compose -f ./../docker-compose.yml up mongo",
     "lint-fix": "tslint --fix *.ts -t verbose"
   },
   "repository": {

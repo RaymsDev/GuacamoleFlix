@@ -1,24 +1,54 @@
 version: "3"
 services:
-    client:
-      restart: always
-      build: ./client
+    reverse-proxy:
+      image: nginx:latest
+      container_name: reverse-proxy
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf
       ports:
-        - "80:4200"
-    server:
+        - 80:80
+        - 443:443
+      depends_on:
+        - back
+        - front
+      networks:
+        proxy-network:
+    front:
       restart: always
-      build: ./server
-      ports:
-        - "3000:3000"
-      depends_on: 
+      container_name : front
+      build: 
+        context: .
+        dockerfile: ./Dockerfile-client
+      expose:
+       - "4201"
+      networks:
+        proxy-network:
+    back:
+      restart: always
+      build: 
+        context: .
+        dockerfile: ./Dockerfile-server
+      container_name: back
+      expose:
+        - "3000"
+      depends_on:
         - mongo
+      environment:
+        - MONGODB_URI=mongodb://mongo:27017/guacamoleflix
       links:
         - mongo
+      networks:
+        proxy-network:
     mongo:
       image: mongo
+      container_name: mongo
       volumes:
         - mongo-data:/data/db
-      ports:
-        - "27017:27017"
+      expose:
+        - "27017"
+      networks:
+        proxy-network:
 volumes:
   mongo-data:
+networks:
+  proxy-network:
