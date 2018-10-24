@@ -3,13 +3,9 @@ import {
     model,
     Schema
 } from 'mongoose';
+import { ISubscription } from '../../both/models/subscription.model';
 
-export interface ISubscriptionDBModel extends Document {
-    authorizedProfiles: number;
-    name: string;
-    periodicity: string;
-    price: number;
-}
+export interface ISubscriptionDBModel extends ISubscription, Document { }
 
 const SubscriptionSchema: Schema = new Schema({
     authorizedProfiles: {
@@ -30,4 +26,4 @@ const SubscriptionSchema: Schema = new Schema({
     }
 });
 
-export default model('Subscription', SubscriptionSchema);
+export default model<ISubscriptionDBModel>('Subscription', SubscriptionSchema);

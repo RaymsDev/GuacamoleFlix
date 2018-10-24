@@ -1,8 +1,14 @@
-import { Subscription } from "./subscription.model";
+import { ISubscription } from "./subscription.model";
 
-export class User {
+export interface IUser {
     idFirebase: string;
     isActive: number;
     name: string;
-    subscription: Subscription;
+    subscription: ISubscription;
+}
+export class User implements IUser {
+    public idFirebase: string;
+    public isActive: number;
+    public name: string;
+    public subscription: ISubscription;
 }
