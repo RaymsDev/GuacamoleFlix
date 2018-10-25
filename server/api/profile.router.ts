@@ -1,10 +1,9 @@
 import { Request, Response, Router } from 'express';
-import { VideoController } from './../controllers/video.controller';
 
 import HttpStatus from 'http-status-codes';
 import { IRouter } from '../models/router.interface';
-import IVideoDBModel from '../schemas/video.schema';
-class VideoRouter implements IRouter {
+
+export class ProfileRouter implements IRouter {
 
     public router: Router;
 
@@ -14,13 +13,7 @@ class VideoRouter implements IRouter {
     }
 
     public list(req: Request, res: Response): void {
-        VideoController.list()
-            .then((data) => {
-                res.status(HttpStatus.OK).json({ data });
-            })
-            .catch((error) => {
-                res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error });
-            });
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public select(req: Request, res: Response): void {
@@ -49,6 +42,6 @@ class VideoRouter implements IRouter {
 
 }
 
-const videoRouter = new VideoRouter().router;
+const profileRouter = new ProfileRouter().router;
 
-export default videoRouter;
+export default profileRouter;
