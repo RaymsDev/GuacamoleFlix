@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './ressources/login/login.component';
 import { RegisterComponent } from './ressources/register/register.component';
 import { HeaderComponent } from './layouts/header/header.component';
+import { PanelAjoutVideoComponent } from './ressources/panel-ajout-video/panel-ajout-video.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HeaderComponent } from './layouts/header/header.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PanelAjoutVideoComponent
   ],
   imports: [
     BrowserModule,
