@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PanelAjoutVideoComponent } from './panel-ajout-video/panel-ajout-video.component';
+import { PayComponent } from './pay/pay.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, PanelAjoutVideoComponent
+    AppComponent, PanelAjoutVideoComponent, PayComponent
   ],
   imports: [
     BrowserModule,
