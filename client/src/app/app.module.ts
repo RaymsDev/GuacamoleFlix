@@ -21,6 +21,7 @@ import { LoginComponent } from './ressources/login/login.component';
 import { RegisterComponent } from './ressources/register/register.component';
 import { HeaderComponent } from './layouts/header/header.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
