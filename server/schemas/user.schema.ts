@@ -3,14 +3,10 @@ import {
     model,
     Schema
 } from 'mongoose';
-import SubscriptionSchema, { ISubscriptionDBModel } from './subscription.schema';
+import { IUser } from './../../both/models/user.model';
+import SubscriptionSchema from './subscription.schema';
 
-export interface IUserDBModel extends Document {
-    idFirebase: string;
-    isActive: number;
-    name: string;
-    subscription: ISubscriptionDBModel;
-}
+export interface IUserDBModel extends IUser, Document { }
 
 const UserSchema: Schema = new Schema({
     idFirebase: {
@@ -26,9 +22,10 @@ const UserSchema: Schema = new Schema({
         type: String
     },
     subscription: {
+        ref: SubscriptionSchema.modelName,
         required: true,
-        type: SubscriptionSchema
+        type: Schema.Types.ObjectId
     }
 });
 
-export default model('User', UserSchema);
+export default model<IUserDBModel>('User', UserSchema);
