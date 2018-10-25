@@ -24,5 +24,14 @@ export default class Video implements IVideo {
         if (!data) {
             return;
         }
+
+        this.category = data.category;
+        this.name = data.name;
+        this.url = data.url;
+        this.image = data.image;
+        this.description = data.description;
+        this.realeaseDate = data.realeaseDate;
+        this.isSpotlight = data.isSpotlight;
+        this.views = data.views;
     }
 }
