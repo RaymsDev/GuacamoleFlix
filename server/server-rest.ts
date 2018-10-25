@@ -2,13 +2,24 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import http from 'http';
 import HttpStatus from 'http-status-codes';
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import { Routes } from './routes';
 
-const PREFIX: string = "/";
-const MONGO_DB_URI: string = process.env.MONGODB_URI || "mongodb://localhost:27017/guacamoleflix";
+import dotenv from 'dotenv';
+
+const dotenvFilePath = './../.env';
+// To read dotenv file
+dotenv.config({
+  path: dotenvFilePath
+});
+
+const MONGODB_URI: string = process.env.MONGODB_URI || 'mongodb://localhost:27017/guacamoleflix';
+const ENV: string = process.env.ENV || 'development';
+const DB_NAME: string = process.env.DB_NAME || 'guacamoleflix';
+const MONGODB_USER = process.env.MONGODB_USER || 'mongo_admin';
+const MONGODB_PASS = process.env.MONGODB_PASS || 'MyStrongPassword';
 export class RestServer {
-  public static start(app: express.Express, port: number, routePrefix: string = PREFIX): http.Server {
+  public static start(app: express.Express, port: number, routePrefix: string): http.Server {
 
     this.init(app);
     // IMPORTANT: Routes must be defined AFTER the initialization of the app
@@ -34,26 +45,22 @@ export class RestServer {
   }
 
   private static mongoConnection(): void {
-    const env = process.env.ENV;
-    if (env === "prod") {
-      const MONGODB_HOST = process.env.MONGO_DB_HOST;
-      const MONGODB_USER = process.env.MONGO_DB_USER;
-      const MONGODB_PASS = process.env.MONGO_DB_PASS;
-      mongoose.connect(MONGODB_HOST, {
-        pass: MONGODB_PASS,
-        useNewUrlParser: true,
-        user: MONGODB_USER,
-      })
-        .catch((error) => {
-          console.error(error);
-        });
-      return;
-    }
 
-    mongoose.connect(MONGO_DB_URI, { useNewUrlParser: true })
-      .catch((error) => {
-        console.error(error);
-      });
+    const connectionOptions: mongoose.ConnectionOpenOptions = {
+      auth: {
+        password: MONGODB_PASS,
+        user: MONGODB_USER
+      },
+      authSource: "admin",
+      dbName: DB_NAME,
+      useNewUrlParser: true
+    };
+
+    mongoose.connect(MONGODB_URI, connectionOptions).then((db) => {
+      console.log("Server connected to MongoDB");
+    }).catch((error) => {
+      console.error(error);
+    });
 
   }
 
