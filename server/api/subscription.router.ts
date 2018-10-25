@@ -13,23 +13,23 @@ export class SubscriptionRouter implements IRouter {
     }
 
     public list(req: Request, res: Response): void {
-        res.status(HttpStatus.NOT_IMPLEMENTED);
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public select(req: Request, res: Response): void {
-        res.status(HttpStatus.NOT_IMPLEMENTED);
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public create(req: Request, res: Response): void {
-        res.status(HttpStatus.NOT_IMPLEMENTED);
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public update(req: Request, res: Response): void {
-        res.status(HttpStatus.NOT_IMPLEMENTED);
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public remove(req: Request, res: Response): void {
-        res.status(HttpStatus.NOT_IMPLEMENTED);
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public routes(): void {

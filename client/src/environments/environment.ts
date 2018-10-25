@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyB3LCp-LMoEbFHnN8qLscm6Bs06jEke7R8",
+    authDomain: "guacamoleflix.firebaseapp.com",
+    databaseURL: "https://guacamoleflix.firebaseio.com",
+    projectId: "guacamoleflix",
+    storageBucket: "guacamoleflix.appspot.com",
+    messagingSenderId: "376625494881"
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

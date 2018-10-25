@@ -11,6 +11,6 @@ dotenv.config({
 
 const DEFAULT_PORT = 3000;
 const PORT = Number(process.env.SERVER_PORT) || DEFAULT_PORT;
-const PREFIX = process.env.API_PREFIX || '/api';
+const PREFIX = process.env.API_PREFIX || '/';
 
 const server = RestServer.start(express(), PORT, PREFIX);
