@@ -1,8 +1,9 @@
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #f1802d;
   position: fixed;
+  top: 0%;
+  left: 0;
 }
 
 /* Style the links inside the navigation bar */
@@ -24,10 +25,6 @@
 .topnav a.active {
   background-color: #549aab;
   color: #f6f6f6;
-}
-
-.example-icon {
-  padding: 0 14px;
 }
 
 .example-spacer {
