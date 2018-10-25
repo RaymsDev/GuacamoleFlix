@@ -28,8 +28,8 @@ Voici un exemple de fichier d'environnement ".env" à placer à la racine du pro
 ```env
 MONGODB_USER=root
 MONGODB_PASS=MyStrongPassword
-MONGO_DB_HOST=mongodb://localhost:27017/guacamoleflix
+MONGODB_URI=mongodb://mongo:27017/guacamoleflix
 SERVER_PORT=3000
-API_PREFIX=/api
 ENV=dev
+PREFIX=/
 ```
