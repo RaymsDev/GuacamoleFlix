@@ -25,9 +25,12 @@ export class UserRouter implements IRouter {
       });
   }
 
-  public select(req: Request, res: Response): void {
-    res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
-  }
+    public select(req: Request, res: Response): void {
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
+    }
+    public selectCurrent(req: Request, res: Response): void {
+        res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
+    }
 
   public create(req: Request, res: Response): void {
     const user = new User(req.body);
@@ -49,13 +52,14 @@ export class UserRouter implements IRouter {
     res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
   }
 
-  public routes(): void {
-    this.router.get("/", this.list);
-    this.router.get("/:id", this.list);
-    this.router.post("/", this.create);
-    this.router.put("/:id", this.update);
-    this.router.delete("/:id", this.remove);
-  }
+    public routes(): void {
+        this.router.get("/", this.list);
+        this.router.get("/:id", this.select);
+        this.router.get("/current/:id", this.selectCurrent);
+        this.router.post("/", this.create);
+        this.router.put("/:id", this.update);
+        this.router.delete("/:id", this.remove);
+    }
 
 }
 

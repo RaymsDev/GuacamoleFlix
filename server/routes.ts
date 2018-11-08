@@ -7,10 +7,10 @@ import userRouter from './api/user.router';
 import videoRouter from './api/video.router';
 
 const app = express();
-app.use('/category', categoryRouter);
-app.use('/profile', profileRouter);
+app.use('/categories', categoryRouter);
+app.use('/profiles', profileRouter);
 app.use('/subscriptions', subscriptionRouter);
 app.use('/users', userRouter);
-app.use('/video', videoRouter);
+app.use('/videos', videoRouter);
 
 export const Routes: express.Express = app;
