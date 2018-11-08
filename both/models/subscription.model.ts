@@ -1,24 +1,29 @@
+import { Schema } from "mongoose";
+
 export interface ISubscription {
-    authorizedProfiles: number;
-    name: string;
-    periodicity: string;
-    price: number;
+  _id: any;
+  authorizedProfiles: number;
+  name: string;
+  periodicity: string;
+  price: number;
 }
 
 export class Subscription implements ISubscription {
-    public authorizedProfiles: number;
-    public name: string;
-    public periodicity: string;
-    public price: number;
+  public _id: any;
+  public authorizedProfiles: number;
+  public name: string;
+  public periodicity: string;
+  public price: number;
 
-    constructor(data?: Partial<ISubscription>) {
-        if (!data) {
-            return;
-        }
-
-        this.authorizedProfiles = data.authorizedProfiles;
-        this.name = data.name;
-        this.periodicity = data.periodicity;
-        this.price = data.price;
+  constructor(data?: Partial<ISubscription>) {
+    if (!data) {
+      return;
     }
+
+    this._id = data._id;
+    this.authorizedProfiles = data.authorizedProfiles;
+    this.name = data.name;
+    this.periodicity = data.periodicity;
+    this.price = data.price;
+  }
 }
