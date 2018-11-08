@@ -10,4 +10,15 @@ export class Subscription implements ISubscription {
     public name: string;
     public periodicity: string;
     public price: number;
+
+    constructor(data?: Partial<ISubscription>) {
+        if (!data) {
+            return;
+        }
+
+        this.authorizedProfiles = data.authorizedProfiles;
+        this.name = data.name;
+        this.periodicity = data.periodicity;
+        this.price = data.price;
+    }
 }
