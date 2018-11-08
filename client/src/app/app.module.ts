@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AngularFireModule } from '@angular/fire';
@@ -15,6 +16,7 @@ import { appRoutes } from './appRoutes';
 
 // services
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './ressources/login/login.component';
@@ -47,6 +49,7 @@ import { HomePageComponent } from './ressources/home-page/home-page.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserAnimationsModule,
@@ -54,7 +57,7 @@ import { HomePageComponent } from './ressources/home-page/home-page.component';
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
