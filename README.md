@@ -33,3 +33,7 @@ SERVER_PORT=3000
 ENV=dev
 PREFIX=/
 ```
+
+##Postman
+
+https://www.getpostman.com/collections/5ab5ae39a68fde1aa9e0

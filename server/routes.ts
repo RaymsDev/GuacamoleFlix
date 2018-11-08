@@ -9,8 +9,8 @@ import videoRouter from './api/video.router';
 const app = express();
 app.use('/category', categoryRouter);
 app.use('/profile', profileRouter);
-app.use('/subscription', subscriptionRouter);
-app.use('/user', userRouter);
+app.use('/subscriptions', subscriptionRouter);
+app.use('/users', userRouter);
 app.use('/video', videoRouter);
 
 export const Routes: express.Express = app;
