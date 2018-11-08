@@ -12,18 +12,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit() {
-  }
   loginFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-  login(email, password){
+  ngOnInit() {
+  }
+  login(email, password) {
     console.log('login ts', email, password);
 
     return this.authService.login(email, password);
   }
-  loginGoogle(){
+  loginGoogle() {
     console.log('login google');
 
     return this.authService.loginGoogle();
