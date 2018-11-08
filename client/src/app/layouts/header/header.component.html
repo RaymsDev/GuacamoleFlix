@@ -1,11 +1,11 @@
 <mat-toolbar class="topnav" color="primary">
     <mat-toolbar-row>
-        <span>YNETFLIX!</span>
+        <img id="logo" src="./../../../assets/logo2.png" />
 
         <span class="example-spacer"></span>
-        <a matLine routerLink='/admin'><button mat-button>Admin</button></a>
-        <a matLine routerLink='/login'><button mat-button>Login</button></a>
-        <a matLine routerLink='/register'><button mat-button>Register</button></a>
+        <a matLine routerLink='/admin'>Admin</a>
+        <a matLine routerLink='/login'>Login</a>
+        <a matLine routerLink='/register'>Register</a>
         <div *ngIf="userObservable | async as user; else show">
             <button mat-button (click)="logout()">Logout</button>
         </div>

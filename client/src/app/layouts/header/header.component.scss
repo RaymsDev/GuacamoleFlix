@@ -1,14 +1,18 @@
+@import "./../../../palette.scss";
 
 /* Add a black background color to the top navigation */
 .topnav {
-  position: fixed;
-  top: 0%;
-  left: 0;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  background-color: $background;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  color: #f6f6f6;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -17,16 +21,22 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #b0d7e1;
-  color: black;
+  background-color: $secondary;
+  color: white;
 }
+
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #549aab;
+  background-color: $primary;
   color: #f6f6f6;
 }
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+#logo
+{
+  width: 12%;
 }

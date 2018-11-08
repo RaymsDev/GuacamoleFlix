@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 
 @Component({
   selector: 'app-panel-ajout-video',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelAjoutVideoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  AccessAdmin()
+  {
+    console.log("test")
+    this.router.navigate(['/login']);
+  }
 }
