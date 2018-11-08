@@ -1,10 +1,13 @@
-.login-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
+@import "./../../../palette.scss";
 
-.login-full-width {
-  width: 100%;
-}
+#login
+{
+    width: 60%;
+    margin-top: 10%; 
+    margin-left: 20%;
 
+    mat-card
+    {
+        background-color: $light;
+    }
+}
