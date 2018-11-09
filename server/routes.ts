@@ -1,16 +1,18 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 
 import categoryRouter from './api/category.router';
 import profileRouter from './api/profile.router';
 import subscriptionRouter from './api/subscription.router';
 import userRouter from './api/user.router';
 import videoRouter from './api/video.router';
+import auth from './helpers/authentication.helper';
 
 const app = express();
-app.use('/category', categoryRouter);
-app.use('/profile', profileRouter);
-app.use('/subscriptions', subscriptionRouter);
-app.use('/users', userRouter);
-app.use('/video', videoRouter);
+// auth.tokenAuth middleware add token check with firebase
+app.use('/categories', auth.tokenAuth, categoryRouter);
+app.use('/profiles', auth.tokenAuth, profileRouter);
+app.use('/subscriptions', auth.tokenAuth, subscriptionRouter);
+app.use('/users', auth.tokenAuth, userRouter);
+app.use('/videos', auth.tokenAuth, videoRouter);
 
 export const Routes: express.Express = app;

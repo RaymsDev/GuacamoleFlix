@@ -1,4 +1,4 @@
-import { Request, Response, Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 
 import HttpStatus from 'http-status-codes';
 import { User } from '../../both/models/user.model';

@@ -32,8 +32,8 @@ export class SubscriptionRouter implements IRouter {
   public create(req: Request, res: Response): void {
     const subscription = new Subscription(req.body);
     SubscriptionController.create(subscription)
-      .then((createdUser) => {
-        res.status(HttpStatus.OK).json(subscription);
+      .then((createdSubsciption) => {
+        res.status(HttpStatus.OK).json(createdSubsciption);
       })
       .catch((error) => {
         console.error(error);
