@@ -10,8 +10,8 @@ export class AuthService {
 
   userObservable: Observable<User>;
   constructor(public afAuth: AngularFireAuth) {
-    this.userObservable = this.afAuth.user;
-  }
+    this.userObservable = this.afAuth.authState;
+   }
 
   getUser(): Observable<any> {
     return this.userObservable;
