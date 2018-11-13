@@ -27,8 +27,12 @@ export class UserService {
     return this.client.delete(`${baseUrl}/${id}`);
   }
 
-  updateUser(id, data): Observable<any> {
-    return this.client.put(`${baseUrl}/${id}`, data);
+  updateUser(id, data, firebaseUser): Observable<any> {
+    return this.client.put(`${baseUrl}/${id}`, data, {
+      headers: {
+        authorisation : firebaseUser
+      }
+    });
   }
 
   createUser(data): Observable<any> {

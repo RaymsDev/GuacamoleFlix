@@ -3,10 +3,12 @@
         <img id="logo" src="./../../../assets/logo2.png" />
 
         <span class="example-spacer"></span>
-        <a matLine routerLink='/admin'>Admin</a>
-        <a matLine routerLink='/login'>Login</a>
-        <a matLine routerLink='/register'>Register</a>
-        <div *ngIf="userObservable | async as user; else show">
+        <span *ngIf="!(userObservable | async)">
+          <a matLine routerLink='/admin'>Admin</a>
+          <a matLine routerLink='/login'>Login</a>
+          <a matLine routerLink='/register'>Register</a>
+        </span>
+        <div *ngIf="userObservable | async">
             <button mat-button (click)="logout()">Logout</button>
         </div>
     </mat-toolbar-row>
