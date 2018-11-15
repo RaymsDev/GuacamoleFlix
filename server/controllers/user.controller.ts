@@ -6,7 +6,7 @@ export class UserController {
   public static list(): Promise<IUser[]> {
     const promise = new Promise<IUser[]>((resolve, reject) => {
       UserSchema.find()
-        .populate(SubscriptionSchema.modelName.toLowerCase())
+        .populate('subscription')
         .then((users) => {
           const userList = users.map((u) => new User(u));
           resolve(userList);

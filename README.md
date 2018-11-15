@@ -13,7 +13,6 @@ dans chacun des dossiers pour pouvoir développer.
 
 Démarrage du container Docker MongoDB
 ```shell
-$ cd server
 $ docker-compose up mongo
 ```
 ## Docker
@@ -26,12 +25,13 @@ $ docker-compose up
 ## Environnement
 Voici un exemple de fichier d'environnement ".env" à placer à la racine du projet
 ```env
-MONGODB_USER=root
+DB_NAME=guacamoleflix
+MONGODB_URI=mongodb://localhost:27017/guacamoleflix
+MONGODB_USER=mongo_admin
 MONGODB_PASS=MyStrongPassword
-MONGODB_URI=mongodb://mongo:27017/guacamoleflix
 SERVER_PORT=3000
-ENV=dev
-PREFIX=/
+ENV=development #Permet de passer outre le auth check pour l'api
+PREFIX=/api
 ```
 
 ##Postman
