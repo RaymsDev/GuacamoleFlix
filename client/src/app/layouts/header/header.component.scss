@@ -3,10 +3,8 @@
 /* Add a black background color to the top navigation */
 .topnav {
   width: 100%;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
+  margin: 0;
+  border: 0;
   background-color: $background;
 }
 

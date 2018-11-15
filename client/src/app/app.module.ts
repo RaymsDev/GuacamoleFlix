@@ -22,6 +22,7 @@ import { RegisterComponent } from './ressources/register/register.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { PanelAjoutVideoComponent } from './ressources/panel-ajout-video/panel-ajout-video.component';
 import { PayComponent } from './pay/pay.component';
+import { HomePageComponent } from './ressources/home-page/home-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { PayComponent } from './pay/pay.component';
     RegisterComponent,
     HeaderComponent,
     PanelAjoutVideoComponent,
-    PayComponent
+    PayComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
