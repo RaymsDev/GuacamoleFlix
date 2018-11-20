@@ -1,20 +1,23 @@
 export interface ICategory {
-    name: string;
-    pegi: number;
+  _id: any;
+  name: string;
+  pegi: number;
 }
 
 export class Category implements ICategory {
-    public name: string;
-    public pegi: number;
+  public _id: any;
+  public name: string;
+  public pegi: number;
 
-    constructor(data?: Partial<ICategory>) {
-        if (!data) {
-            return;
-        }
-
-        this.name = data.name;
-        this.pegi = data.pegi;
+  constructor(data?: Partial<ICategory>) {
+    if (!data) {
+      return;
     }
+
+    this._id = data._id;
+    this.name = data.name;
+    this.pegi = data.pegi;
+  }
 
 
 }

@@ -34,7 +34,7 @@ export class ProfileRouter implements IRouter {
 
   public routes(): void {
     this.router.get("/", this.list);
-    this.router.get("/:id", this.list);
+    this.router.get("/:id", this.select);
     this.router.post("/", this.create);
     this.router.put("/:id", this.update);
     this.router.delete("/:id", this.remove);

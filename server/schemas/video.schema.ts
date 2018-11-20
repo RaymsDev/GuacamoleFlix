@@ -9,10 +9,10 @@ import categorySchema from './category.schema';
 export interface IVideoDBModel extends IVideo, Document { }
 
 const VideoSchema: Schema = new Schema({
-  category: {
+  categories: [{
     ref: categorySchema.modelName,
-    type: [Schema.Types.ObjectId]
-  },
+    type: Schema.Types.ObjectId
+  }],
   description: {
     required: true,
     type: String

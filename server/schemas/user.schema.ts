@@ -6,16 +6,22 @@ import {
 import { IUser } from './../../both/models/user.model';
 import SubscriptionSchema from './subscription.schema';
 
-export interface IUserDBModel extends IUser, Document { }
+export interface IUserDBModel extends IUser, Document {
+  isAdmin: boolean;
+}
 
 const UserSchema: Schema = new Schema({
   idFirebase: {
     required: true,
     type: String,
-    unique: true,
+    unique: true
   },
   isActive: {
     required: true,
+    type: Boolean
+  },
+  isAdmin: {
+    default: false,
     type: Boolean
   },
   name: {
