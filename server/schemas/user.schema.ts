@@ -4,6 +4,7 @@ import {
   Schema
 } from 'mongoose';
 import { IUser } from './../../both/models/user.model';
+import ProfileSchema from './profile.schema';
 import SubscriptionSchema from './subscription.schema';
 
 export interface IUserDBModel extends IUser, Document {
@@ -28,6 +29,11 @@ const UserSchema: Schema = new Schema({
     required: true,
     type: String
   },
+  profiles: [{
+    ref: ProfileSchema.modelName,
+    required: false,
+    type: Schema.Types.ObjectId
+  }],
   subscription: {
     ref: SubscriptionSchema.modelName,
     required: false,

@@ -7,7 +7,8 @@ export class UserController {
     const promise = new Promise<IUser[]>((resolve, reject) => {
 
       UserSchema.find()
-        .populate('subscriptions')
+        .populate('subscription')
+        .populate('profiles')
         .then((users) => {
           const userList = users.map((v) => new User(v));
           resolve(userList);
@@ -29,7 +30,27 @@ export class UserController {
     const promise = new Promise<IUser>((resolve, reject) => {
 
       UserSchema.findById(id)
-        .populate('subscriptions')
+        .populate('subscription')
+        .populate('profiles')
+        .then((v) => {
+          const user = new User(v);
+          resolve(user);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+
+    return promise;
+  }
+  public static selectCurrent(idFirebase: any): Promise<IUser> {
+    const promise = new Promise<IUser>((resolve, reject) => {
+
+      UserSchema.findOne({
+        idFirebase
+      })
+        .populate('subscription')
+        .populate('profiles')
         .then((v) => {
           const user = new User(v);
           resolve(user);

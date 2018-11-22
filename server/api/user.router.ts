@@ -42,6 +42,24 @@ class UserRouter implements IRouter {
         res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       });
   }
+  public selectCurrent(req: Request, res: Response): void {
+    const firebaseId = req.params.id;
+
+    if (!firebaseId) {
+      console.error("User firebaseId is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
+    UserController.selectCurrent(firebaseId)
+      .then((data) => {
+        res.status(HttpStatus.OK).json({ data });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      });
+  }
 
   public create(req: Request, res: Response): void {
     const user = new User(req.body);
@@ -99,6 +117,7 @@ class UserRouter implements IRouter {
   public routes(): void {
     this.router.get("/", this.list);
     this.router.get("/:id", this.select);
+    this.router.get("/current/:id", this.selectCurrent);
     this.router.post("/", this.create);
     this.router.put("/:id", this.update);
     this.router.delete("/:id", this.remove);
