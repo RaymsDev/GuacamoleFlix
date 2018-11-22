@@ -20,8 +20,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './ressources/login/login.component';
 import { RegisterComponent } from './ressources/register/register.component';
 import { HeaderComponent } from './layouts/header/header.component';
-import { PanelAjoutVideoComponent } from './ressources/panel-ajout-video/panel-ajout-video.component';
+import { loginForm } from './ressources/login-form/login-form'
 import { PayComponent } from './pay/pay.component';
+import { NavAdminComponent } from './ressources/nav-admin/nav-admin.component';
+import { AjoutVideoAdminComponent } from './ressources/ajout-video-admin/ajout-video-admin.component';
+import { GestionUsersComponent } from './ressources/gestion-users/gestion-users.component';
+import { GestionVideosComponent } from './ressources/gestion-videos/gestion-videos.component';
 
 
 @NgModule({
@@ -30,8 +34,12 @@ import { PayComponent } from './pay/pay.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    PanelAjoutVideoComponent,
-    PayComponent
+    loginForm,
+    PayComponent,
+    NavAdminComponent,
+    AjoutVideoAdminComponent,
+    GestionUsersComponent,
+    GestionVideosComponent
   ],
   imports: [
     BrowserModule,

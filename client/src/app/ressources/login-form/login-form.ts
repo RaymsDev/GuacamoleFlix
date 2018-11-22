@@ -3,10 +3,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 
 @Component({
   selector: 'app-panel-ajout-video',
-  templateUrl: './panel-ajout-video.component.html',
-  styleUrls: ['./panel-ajout-video.component.scss']
+  templateUrl: './login-form.html',
+  styleUrls: ['./login-form.scss']
 })
-export class PanelAjoutVideoComponent implements OnInit {
+export class loginForm implements OnInit {
 
   constructor(private router: Router) { }
 

@@ -3,10 +3,6 @@
 /* Add a black background color to the top navigation */
 .topnav {
   width: 100%;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
   background-color: $background;
 }
 
@@ -39,4 +35,11 @@
 #logo
 {
   width: 12%;
+}
+
+@media only screen and (max-width: 800px) {
+  #logo
+  {
+    content:url("./../../../assets/small-logo.png");
+  }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PanelAjoutVideoComponent } from './panel-ajout-video.component';
+import { NavAdminComponent } from './nav-admin.component';
 
-describe('PanelAjoutVideoComponent', () => {
-  let component: PanelAjoutVideoComponent;
-  let fixture: ComponentFixture<PanelAjoutVideoComponent>;
+describe('NavAdminComponent', () => {
+  let component: NavAdminComponent;
+  let fixture: ComponentFixture<NavAdminComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PanelAjoutVideoComponent ]
+      declarations: [ NavAdminComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PanelAjoutVideoComponent);
+    fixture = TestBed.createComponent(NavAdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
