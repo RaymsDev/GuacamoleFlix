@@ -5,7 +5,7 @@ export interface IUser {
   idFirebase: string;
   isActive: boolean;
   name: string;
-  subscription: ISubscription;
+  subscription: ISubscription | any;
 }
 export class User implements IUser {
   public _id: any;
