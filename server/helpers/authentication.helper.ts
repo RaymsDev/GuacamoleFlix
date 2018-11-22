@@ -50,6 +50,22 @@ class AuthenticationHelper {
       });
   }
 
+  public checkFirebaseId(firebaseId: any): Promise<boolean> {
+    const promise = new Promise<boolean>((resolve, reject) => {
+      this.app.auth().getUser(firebaseId)
+        .then((user) => {
+          console.log(user);
+          resolve(true);
+        })
+        .catch((error) => {
+          console.error(error);
+          reject(false);
+        });
+    });
+
+    return promise;
+  }
+
 }
 
 const authenticationHelper = new AuthenticationHelper();
