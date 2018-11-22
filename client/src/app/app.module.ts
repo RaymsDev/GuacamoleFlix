@@ -26,6 +26,8 @@ import { NavAdminComponent } from './ressources/nav-admin/nav-admin.component';
 import { AjoutVideoAdminComponent } from './ressources/ajout-video-admin/ajout-video-admin.component';
 import { GestionUsersComponent } from './ressources/gestion-users/gestion-users.component';
 import { GestionVideosComponent } from './ressources/gestion-videos/gestion-videos.component';
+import { HomePageComponent } from './ressources/home-page/home-page.component';
+
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { GestionVideosComponent } from './ressources/gestion-videos/gestion-vide
     NavAdminComponent,
     AjoutVideoAdminComponent,
     GestionUsersComponent,
-    GestionVideosComponent
+    GestionVideosComponent,
+    PayComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
