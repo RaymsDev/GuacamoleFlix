@@ -6,11 +6,13 @@ import { AjoutVideoAdminComponent } from './ressources/ajout-video-admin/ajout-v
 import { GestionUsersComponent } from './ressources/gestion-users/gestion-users.component'
 import { GestionVideosComponent } from './ressources/gestion-videos/gestion-videos.component'
 import { HomePageComponent } from './ressources/home-page/home-page.component';
+import { UserComponent } from './ressources/user/user.component';
 
 
 
 export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'user', component: UserComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin', component: AjoutVideoAdminComponent },
   { path: 'gestion_user', component: GestionUsersComponent },

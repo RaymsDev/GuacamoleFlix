@@ -1,0 +1,13 @@
+@import "./../../../palette.scss";
+
+#user
+{
+    width: 100%;
+    margin-top: 30%;
+    margin-left: 20%;
+
+    mat-card
+    {
+        background-color: $light;
+    }
+}

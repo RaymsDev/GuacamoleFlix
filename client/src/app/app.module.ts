@@ -30,6 +30,7 @@ import { GestionUsersComponent } from './ressources/gestion-users/gestion-users.
 import { GestionVideosComponent } from './ressources/gestion-videos/gestion-videos.component';
 import { HomePageComponent } from './ressources/home-page/home-page.component';
 
+import { UserComponent } from './ressources/user/user.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { HomePageComponent } from './ressources/home-page/home-page.component';
     GestionUsersComponent,
     GestionVideosComponent,
     PayComponent,
-    HomePageComponent
+    HomePageComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

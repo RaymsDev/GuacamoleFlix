@@ -42,6 +42,7 @@ class AuthenticationHelper {
     if (ENV === 'development') {
       return next();
     }
+
     this.app.auth().verifyIdToken(req.headers.authorization)
       .then(() => next())
       .catch((error) => {

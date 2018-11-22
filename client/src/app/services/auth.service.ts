@@ -32,8 +32,7 @@ export class AuthService {
   }
   register(email, password): any {
     console.log('service auth register');
-    const retour = this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password);
-    console.log(retour);
+    return this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password);
   }
 
   logout(): any {
