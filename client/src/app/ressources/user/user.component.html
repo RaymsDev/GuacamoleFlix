@@ -1,0 +1,20 @@
+<div id="user">
+  <p>
+    user works!
+  </p>
+
+
+  <div *ngIf="userObservable | async">
+    <h1>Welcome {{ (userObservable | async)?.displayName }}!</h1>
+    <h2>{{ (userObservable | async)?.email }}</h2>
+  </div>
+  <div *ngIf="!(userObservable | async)">
+    vous devez etre redirigez vers login
+  </div>
+
+  <button (click)="logout()" *ngIf="userObservable | async">
+    Logout
+  </button>
+
+  les users : {{ users | json }}
+</div>
