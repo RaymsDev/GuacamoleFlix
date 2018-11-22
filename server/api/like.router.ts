@@ -1,9 +1,9 @@
 import { Request, Response, Router } from 'express';
 import HttpStatus from 'http-status-codes';
-import { Profile } from '../../both/models/profile.model';
-import { ProfileController } from '../controllers/profile.controller';
+import { Like } from '../../both/models/like.model';
+import { LikeController } from '../controllers/like.controller';
 import { IRouter } from '../models/router.interface';
-export class ProfileRouter implements IRouter {
+export class LikeRouter implements IRouter {
 
   public router: Router;
 
@@ -13,9 +13,9 @@ export class ProfileRouter implements IRouter {
   }
 
   public list(req: Request, res: Response): void {
-    ProfileController.list()
-      .then((profileList) => {
-        res.status(HttpStatus.OK).json(profileList);
+    LikeController.list()
+      .then((likeList) => {
+        res.status(HttpStatus.OK).json(likeList);
       })
       .catch((error) => {
         res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error });
@@ -26,12 +26,12 @@ export class ProfileRouter implements IRouter {
     const id = req.params.id;
 
     if (!id) {
-      console.error("Profile Id is missing");
+      console.error("Like Id is missing");
       res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       return;
     }
 
-    ProfileController.select(id)
+    LikeController.select(id)
       .then((data) => {
         res.status(HttpStatus.OK).json({ data });
       })
@@ -42,17 +42,17 @@ export class ProfileRouter implements IRouter {
   }
 
   public create(req: Request, res: Response): void {
-    const profile = new Profile(req.body);
+    const like = new Like(req.body);
 
-    if (!profile) {
-      console.error("Profile body is missing");
+    if (!like) {
+      console.error("Like body is missing");
       res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       return;
     }
 
-    ProfileController.create(profile)
-      .then((createdProfile) => {
-        res.status(HttpStatus.OK).json(createdProfile);
+    LikeController.create(like)
+      .then((createdLike) => {
+        res.status(HttpStatus.OK).json(createdLike);
       })
       .catch((error) => {
         console.error(error);
@@ -62,15 +62,15 @@ export class ProfileRouter implements IRouter {
   }
 
   public update(req: Request, res: Response): void {
-    const profile = new Profile(req.body);
+    const like = new Like(req.body);
     const id = req.params.id;
-    if (!profile || !id) {
-      console.error("Profile body or id is missing");
+    if (!like || !id) {
+      console.error("Like body or id is missing");
       res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       return;
     }
 
-    ProfileController.update(id, profile)
+    LikeController.update(id, like)
       .then(() => {
         res.sendStatus(HttpStatus.OK);
       })
@@ -84,12 +84,12 @@ export class ProfileRouter implements IRouter {
     const id = req.params.id;
 
     if (!id) {
-      console.error("Profile Id is missing");
+      console.error("Like Id is missing");
       res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       return;
     }
 
-    ProfileController.remove(id)
+    LikeController.remove(id)
       .then(() => res.sendStatus(HttpStatus.OK))
       .catch(() => res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR));
   }
@@ -104,6 +104,6 @@ export class ProfileRouter implements IRouter {
 
 }
 
-const profileRouter = new ProfileRouter().router;
+const likeRouter = new LikeRouter().router;
 
-export default profileRouter;
+export default likeRouter;

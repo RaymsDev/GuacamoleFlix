@@ -18,7 +18,7 @@ const ENV = process.env.ENV;
 class AuthenticationHelper {
   private app: admin.app.App;
   constructor() {
-    console.info("Auth bearer crete");
+    console.info("Auth bearer activated");
 
     if (ENV === 'development') {
       return;

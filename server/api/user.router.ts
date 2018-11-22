@@ -1,11 +1,10 @@
-import { NextFunction, Request, Response, Router } from 'express';
+import { Request, Response, Router } from 'express';
+import { UserController } from './../controllers/user.controller';
 
 import HttpStatus from 'http-status-codes';
 import { User } from '../../both/models/user.model';
-import { UserController } from '../controllers/user.controller';
 import { IRouter } from '../models/router.interface';
-
-export class UserRouter implements IRouter {
+class UserRouter implements IRouter {
 
   public router: Router;
 
@@ -16,8 +15,8 @@ export class UserRouter implements IRouter {
 
   public list(req: Request, res: Response): void {
     UserController.list()
-      .then((users) => {
-        res.status(HttpStatus.OK).json(users);
+      .then((userList) => {
+        res.status(HttpStatus.OK).json(userList);
       })
       .catch((error) => {
         console.error(error);
@@ -26,11 +25,33 @@ export class UserRouter implements IRouter {
   }
 
   public select(req: Request, res: Response): void {
-    res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
+    const id = req.params.id;
+
+    if (!id) {
+      console.error("User Id is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
+    UserController.select(id)
+      .then((data) => {
+        res.status(HttpStatus.OK).json({ data });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      });
   }
 
   public create(req: Request, res: Response): void {
     const user = new User(req.body);
+
+    if (!user) {
+      console.error("User body is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
     UserController.create(user)
       .then((createdUser) => {
         res.status(HttpStatus.OK).json(createdUser);
@@ -39,14 +60,40 @@ export class UserRouter implements IRouter {
         console.error(error);
         res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       });
+
   }
 
   public update(req: Request, res: Response): void {
-    res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
+    const user = new User(req.body);
+    const id = req.params.id;
+    if (!user || !id) {
+      console.error("User body or id is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
+    UserController.update(id, user)
+      .then(() => {
+        res.sendStatus(HttpStatus.OK);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      });
   }
 
   public remove(req: Request, res: Response): void {
-    res.sendStatus(HttpStatus.NOT_IMPLEMENTED);
+    const id = req.params.id;
+
+    if (!id) {
+      console.error("User Id is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
+    UserController.remove(id)
+      .then(() => res.sendStatus(HttpStatus.OK))
+      .catch(() => res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR));
   }
 
   public routes(): void {

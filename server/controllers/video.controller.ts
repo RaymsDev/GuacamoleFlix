@@ -30,6 +30,7 @@ export class VideoController {
     const promise = new Promise<IVideo>((resolve, reject) => {
 
       VideoSchema.findById(id)
+        .populate('categories')
         .then((v) => {
           const video = new Video(v);
           resolve(video);
