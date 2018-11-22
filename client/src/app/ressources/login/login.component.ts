@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from './../../services/auth.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,20 +13,21 @@ import { AuthService } from './../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
-  ngOnInit() {
-  }
   loginFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-  login(email, password){
+  ngOnInit() {
+  }
+  login(email, password) {
     console.log('login ts', email, password);
 
     return this.authService.login(email, password);
   }
-  loginGoogle(){
+  loginGoogle() {
     console.log('login google');
 
     return this.authService.loginGoogle();
