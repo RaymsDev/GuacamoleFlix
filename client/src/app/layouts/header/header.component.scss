@@ -24,11 +24,12 @@
 }
 
 
-/* Add a color to the active/current link */
+/* Add a color to the active/current link  */
 .topnav a.active {
   background-color: $primary;
   color: #f6f6f6;
 }
+
 
 .example-spacer {
   flex: 1 1 auto;

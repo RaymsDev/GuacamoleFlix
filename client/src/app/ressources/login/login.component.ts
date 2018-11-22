@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from './../../services/auth.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,13 +13,20 @@ import { AuthService } from './../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
-  loginFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  // loginFormControl = new FormControl('', [
+  //   Validators.required,
+  //   Validators.email,
+  // ]);
+  userObservable: Observable<any>;
   ngOnInit() {
+    this.userObservable = this.authService.getUser();
+    if (this.userObservable) {
+      console.log(this.userObservable);
+      // this.router.navigate(['/user']);
+    }
   }
   login(email, password) {
     console.log('login ts', email, password);
