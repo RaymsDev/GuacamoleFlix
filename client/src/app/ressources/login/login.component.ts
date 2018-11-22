@@ -16,17 +16,11 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
     private router: Router) { }
 
-  // loginFormControl = new FormControl('', [
-  //   Validators.required,
-  //   Validators.email,
-  // ]);
-  userObservable: Observable<any>;
+  loginFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
   ngOnInit() {
-    this.userObservable = this.authService.getUser();
-    if (this.userObservable) {
-      console.log(this.userObservable);
-      // this.router.navigate(['/user']);
-    }
   }
   login(email, password) {
     console.log('login ts', email, password);
