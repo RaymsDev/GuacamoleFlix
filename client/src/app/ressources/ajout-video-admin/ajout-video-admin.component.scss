@@ -1,1 +1,37 @@
 @import "./../../../palette.scss";
+
+#add-video
+{
+    margin-top: 2%;
+    
+    #titreInput
+    {
+        color: $dark;
+        font-weight: bold;
+        margin-top: 10%;
+    }
+
+    #groupe-url
+    {
+        margin-bottom: 20%;
+    }
+
+    input
+    {
+        color: $dark;
+    }
+
+    #checkbox
+    {
+        label
+        {
+            color: $dark;
+        }
+    }
+
+    #description
+    {
+        color: $dark;
+        margin-bottom: 10%;
+    }
+}
