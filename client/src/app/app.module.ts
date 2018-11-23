@@ -31,7 +31,8 @@ import { GestionVideosComponent } from './ressources/gestion-videos/gestion-vide
 import { HomePageComponent } from './ressources/home-page/home-page.component';
 
 import { UserComponent } from './ressources/user/user.component';
-
+import { VideoPlayerComponent } from './ressources/video-player/video-player.component';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { UserComponent } from './ressources/user/user.component';
     GestionVideosComponent,
     PayComponent,
     HomePageComponent,
-    UserComponent
+    UserComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { UserComponent } from './ressources/user/user.component';
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    YoutubePlayerModule
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]
