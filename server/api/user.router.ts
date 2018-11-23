@@ -6,12 +6,12 @@ import { User } from '../../both/models/user.model';
 import authenticationHelper from '../helpers/authentication.helper';
 import { IRouter } from '../models/router.interface';
 class UserRouter implements IRouter {
-
   public router: Router;
 
   constructor() {
     this.router = Router();
     this.routes();
+
   }
 
   public list(req: Request, res: Response): void {
@@ -71,8 +71,9 @@ class UserRouter implements IRouter {
       return;
     }
 
-    authenticationHelper.checkFirebaseId(user.idFirebase)
-      .then(() => {
+    authenticationHelper.getFirebaseId(req)
+      .then((firebaseId) => {
+        user.idFirebase = firebaseId;
         return UserController.create(user);
       })
       .then((createdUser) => {

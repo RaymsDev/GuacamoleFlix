@@ -1,7 +1,7 @@
 export interface ICategory {
   _id: any;
-  name: string;
-  pegi: number;
+  name?: string;
+  pegi?: number;
 }
 
 export class Category implements ICategory {

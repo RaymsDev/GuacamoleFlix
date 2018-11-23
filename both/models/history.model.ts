@@ -3,9 +3,9 @@ import { IVideo, Video } from "./video.model";
 
 export interface IHistory {
   _id: any;
-  profile: IProfile;
-  timeOfStop: number;
-  video: IVideo;
+  profile?: IProfile;
+  timeOfStop?: number;
+  video?: IVideo;
 }
 
 export class History implements IHistory {

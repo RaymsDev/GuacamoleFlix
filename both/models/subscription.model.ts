@@ -1,10 +1,10 @@
 
 export interface ISubscription {
   _id: any;
-  authorizedProfiles: number;
-  name: string;
-  periodicity: string;
-  price: number;
+  authorizedProfiles?: number;
+  name?: string;
+  periodicity?: string;
+  price?: number;
 }
 
 export class Subscription implements ISubscription {

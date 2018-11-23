@@ -35,6 +35,7 @@ class AuthenticationHelper {
 
     // for the this binding
     this.tokenAuth = this.tokenAuth.bind(this);
+    this.getFirebaseId = this.getFirebaseId.bind(this);
   }
 
   public tokenAuth(req: Request, res: Response, next: NextFunction): void {
@@ -51,20 +52,22 @@ class AuthenticationHelper {
       });
   }
 
-  public checkFirebaseId(firebaseId: any): Promise<boolean> {
-    const promise = new Promise<boolean>((resolve, reject) => {
-      this.app.auth().getUser(firebaseId)
-        .then((user) => {
-          console.log(user);
-          resolve(true);
-        })
+  public getFirebaseId(req: Request): Promise<string> {
+    // we didn't check auth in development env
+    if (ENV === 'development') {
+      return Promise.resolve("plop" + Math.random());
+    }
+
+    const promise = new Promise<string>((resolve, reject) => {
+      this.app.auth().verifyIdToken(req.headers.authorization)
+        .then((user) => resolve(user.uid))
         .catch((error) => {
-          console.error(error);
-          reject(false);
+          reject(error);
         });
     });
 
     return promise;
+
   }
 
 }

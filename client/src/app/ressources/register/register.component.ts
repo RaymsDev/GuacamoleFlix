@@ -1,8 +1,9 @@
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../../services/auth.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from './../../../../../both/models/user.model';
+import { ISubscription } from '../../../../../both/models/subscription.model';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
   register(email, password) {
     console.log('register ts', email, password);
 
-    return this.authService.register(email, password).then( user => {
+    return this.authService.register(email, password).then(user => {
       const data: IUser = {
         _id: null,
         idFirebase: user.user.uid,
@@ -33,7 +34,7 @@ export class RegisterComponent implements OnInit {
           _id: '5be445285a2b5e412c910af8'
         }
       };
-      return this.userService.createUser(data, user.user.refreshToken).subscribe(userco => {
+      return this.userService.createUser(data, user.user.qa).subscribe(userco => {
         console.log(userco);
       });
     });

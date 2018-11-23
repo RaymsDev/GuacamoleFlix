@@ -3,8 +3,8 @@ import { Video, IVideo } from "./video.model";
 
 export interface ILike {
   _id: any;
-  profile: IProfile;
-  video: IVideo;
+  profile?: IProfile;
+  video?: IVideo;
 }
 
 export class Like implements ILike {
