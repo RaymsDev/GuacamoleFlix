@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   userObservable: Observable<any>;
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
     this.userObservable = this.authService.getUser();
@@ -23,6 +21,4 @@ export class HeaderComponent implements OnInit {
   logout() {
     return this.authService.logout();
   }
-
-
 }

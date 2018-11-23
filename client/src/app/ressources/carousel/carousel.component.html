@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="row__inner">
+      <div class="tile" *ngFor="let video of videoList">
+        <div class="tile__media">
+          <img class="tile__img" src="{{video.thumbnail}}" alt="" />
+        </div>
+        <div class="tile__details">
+          <div class="tile__title">{{ video.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

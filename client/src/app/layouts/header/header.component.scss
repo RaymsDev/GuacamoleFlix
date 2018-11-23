@@ -5,7 +5,7 @@
   width: 100%;
   margin: 0;
   border: 0;
-  background-color: $background;
+  background-color: $dark;
 }
 
 /* Style the links inside the navigation bar */
@@ -15,34 +15,34 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  cursor: pointer;
+  border: 5px solid $dark;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: $secondary;
-  color: white;
+  background-color: $primary;
+  color: $dark;
+  border: 5px solid $secondary;
 }
-
 
 /* Add a color to the active/current link  */
 .topnav a.active {
   background-color: $primary;
-  color: #f6f6f6;
+  color: $dark;
+  border: 5px;
 }
-
 
 .example-spacer {
   flex: 1 1 auto;
 }
 
-#logo
-{
+#logo {
   width: 12%;
 }
 
 @media only screen and (max-width: 800px) {
-  #logo
-  {
-    content:url("./../../../assets/small-logo.png");
+  #logo {
+    content: url("./../../../assets/small-logo.png");
   }
 }

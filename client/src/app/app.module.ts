@@ -8,7 +8,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
-
 // Intern dependencies
 import { MaterialModule } from './material.module';
 import { environment } from './../environments/environment';
@@ -33,6 +32,9 @@ import { HomePageComponent } from './ressources/home-page/home-page.component';
 import { UserComponent } from './ressources/user/user.component';
 import { VideoPlayerComponent } from './ressources/video-player/video-player.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { CarouselComponent } from './ressources/carousel/carousel.component';
+import { GuacaPlayComponent } from './ressources/guaca-play/guaca-play.component';
+import { VideoService } from './services/video.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
     PayComponent,
     HomePageComponent,
     UserComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    CarouselComponent,
+    GuacaPlayComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,7 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
     FormsModule,
     YoutubePlayerModule
   ],
-  providers: [AuthService, UserService],
+  providers: [AuthService, UserService, VideoService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
