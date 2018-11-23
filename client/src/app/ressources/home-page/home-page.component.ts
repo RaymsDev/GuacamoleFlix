@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VideoService } from 'src/app/services/video.service';
+import { IVideo } from '../../../../../both/models/video.model';
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+  videoList: IVideo[];
+  constructor(public videoService: VideoService) {}
 
   ngOnInit() {
+    this.videoService.getVideos().then(videoList => {
+      this.videoList = videoList;
+    });
   }
-
 }
