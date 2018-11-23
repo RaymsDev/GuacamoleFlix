@@ -10,7 +10,7 @@
     <mat-card-content>
       <form class="login-form">
         <mat-form-field class="login-full-width">
-          <input matInput type="email" placeholder="Email" [(ngModel)]="email" >
+          <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email">
           <!-- <mat-error *ngIf="loginFormControl.hasError('email') && !loginFormControl.hasError('required')">
             Please enter a valid email address
           </mat-error>
@@ -19,7 +19,7 @@
           </mat-error> -->
         </mat-form-field>
         <mat-form-field class="login-full-width">
-          <input matInput type="password" placeholder="Password" [(ngModel)]="password" >
+          <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="email">
         </mat-form-field>
         <!-- <mat-error *ngIf="loginFormControl.hasError('required')">
             Password is <strong>required</strong>

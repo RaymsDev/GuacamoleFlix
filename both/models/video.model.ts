@@ -2,14 +2,14 @@ import { ICategory, Category } from "./category.model";
 
 export interface IVideo {
   _id: any;
-  categories: ICategory[];
-  name: string;
-  url: string;
-  image: string;
-  description: string;
-  realeaseDate: Date;
-  isSpotlight: boolean;
-  views: number;
+  categories?: ICategory[];
+  name?: string;
+  url?: string;
+  image?: string;
+  description?: string;
+  realeaseDate?: Date;
+  isSpotlight?: boolean;
+  views?: number;
 }
 
 export class Video implements IVideo {

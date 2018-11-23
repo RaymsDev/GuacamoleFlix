@@ -3,11 +3,11 @@ import { IProfile, Profile } from './profile.model';
 
 export interface IUser {
   _id: any;
-  idFirebase: string;
-  isActive: boolean;
-  name: string;
-  subscription: ISubscription;
-  profiles: IProfile[];
+  idFirebase?: string;
+  isActive?: boolean;
+  name?: string;
+  subscription?: ISubscription;
+  profiles?: IProfile[];
 }
 export class User implements IUser {
 

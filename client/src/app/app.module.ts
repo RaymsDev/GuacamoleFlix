@@ -22,7 +22,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './ressources/login/login.component';
 import { RegisterComponent } from './ressources/register/register.component';
 import { HeaderComponent } from './layouts/header/header.component';
-import { loginForm } from './ressources/login-form/login-form';
+import { LoginFormComponent } from './ressources/login-form/login-form';
 import { PayComponent } from './pay/pay.component';
 import { NavAdminComponent } from './ressources/nav-admin/nav-admin.component';
 import { AjoutVideoAdminComponent } from './ressources/ajout-video-admin/ajout-video-admin.component';
@@ -39,7 +39,7 @@ import { UserComponent } from './ressources/user/user.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    loginForm,
+    LoginFormComponent,
     PayComponent,
     NavAdminComponent,
     AjoutVideoAdminComponent,

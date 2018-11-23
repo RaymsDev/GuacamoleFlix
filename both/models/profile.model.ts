@@ -1,7 +1,7 @@
 export interface IProfile {
   _id: any;
-  age: number;
-  name: string;
+  age?: number;
+  name?: string;
 }
 
 export class Profile implements IProfile {

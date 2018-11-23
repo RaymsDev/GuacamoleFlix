@@ -20,7 +20,6 @@ const MONGODB_USER = process.env.MONGODB_USER || 'mongo_admin';
 const MONGODB_PASS = process.env.MONGODB_PASS || 'MyStrongPassword';
 export class RestServer {
   public static start(app: express.Express, port: number, routePrefix: string): http.Server {
-
     this.init(app);
     this.initHeader(app);
     // IMPORTANT: Routes must be defined AFTER the initialization of the app
@@ -46,11 +45,11 @@ export class RestServer {
   private static mongoConnection(): void {
 
     const connectionOptions: mongoose.ConnectionOpenOptions = {
-      // auth: {
-      //   password: MONGODB_PASS,
-      //   user: MONGODB_USER
-      // },
-      // authSource: "admin",
+      auth: {
+        password: MONGODB_PASS,
+        user: MONGODB_USER
+      },
+      authSource: "admin",
       dbName: DB_NAME,
       useNewUrlParser: true
     };
