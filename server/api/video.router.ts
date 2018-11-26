@@ -1,11 +1,10 @@
-import { Request, Response, Router } from 'express';
-import { VideoController } from './../controllers/video.controller';
+import { Request, Response, Router } from "express";
+import { VideoController } from "./../controllers/video.controller";
 
-import HttpStatus from 'http-status-codes';
-import { Video } from '../../both/models/video.model';
-import { IRouter } from '../models/router.interface';
+import HttpStatus from "http-status-codes";
+import { Video } from "../../both/models/video.model";
+import { IRouter } from "../models/router.interface";
 class VideoRouter implements IRouter {
-
   public router: Router;
 
   constructor() {
@@ -24,6 +23,25 @@ class VideoRouter implements IRouter {
       });
   }
 
+  public selectByCategory(req: Request, res: Response): void {
+    const categoryId = req.params.id;
+
+    if (!categoryId) {
+      console.error("Categogy Id is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
+    VideoController.selectByCategory(categoryId)
+      .then((data) => {
+        res.status(HttpStatus.OK).json(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      });
+  }
+
   public select(req: Request, res: Response): void {
     const id = req.params.id;
 
@@ -35,7 +53,7 @@ class VideoRouter implements IRouter {
 
     VideoController.select(id)
       .then((data) => {
-        res.status(HttpStatus.OK).json({ data });
+        res.status(HttpStatus.OK).json(data);
       })
       .catch((error) => {
         console.error(error);
@@ -60,7 +78,6 @@ class VideoRouter implements IRouter {
         console.error(error);
         res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       });
-
   }
 
   public update(req: Request, res: Response): void {
@@ -99,11 +116,11 @@ class VideoRouter implements IRouter {
   public routes(): void {
     this.router.get("/", this.list);
     this.router.get("/:id", this.select);
+    this.router.get("/ByCategory/:id", this.selectByCategory);
     this.router.post("/", this.create);
     this.router.put("/:id", this.update);
     this.router.delete("/:id", this.remove);
   }
-
 }
 
 const videoRouter = new VideoRouter().router;

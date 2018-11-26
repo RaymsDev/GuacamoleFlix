@@ -35,6 +35,8 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { CarouselComponent } from './ressources/carousel/carousel.component';
 import { GuacaPlayComponent } from './ressources/guaca-play/guaca-play.component';
 import { VideoService } from './services/video.service';
+import { CategoryService } from './services/category.service';
+import { VideoPageComponent } from './ressources/video-page/video-page.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { VideoService } from './services/video.service';
     UserComponent,
     VideoPlayerComponent,
     CarouselComponent,
-    GuacaPlayComponent
+    GuacaPlayComponent,
+    VideoPageComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,7 @@ import { VideoService } from './services/video.service';
     FormsModule,
     YoutubePlayerModule
   ],
-  providers: [AuthService, UserService, VideoService],
+  providers: [AuthService, UserService, VideoService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
