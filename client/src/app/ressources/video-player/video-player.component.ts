@@ -7,19 +7,21 @@ import { IVideo, Video } from './../../../../../both/models/video.model';
 })
 export class VideoPlayerComponent implements OnInit {
   @Input() video: IVideo;
-
   public player: YT.Player;
+  @Input() playerHeight: number;
+  @Input() playerWidth: number;
   public height: number;
   public width: number;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
-    this.height = 315;
-    this.width = 560;
+    this.height = this.playerHeight || 315;
+    this.width = this.playerWidth || 560;
   }
 
   savePlayer(player) {
     this.player = player;
+    this.player.playVideo();
     console.log('player instance', player);
   }
   onStateChange(event) {

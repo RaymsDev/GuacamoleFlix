@@ -12,12 +12,18 @@ const url = `${environment.urlApi}/videos`;
   providedIn: 'root'
 })
 export class VideoService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   public getVideos(): Observable<IVideo[]> {
     return this.httpClient
       .get<IVideo[]>(url)
       .pipe(map(videos => videos.map(v => new Video(v))));
+  }
+
+  public selectVideo(videoId: any): Observable<IVideo> {
+    return this.httpClient
+      .get<IVideo>(`${url}/${videoId}`)
+      .pipe(map(v => new Video(v)));
   }
 
   public getVideosByCategory(category: ICategory): Observable<IVideo[]> {

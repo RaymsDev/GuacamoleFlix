@@ -7,17 +7,19 @@ import { GestionUsersComponent } from './ressources/gestion-users/gestion-users.
 import { GestionVideosComponent } from './ressources/gestion-videos/gestion-videos.component';
 import { HomePageComponent } from './ressources/home-page/home-page.component';
 import { UserComponent } from './ressources/user/user.component';
+import { VideoPageComponent } from './ressources/video-page/video-page.component';
 
 
 
 export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'video/:id', component: VideoPageComponent },
   { path: 'user', component: UserComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin', component: AjoutVideoAdminComponent },
   { path: 'gestion_user', component: GestionUsersComponent },
   { path: 'gestion_video', component: GestionVideosComponent },
-  { path: '', component: HomePageComponent,  pathMatch: 'full'},
+  { path: '', component: HomePageComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '' }
 
 ];

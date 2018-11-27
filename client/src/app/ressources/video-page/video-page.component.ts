@@ -1,38 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/services/category.service';
-import { ICategory } from '../../../../../both/models/category.model';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { IVideo } from '../../../../../both/models/video.model';
 import { VideoService } from 'src/app/services/video.service';
+import { ActivatedRoute } from '@angular/router';
 
-interface ICategoryVideo {
-  category: ICategory;
-  videoList: IVideo[];
-}
+
 
 @Component({
   selector: 'app-video-page',
   templateUrl: './video-page.component.html',
   styleUrls: ['./video-page.component.scss']
 })
-export class VideoPageComponent implements OnInit {
-  categoryVideoList: ICategoryVideo[];
+export class VideoPageComponent implements OnInit, AfterViewInit {
+  @ViewChild('containerRef', { read: ElementRef }) containerRef: ElementRef;
+  public playerHeight: number;
+  public playerWidth: number;
+  public watchingVideo: IVideo;
+  isGuacaplayShow: boolean;
   constructor(
-    public categoryService: CategoryService,
-    public videoService: VideoService
+    public videoService: VideoService,
+    private route: ActivatedRoute,
   ) {
-    this.categoryVideoList = new Array<ICategoryVideo>();
   }
 
   ngOnInit() {
-    this.categoryService.getCategories().subscribe(categories => {
-      categories.forEach(c => {
-        this.videoService.getVideosByCategory(c).subscribe(videoList => {
-          this.categoryVideoList.push({
-            category: c,
-            videoList: videoList
-          });
-        });
+    this.isGuacaplayShow = true;
+    const videoId = this.route.snapshot.params['id'];
+    this.videoService.selectVideo(videoId)
+      .subscribe(v => {
+        this.watchingVideo = v;
       });
-    });
+  }
+
+  ngAfterViewInit(): void {
+    const container: HTMLElement = this.containerRef.nativeElement;
+    this.playerHeight = container.offsetHeight;
+    this.playerWidth = container.offsetWidth;
+  }
+
+  onGenericFinish(isFinish): void {
+    this.isGuacaplayShow = false;
   }
 }
