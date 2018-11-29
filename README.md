@@ -36,4 +36,5 @@ PREFIX=/api
 
 ##Postman
 
-https://www.getpostman.com/collections/5ab5ae39a68fde1aa9e0
+Documentation de l'api
+https://documenter.getpostman.com/view/1552186/RzfcNX7n

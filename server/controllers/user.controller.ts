@@ -1,6 +1,6 @@
 
 import { IUser, User } from "../../both/models/user.model";
-import UserSchema from "../schemas/user.schema";
+import UserSchema, { IUserDBModel } from "../schemas/user.schema";
 
 export class UserController {
   public static list(): Promise<IUser[]> {
@@ -54,6 +54,26 @@ export class UserController {
         .then((v) => {
           const user = new User(v);
           resolve(user);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+
+    return promise;
+  }
+
+  public static selectCurrentDBModel(idFirebase: any): Promise<IUserDBModel> {
+    const promise = new Promise<IUserDBModel>((resolve, reject) => {
+
+      UserSchema.findOne({
+        idFirebase
+      })
+        .populate('subscription')
+        .populate('profiles')
+        .then((u) => {
+
+          resolve(u);
         })
         .catch((error) => {
           reject(error);

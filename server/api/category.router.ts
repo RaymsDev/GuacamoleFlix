@@ -2,6 +2,7 @@ import { Request, Response, Router } from 'express';
 import HttpStatus from 'http-status-codes';
 import { Category } from '../../both/models/category.model';
 import { CategoryController } from '../controllers/category.controller';
+import auth from '../helpers/authentication.helper';
 import { IRouter } from '../models/router.interface';
 export class CategoryRouter implements IRouter {
 
@@ -97,9 +98,9 @@ export class CategoryRouter implements IRouter {
   public routes(): void {
     this.router.get("/", this.list);
     this.router.get("/:id", this.select);
-    this.router.post("/", this.create);
-    this.router.put("/:id", this.update);
-    this.router.delete("/:id", this.remove);
+    this.router.post("/", auth.isAdmin, this.create);
+    this.router.put("/:id", auth.isAdmin, this.update);
+    this.router.delete("/:id", auth.isAdmin, this.remove);
   }
 
 }

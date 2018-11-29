@@ -7,20 +7,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
+  userToken: string;
   userObservable: Observable<User>;
   constructor(public afAuth: AngularFireAuth) {
     this.userObservable = this.afAuth.authState;
-   }
+    this.afAuth.idToken.subscribe(token => this.userToken = token);
+  }
 
-  getUser(): Observable<any> {
+  getUser(): Observable<User> {
     return this.userObservable;
   }
   login(email, password): any {
     console.log('service auth', email, password);
     const retour = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
     console.log(retour);
-
   }
   loginGoogle() {
     console.log('service auth login google');

@@ -3,6 +3,7 @@ import { VideoController } from "./../controllers/video.controller";
 
 import HttpStatus from "http-status-codes";
 import { Video } from "../../both/models/video.model";
+import auth from "../helpers/authentication.helper";
 import { IRouter } from "../models/router.interface";
 class VideoRouter implements IRouter {
   public router: Router;
@@ -117,9 +118,9 @@ class VideoRouter implements IRouter {
     this.router.get("/", this.list);
     this.router.get("/:id", this.select);
     this.router.get("/ByCategory/:id", this.selectByCategory);
-    this.router.post("/", this.create);
-    this.router.put("/:id", this.update);
-    this.router.delete("/:id", this.remove);
+    this.router.post("/", auth.isAdmin, this.create);
+    this.router.put("/:id", auth.isAdmin, this.update);
+    this.router.delete("/:id", auth.isAdmin, this.remove);
   }
 }
 
