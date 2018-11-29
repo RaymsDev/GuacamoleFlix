@@ -11,12 +11,12 @@ import auth from './helpers/authentication.helper';
 
 const app = express();
 // auth.tokenAuth middleware add token check with firebase
-app.use('/categories', auth.tokenAuth, categoryRouter);
-app.use('/histories', auth.tokenAuth, historyRouter);
-app.use('/likes', auth.tokenAuth, likeRouter);
-app.use('/profiles', auth.tokenAuth, profileRouter);
-app.use('/subscriptions', auth.tokenAuth, subscriptionRouter);
-app.use('/users', auth.tokenAuth, userRouter);
-app.use('/videos', auth.tokenAuth, videoRouter);
+app.use('/categories', auth.isAuth, categoryRouter);
+app.use('/histories', auth.isAuth, historyRouter);
+app.use('/likes', auth.isAuth, likeRouter);
+app.use('/profiles', auth.isAuth, profileRouter);
+app.use('/subscriptions', auth.isAuth, subscriptionRouter);
+app.use('/users', userRouter);
+app.use('/videos', auth.isAuth, videoRouter);
 
 export const Routes: express.Express = app;

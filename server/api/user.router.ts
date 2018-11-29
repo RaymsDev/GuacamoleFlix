@@ -3,7 +3,7 @@ import { UserController } from './../controllers/user.controller';
 
 import HttpStatus from 'http-status-codes';
 import { User } from '../../both/models/user.model';
-import authenticationHelper from '../helpers/authentication.helper';
+import auth from '../helpers/authentication.helper';
 import { IRouter } from '../models/router.interface';
 class UserRouter implements IRouter {
   public router: Router;
@@ -71,7 +71,7 @@ class UserRouter implements IRouter {
       return;
     }
 
-    authenticationHelper.getFirebaseId(req)
+    auth.getFirebaseId(req)
       .then((firebaseId) => {
         user.idFirebase = firebaseId;
         return UserController.create(user);
@@ -120,12 +120,12 @@ class UserRouter implements IRouter {
   }
 
   public routes(): void {
-    this.router.get("/", this.list);
-    this.router.get("/:id", this.select);
-    this.router.get("/current/:id", this.selectCurrent);
-    this.router.post("/", this.create);
-    this.router.put("/:id", this.update);
-    this.router.delete("/:id", this.remove);
+    this.router.get("/", auth.isAuth, auth.isAdmin, this.list);
+    this.router.get("/:id", auth.isAuth, auth.isAdmin, this.select);
+    this.router.get("/current/:id", auth.isAuth, this.selectCurrent);
+    this.router.post("/", auth.isAuthBeforeCreate, this.create);
+    this.router.put("/:id", auth.isAuth, auth.isAdmin, this.update);
+    this.router.delete("/:id", auth.isAuth, auth.isAdmin, this.remove);
   }
 
 }

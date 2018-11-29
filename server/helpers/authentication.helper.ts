@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 import { NextFunction, Request, Response } from 'express';
 import * as admin from 'firebase-admin';
 import HttpStatus from 'http-status-codes';
+import { User } from '../../both/models/user.model';
+import { UserController } from '../controllers/user.controller';
 
 const dotenvFilePath = './../.env';
 // To read dotenv file
@@ -34,11 +36,32 @@ class AuthenticationHelper {
     });
 
     // for the this binding
-    this.tokenAuth = this.tokenAuth.bind(this);
+    this.isAuth = this.isAuth.bind(this);
     this.getFirebaseId = this.getFirebaseId.bind(this);
+    this.isAdmin = this.isAdmin.bind(this);
+    this.isAuthBeforeCreate = this.isAuthBeforeCreate.bind(this);
   }
 
-  public tokenAuth(req: Request, res: Response, next: NextFunction): void {
+  public isAuth(req: Request, res: Response, next: NextFunction): void {
+    // we didn't check auth in development env
+    if (ENV === 'development') {
+      return next();
+    }
+
+    this.app.auth().verifyIdToken(req.headers.authorization)
+      .then((user) => {
+        return UserController.selectCurrentDBModel(user.uid);
+      })
+      .then((user) => {
+        req.authUser = user;
+        next();
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.UNAUTHORIZED);
+      });
+  }
+  public isAuthBeforeCreate(req: Request, res: Response, next: NextFunction): void {
     // we didn't check auth in development env
     if (ENV === 'development') {
       return next();
@@ -52,15 +75,30 @@ class AuthenticationHelper {
       });
   }
 
+  public isAdmin(req: Request, res: Response, next: NextFunction): void {
+    // we didn't check auth in development env
+    if (ENV === 'development') {
+      return next();
+    }
+
+    if (req.authUser.isAdmin) {
+      return next();
+    }
+
+    res.sendStatus(HttpStatus.UNAUTHORIZED);
+  }
+
   public getFirebaseId(req: Request): Promise<string> {
     // we didn't check auth in development env
     if (ENV === 'development') {
-      return Promise.resolve("plop" + Math.random());
+      return Promise.resolve("FakeFirebaseId" + Math.random());
     }
 
     const promise = new Promise<string>((resolve, reject) => {
       this.app.auth().verifyIdToken(req.headers.authorization)
-        .then((user) => resolve(user.uid))
+        .then((user) => {
+          resolve(user.uid);
+        })
         .catch((error) => {
           reject(error);
         });
