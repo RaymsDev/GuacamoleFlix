@@ -1,3 +1,6 @@
-<p>
-  home-page works!
-</p>
+<div class="container">
+  <div *ngFor="let item of categoryVideoList">
+    <h2>{{ item.category.name }}</h2>
+    <app-carousel [videoList]="item.videoList"></app-carousel>
+  </div>
+</div>

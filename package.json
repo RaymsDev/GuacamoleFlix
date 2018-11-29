@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "docker-compose up"
+    "start": "docker-compose up",
+    "mongo": "docker-compose up mongo"
   },
   "repository": {
     "type": "git",

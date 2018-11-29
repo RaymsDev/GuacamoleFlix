@@ -1,24 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Category } from '../../../../both/models/category.model'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ICategory, Category } from '../../../../both/models/category.model';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+
+const baseUrl = `${environment.urlApi}/categories`;
+
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService 
-{
-  MesCategory: Array<Category>;
-  url: String;
-  constructor(private http: HttpClient) 
-  { 
-    this.url = 'http://localhost:3000/';
-    this.MesCategory = new Array<Category>();
-  }
+export class CategoryService {
+  constructor(private httpClient: HttpClient) {}
 
-  GetAllCategory(): Observable<Object>
-  {
-    return this.http.get(this.url + "categories");
+  getCategories(): Observable<ICategory[]> {
+    return this.httpClient
+      .get<ICategory[]>(baseUrl)
+      .pipe(map(categories => categories.map(c => new Category(c))));
   }
-
 }

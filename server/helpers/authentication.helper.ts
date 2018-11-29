@@ -18,7 +18,7 @@ const ENV = process.env.ENV;
 class AuthenticationHelper {
   private app: admin.app.App;
   constructor() {
-    console.info("Auth bearer crete");
+    console.info("Auth bearer activated");
 
     if (ENV === 'development') {
       return;
@@ -35,6 +35,7 @@ class AuthenticationHelper {
 
     // for the this binding
     this.tokenAuth = this.tokenAuth.bind(this);
+    this.getFirebaseId = this.getFirebaseId.bind(this);
   }
 
   public tokenAuth(req: Request, res: Response, next: NextFunction): void {
@@ -42,12 +43,31 @@ class AuthenticationHelper {
     if (ENV === 'development') {
       return next();
     }
+
     this.app.auth().verifyIdToken(req.headers.authorization)
       .then(() => next())
       .catch((error) => {
         console.error(error);
         res.sendStatus(HttpStatus.UNAUTHORIZED);
       });
+  }
+
+  public getFirebaseId(req: Request): Promise<string> {
+    // we didn't check auth in development env
+    if (ENV === 'development') {
+      return Promise.resolve("plop" + Math.random());
+    }
+
+    const promise = new Promise<string>((resolve, reject) => {
+      this.app.auth().verifyIdToken(req.headers.authorization)
+        .then((user) => resolve(user.uid))
+        .catch((error) => {
+          reject(error);
+        });
+    });
+
+    return promise;
+
   }
 
 }

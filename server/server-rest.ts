@@ -20,8 +20,8 @@ const MONGODB_USER = process.env.MONGODB_USER || 'mongo_admin';
 const MONGODB_PASS = process.env.MONGODB_PASS || 'MyStrongPassword';
 export class RestServer {
   public static start(app: express.Express, port: number, routePrefix: string): http.Server {
-
     this.init(app);
+    this.initHeader(app);
     // IMPORTANT: Routes must be defined AFTER the initialization of the app
     // so that it can use the configured middleware!
     app.use(routePrefix, Routes);
@@ -29,8 +29,6 @@ export class RestServer {
     const server = app.listen(port, () => {
       console.log(`REST SERVER started on port ${port} !`);
     });
-
-    this.initHeader(app);
 
     return server;
   }
@@ -67,8 +65,9 @@ export class RestServer {
   private static initHeader(app: express.Express): void {
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Request methods you wish to allow
+      console.log('Request methods you wish to allow');
       res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
       res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
       if ('OPTIONS' === req.method) {
         res.sendStatus(HttpStatus.OK);

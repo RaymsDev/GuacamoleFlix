@@ -1,0 +1,68 @@
+@function makelongshadow($length, $angle) {
+  $val: 0px 0px transparent;
+  @for $i from 1 through $length {
+    $val: #{$val}, #{$i}px #{$i * $angle}px #aaa;
+  }
+  @return $val;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:700,900");
+@import "./../../../palette.scss";
+
+:host{
+  width: 100%;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 93vh;
+  background: radial-gradient(#fff, #aaa);
+  background-size: 100vw 100vh;
+  overflow: hidden;
+}
+
+.guacaflix {
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 12vmin;
+  font-weight: 700;
+  animation: netflix_style 3.5s;
+  outline: none;
+  color: $primary;
+  white-space: nowrap;
+}
+
+@keyframes netflix_style {
+  0% {
+    text-shadow: makelongshadow(100, 1);
+    color: #f3f3f3;
+    transform: scale(1.5, 1.5);
+  }
+  10% {
+    text-shadow: makelongshadow(100, 1.5);
+    color: #f3f3f3;
+    transform: scale(1.5, 1.5);
+  }
+  15% {
+    color: #f3f3f3;
+  }
+  20% {
+    color: $primary;
+    text-shadow: none;
+    transform: scale(1.1, 1.1);
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    color: $primary;
+    transform: scale(0.85, 0.9);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

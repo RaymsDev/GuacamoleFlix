@@ -1,13 +1,16 @@
-<mat-toolbar class="topnav" color="primary">
-    <mat-toolbar-row>
-        <img id="logo" src="./../../../assets/logo2.png" />
+<mat-toolbar class="topnav">
+  <mat-toolbar-row>
+    <img id="logo" src="./../../../assets/logo2.png" />
 
-        <span class="example-spacer"></span>
-        <a matLine routerLink='/admin'>Admin</a>
-        <a matLine routerLink='/login'>Login</a>
-        <a matLine routerLink='/register'>Register</a>
-        <div *ngIf="userObservable | async as user; else show">
-            <button mat-button (click)="logout()">Logout</button>
-        </div>
-    </mat-toolbar-row>
+    <span class="example-spacer"></span>
+    <span> <a matLine routerLink="/">Home</a> </span>
+    <span *ngIf="!(userObservable | async)">
+      <a matLine routerLink="/admin">Admin</a>
+      <a matLine routerLink="/login">Login</a>
+      <a matLine routerLink="/register">Register</a>
+    </span>
+    <span *ngIf="(userObservable | async)">
+      <a matLine (click)="logout()">Logout</a>
+    </span>
+  </mat-toolbar-row>
 </mat-toolbar>

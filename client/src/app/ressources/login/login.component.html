@@ -1,5 +1,6 @@
 <div id="login">
 
+
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title style="font-size:35px"> Login</mat-card-title>
@@ -9,20 +10,20 @@
     <mat-card-content>
       <form class="login-form">
         <mat-form-field class="login-full-width">
-          <input matInput type="email" placeholder="Email" [(ngModel)]="email" [formControl]="loginFormControl">
-          <mat-error *ngIf="loginFormControl.hasError('email') && !loginFormControl.hasError('required')">
+          <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email">
+          <!-- <mat-error *ngIf="loginFormControl.hasError('email') && !loginFormControl.hasError('required')">
             Please enter a valid email address
           </mat-error>
           <mat-error *ngIf="loginFormControl.hasError('required')">
             Email is <strong>required</strong>
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
         <mat-form-field class="login-full-width">
-          <input matInput type="password" placeholder="Password" [(ngModel)]="password" [formControl]="loginFormControl">
+          <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="email">
         </mat-form-field>
-        <mat-error *ngIf="loginFormControl.hasError('required')">
+        <!-- <mat-error *ngIf="loginFormControl.hasError('required')">
             Password is <strong>required</strong>
-        </mat-error>
+        </mat-error> -->
       </form>
     </mat-card-content>
     <mat-card-actions>

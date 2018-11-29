@@ -19,8 +19,8 @@ export class SubscriptionController {
   }
 
   public static create(subscription: ISubscription): Promise<ISubscription> {
-    const newCategory = new SubscriptionSchema(subscription);
-    return newCategory.save();
+    const newSubscription = new SubscriptionSchema(subscription);
+    return newSubscription.save();
   }
 
   public static select(id: any): Promise<ISubscription> {
