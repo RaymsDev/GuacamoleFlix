@@ -1,0 +1,38 @@
+<app-nav-admin></app-nav-admin>
+<div id="add-category">
+  <div id="formulaire">
+    <div id="libelle-div" class="form-group col-md-6 offset-md-3">
+      <label for="Libelle">Libellé de la catégorie</label>
+      <input type="text" class="form-control" id="Libelle" [(ngModel)]="Libelle" placeholder="Humour, horreur etc..">
+    </div>
+    <div id="div-pegi" class="form-group col-md-6 offset-md-3">
+        <label for="pegi">PEGI</label>
+        <select [(ngModel)]="Pegi" class="form-control" id="pegi">
+          <option value="10">interdit aux -10 ans</option>
+          <option value="12">interdit aux -12 ans</option>
+          <option value="16">interdit aux -16 ans</option>
+          <option value="18">interdit aux -18 ans</option>
+        </select>
+      </div>
+      <a id="buttonadd" (click)="AddCategory()" class="btn btn-success col-md-2 offset-md-5"><span class="glyphicon glyphicon-plus"></span> Ajouter la catégorie</a>
+      <table id="table" class="table table-sm table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Libellé</th>
+              <th scope="col">PEGI</th>
+              <th scope="col">Gerer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of AllCategory">
+              <th scope="row">1</th>
+              <td>{{cat._id}}</td>
+              <td>{{cat.name}}</td>
+              <td>Interdit au -{{cat.pegi}} ans</td>
+              <td><a (click)="deleteCat(cat._id)" class="btn btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Default text here</a></td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

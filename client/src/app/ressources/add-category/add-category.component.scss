@@ -1,0 +1,33 @@
+@import "./../../../palette.scss";
+
+#add-category
+{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+    height: 100%;
+    width: 70%;
+
+    #formulaire
+    {
+        width: 100%;
+        height: 100%;
+        color: $dark;
+        font-weight: bold;
+
+        #libelle-div
+        {
+            padding-top: 5%;
+        }
+        #buttonadd
+        {
+            color: white;
+            margin-top: 2%;
+        }
+        #table
+        {
+            margin-top: 5%;
+
+        }
+    }
+}
