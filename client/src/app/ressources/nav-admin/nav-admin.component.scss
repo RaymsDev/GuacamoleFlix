@@ -12,7 +12,7 @@
     .blocAdmin
     {
         width: 100%;
-        height: 33.33%;   
+        height: 25%;   
         display: flex;
         border: solid 0.5px $light;
         min-height: 50px;
@@ -35,6 +35,7 @@
         }
 
     }
+
     .blocAdmin:hover
     {
         border-right: solid 3px #412d16;

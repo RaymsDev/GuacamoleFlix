@@ -13,7 +13,7 @@
 
     #groupe-url
     {
-        margin-bottom: 20%;
+        margin-bottom: 3%;
     }
 
     input
@@ -32,6 +32,17 @@
     #description
     {
         color: $dark;
-        margin-bottom: 10%;
+        margin-bottom: 3%;
+    }
+    #add-video
+    {
+        margin-left: 20%;
+        background-color: $light;
+        margin-bottom: 5%;
+    }
+    #ajouter
+    {
+        margin-bottom: 5%;
+        color: white;
     }
 }

@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { HttpModule  } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,7 @@ import { AjoutVideoAdminComponent } from './ressources/ajout-video-admin/ajout-v
 import { GestionUsersComponent } from './ressources/gestion-users/gestion-users.component';
 import { GestionVideosComponent } from './ressources/gestion-videos/gestion-videos.component';
 import { HomePageComponent } from './ressources/home-page/home-page.component';
+import { AddCategoryComponent } from './ressources/add-category/add-category.component';
 
 import { UserComponent } from './ressources/user/user.component';
 import { VideoPlayerComponent } from './ressources/video-player/video-player.component';
@@ -43,6 +44,7 @@ import { VideoPageComponent } from './ressources/video-page/video-page.component
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    UserComponent,
     HeaderComponent,
     LoginFormComponent,
     PayComponent,
@@ -51,23 +53,23 @@ import { VideoPageComponent } from './ressources/video-page/video-page.component
     GestionUsersComponent,
     GestionVideosComponent,
     PayComponent,
-    HomePageComponent,
-    UserComponent,
+    VideoPageComponent,
     VideoPlayerComponent,
-    CarouselComponent,
+    HomePageComponent,
+    AddCategoryComponent,
     GuacaPlayComponent,
-    VideoPageComponent
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    YoutubePlayerModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule,
-    YoutubePlayerModule
   ],
   providers: [AuthService, UserService, VideoService, CategoryService],
   bootstrap: [AppComponent]
