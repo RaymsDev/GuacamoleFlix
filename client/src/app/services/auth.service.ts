@@ -26,7 +26,16 @@ export class AuthService {
       }));
   }
 
-  getUser(): Observable<User> {
+  // get currentUserObservable(): any {
+  //   return
+  // }
+  get authenticated(): boolean {
+    return this.userObservable !== null;
+  }
+  get currentUserObservable(): any {
+    return this.afAuth.auth;
+  }
+  getUser(): Observable<any> {
     return this.userObservable;
   }
   login(email, password): any {
@@ -34,13 +43,14 @@ export class AuthService {
     const retour = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
     console.log(retour);
   }
-  loginGoogle() {
+  loginGoogle(): any {
     console.log('service auth login google');
     const retour = this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     console.log(retour);
     this.afAuth.idToken.subscribe(token => {
       console.log(token);
     });
+    return retour;
   }
   register(email, password): any {
     console.log('service auth register');
@@ -51,8 +61,8 @@ export class AuthService {
     console.log('service auth logout');
     const retour = this.afAuth.auth.signOut();
     console.log(retour);
+    this.userObservable = null;
   }
-
 }
 
 export interface User {

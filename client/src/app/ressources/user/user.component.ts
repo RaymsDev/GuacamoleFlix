@@ -10,24 +10,23 @@ import { Observable } from 'rxjs';
 })
 export class UserComponent implements OnInit {
 
-  userObservable: Observable<any>;
+  userObservable: any;
   constructor(public authService: AuthService, public userService: UserService) { }
   users;
 
   ngOnInit() {
-    this.userObservable = this.authService.getUser();
+    this.userObservable = this.authService.getUser().subscribe(e => {
+      return e;
+    });
     console.log(this.userObservable);
-    this.getUsers();
+    this.getUsers(this.userObservable.uid);
   }
   getUserAuth() {
     return this.authService.getUser();
   }
-  getUsers() {
-  this.userService.getUsers().subscribe((data) => {
+  getUsers(firebaseId) {
+  this.userService.getCurrentUser(firebaseId).subscribe((data) => {
       this.users = data; } );
-    console.log('this.users');
-    console.log(this.users);
-
   }
 
 }
