@@ -1,4 +1,4 @@
-<div class="container" #containerRef>
+<div class="myContainer" #containerRef>
   <app-guaca-play *ngIf="isGuacaplayShow" (isRealease)="onGenericFinish($event)"></app-guaca-play>
   <app-video-player *ngIf="!isGuacaplayShow" [playerWidth]="playerWidth" [playerHeight]="playerHeight" [video]="watchingVideo"></app-video-player>
 </div>

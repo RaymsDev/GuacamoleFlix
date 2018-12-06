@@ -9,7 +9,7 @@ const baseUrl = `${environment.urlApi}/users`;
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private client: HttpClient) {}
+  constructor(private client: HttpClient) { }
 
   getCurrentUser(firebaseId): Observable<any> {
     return this.client.get(`${baseUrl}/current/${firebaseId}`);
@@ -40,10 +40,9 @@ export class UserService {
 
   createUser(data, options): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: options
-      })
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', options)
     };
     const retour = this.client.post(`${baseUrl}/`, data, httpOptions).pipe(
       tap(user => console.log(`added hero w/ id=${user}`)),

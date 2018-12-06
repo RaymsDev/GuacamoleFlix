@@ -1,9 +1,3 @@
-<div class="container">
-  <youtube-player
-    [videoId]="video.youtubeId"
-    [height]="height"
-    [width]="width"
-    (ready)="savePlayer($event)"
-    (change)="onStateChange($event)"
-  ></youtube-player>
+<div class="myContainer">
+  <youtube-player [videoId]="video.youtubeId" [height]="height" [width]="width" (ready)="savePlayer($event)" (change)="onStateChange($event)"></youtube-player>
 </div>

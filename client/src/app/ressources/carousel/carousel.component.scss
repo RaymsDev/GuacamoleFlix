@@ -30,7 +30,7 @@ a:hover {
   color: #7f8c8d;
   text-decoration: underline;
 }
-.container {
+.myContainer {
   width: 100%;
 }
 .row {
@@ -90,7 +90,7 @@ a:hover {
   left: 50%;
   display: #000;
 }
-.tile__details:after {
+/*.tile__details:after {
   margin-top: -25px;
   margin-left: -25px;
   width: 50px;
@@ -101,7 +101,7 @@ a:hover {
   border-radius: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
-}
+}*/
 .tile__details:before {
   content: "▶";
   left: 0;

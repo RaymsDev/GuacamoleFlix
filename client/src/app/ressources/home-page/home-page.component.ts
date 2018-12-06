@@ -3,6 +3,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { ICategory } from '../../../../../both/models/category.model';
 import { IVideo } from '../../../../../both/models/video.model';
 import { VideoService } from 'src/app/services/video.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -12,6 +13,7 @@ import { VideoService } from 'src/app/services/video.service';
 export class HomePageComponent implements OnInit {
   categoryVideoList: ICategoryVideo[];
   constructor(
+    public authService: AuthService,
     public categoryService: CategoryService,
     public videoService: VideoService
   ) {

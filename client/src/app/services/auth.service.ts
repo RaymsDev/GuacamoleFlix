@@ -1,17 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase/app';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { IHttpOptions } from '../models/IHttpOptions.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  userToken: string;
+  isAuth: boolean;
+  getHttpOptions: Observable<IHttpOptions>;
   userObservable: Observable<User>;
   constructor(public afAuth: AngularFireAuth) {
     this.userObservable = this.afAuth.authState;
-    this.afAuth.idToken.subscribe(token => this.userToken = token);
+    this.getHttpOptions = this.afAuth.idToken
+      .pipe(map(token => {
+        this.isAuth = token ? true : false;
+        return {
+          headers: new HttpHeaders()
+            .set('Authorization', token || '')
+            .set('Content-Type', 'application/json')
+        };
+      }));
   }
 
   getUser(): Observable<User> {

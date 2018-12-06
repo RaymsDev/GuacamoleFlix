@@ -32,9 +32,9 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const container: HTMLElement = this.containerRef.nativeElement;
-    this.playerHeight = container.offsetHeight;
-    this.playerWidth = container.offsetWidth;
+    const myContainer: HTMLElement = this.containerRef.nativeElement;
+    this.playerHeight = myContainer.offsetHeight;
+    this.playerWidth = myContainer.offsetWidth;
   }
 
   onGenericFinish(isFinish): void {

@@ -4,6 +4,8 @@ Projet d'école dans le cadre du cours Gestion de projet Fullstack
 
 ## Développement
 
+Nécessite Node.js 8.12
+
 /!\ Le dossier client et server sont deux projets indépendants, pensez à faire un :
 ```shell
 $ npm install

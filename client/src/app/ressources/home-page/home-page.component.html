@@ -1,6 +1,12 @@
-<div class="container">
-  <div *ngFor="let item of categoryVideoList">
-    <h2>{{ item.category.name }}</h2>
-    <app-carousel [videoList]="item.videoList"></app-carousel>
+<div class="myContainer">
+  <div *ngIf="!authService.isAuth">
+    Veuillez vous authentifier
   </div>
+  <div *ngIf="authService.isAuth">
+    <div *ngFor="let item of categoryVideoList">
+      <h2>{{ item.category.name }}</h2>
+      <app-carousel [videoList]="item.videoList"></app-carousel>
+    </div>
+  </div>
+
 </div>
