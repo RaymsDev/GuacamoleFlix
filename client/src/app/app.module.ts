@@ -15,6 +15,8 @@ import { appRoutes } from './appRoutes';
 // services
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { AuthGuard } from './services/auth.guard';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './ressources/login/login.component';
@@ -70,7 +72,7 @@ import { VideoPageComponent } from './ressources/video-page/video-page.component
     MaterialModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AuthService, UserService, VideoService, CategoryService],
+  providers: [AuthService, UserService, VideoService, CategoryService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

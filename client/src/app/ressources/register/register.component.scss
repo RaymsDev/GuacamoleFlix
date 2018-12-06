@@ -1,13 +1,31 @@
 @import "./../../../palette.scss";
 
+md-icon{
+  font-family: 'Material Icons' !important;
+}
+
 #register
 {
     width: 60%;
-    margin-top: 10%; 
+    margin-top: 10%;
     margin-left: 20%;
 
     mat-card
     {
         background-color: $light;
     }
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container > * {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 90%;
+  margin: 2%;
 }
