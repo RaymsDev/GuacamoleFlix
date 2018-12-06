@@ -10,71 +10,16 @@
             <input type="text" class="form-control" [(ngModel)]="UrlVideo" id="url" placeholder="Ex : https://www.youtube.com/watch?v=pnpLVgRXUK8t=5533s"/>
         </div>
 
-
-        <div id="add-categ" class="form-group col-md-6 offset-md-2">
-            <label id="titreInput" for="title">Catégorie de la vidéo</label>
+        <div id="add-categ" class="form-group col-md-6 offset-md-3">
+                <label id="titreInput" for="sel1">Catégorie de la vidéo</label>
+                <select class="form-control" id="sel1" [(ngModel)]="idCat">
+                  <option title="PEGI {{cat.pegi}}" *ngFor="let cat of AllCategorie; let i = index" value="{{i}}">{{cat.name}}</option>
+                </select>
         </div>
-        <div id="checkbox" class="row">
-            <div class="form-check form-check-inline col-md-2 offset-md-2">
-                <input class="form-check-input" [(ngModel)]="Humour" type="checkbox" id="humour" value="humour">
-                <label class="form-check-label" for="humour">Humour</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Action" type="checkbox" id="action" value="action">
-                <label class="form-check-label" for="action">Action</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input"  [(ngModel)]="Vlog" type="checkbox" id="vlog" value="vlog">
-                <label class="form-check-label" for="vlog">Vlog</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Horreur" type="checkbox" id="horreur" value="horreur">
-                <label class="form-check-label" for="horreur">Horreur</label>
-            </div>
+        <div id="description" class="form-group col-md-8 offset-md-2">
+            <label id="titreInput" for="exampleTextarea">Description</label>
+            <textarea class="form-control" [(ngModel)]="Description" id="description" rows="4"></textarea>
         </div>
-
-        <div id="checkbox" class="row">
-            <div class="form-check form-check-inline col-md-2 offset-md-2">
-                <input class="form-check-input" [(ngModel)]="Animal" type="checkbox" id="animal" value="animal">
-                <label class="form-check-label" for="animal">Animal</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="JeuxV" type="checkbox" id="jeux-video" value="jeux-video">
-                <label class="form-check-label" for="jeux-video">Jeux-Vidéo</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Voyage" type="checkbox" id="voyage" value="voyage">
-                <label class="form-check-label" for="voyage">Voyage</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Beaute" type="checkbox" id="beauté" value="beauté">
-                <label class="form-check-label" for="beauté">Beauté</label>
-            </div>
-        </div>
-
-        <div id="checkbox" class="row">
-            <div class="form-check form-check-inline col-md-2 offset-md-2">
-                <input class="form-check-input" [(ngModel)]="Sport" type="checkbox" id="sport" value="sport">
-                <label class="form-check-label" for="sport">Sport</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Histoire" type="checkbox" id="histoire" value="histoire">
-                <label class="form-check-label" for="histoire">Histoire</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Musique" type="checkbox" id="musique" value="musique">
-                <label class="form-check-label" for="musique">Musique</label>
-            </div>
-            <div class="form-check form-check-inline col-md-2">
-                <input class="form-check-input" [(ngModel)]="Autre" type="checkbox" id="autre" value="autre">
-                <label class="form-check-label" for="autre">Autre</label>
-            </div>
-        </div>
-
-            <div id="description" class="form-group col-md-8 offset-md-2">
-                <label id="titreInput" for="exampleTextarea">Description</label>
-                <textarea class="form-control" [(ngModel)]="Description" id="description" rows="4"></textarea>
-            </div>
-            <a (click)="AjoutVideo()" id="ajouter" class="btn btn-success col-md-2 offset-md-5"><span class="glyphicon glyphicon-plus"></span> Ajouter la vidéo</a>
+        <a (click)="AjoutVideo()" id="ajouter" class="btn btn-success col-md-2 offset-md-5"><span class="glyphicon glyphicon-plus"></span> Ajouter la vidéo</a>
     </div>
 </div>

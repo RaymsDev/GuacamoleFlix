@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ICategory, Category } from '../../../../both/models/category.model';
 import { environment } from 'src/environments/environment';
-import { map, flatMap } from 'rxjs/operators';
+import { map, tap, flatMap,catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 const baseUrl = `${environment.urlApi}/categories`;
 
@@ -22,4 +22,34 @@ export class CategoryService {
           .pipe(map(categories => categories.map(c => new Category(c))));
       }));
   }
+
+  createNewCategory(category) : Observable<any>
+  {
+    return this.authService.getHttpOptions
+    .pipe(flatMap((httpOptions) => {
+      return this.httpClient.post(`${baseUrl}/`, category, httpOptions).pipe(
+        tap(cat => console.log(`added category w/ id=${cat}`)),
+        catchError(this.handleError('category'))
+      )
+    }))
+  }
+
+  deleteCategory(id) : Observable<any>
+  {
+    return this.httpClient.delete(`${baseUrl}/${id}`).pipe(
+      catchError(this.handleError('delete user'))
+    )
+  }
+  
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.log(error); // log to console instead
+      console.error(error); // log to console instead
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
 }
