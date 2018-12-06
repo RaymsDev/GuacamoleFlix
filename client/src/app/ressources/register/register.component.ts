@@ -13,23 +13,18 @@ import { ISubscription } from '../../../../../both/models/subscription.model';
 export class RegisterComponent implements OnInit {
   password: string;
   email: string;
+  name: string;
   constructor(private authService: AuthService, private userService: UserService) { }
 
-
-  loginFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
   ngOnInit() {
   }
-  register(email, password) {
-    console.log('register ts', email, password);
+  register(email, password, name) {
 
     return this.authService.register(email, password).then(user => {
       const data: IUser = {
         _id: null,
         idFirebase: user.user.uid,
-        name: user.user.displayName ? user.user.displayName : 'test user',
+        name: name,
         isActive: false,
         subscription: {
           _id: '5be445285a2b5e412c910af8'
@@ -43,7 +38,20 @@ export class RegisterComponent implements OnInit {
   loginGoogle() {
     console.log('login google');
 
-    return this.authService.loginGoogle();
+    return this.authService.loginGoogle().then( user => {
+      const data: IUser = {
+        _id: null,
+        idFirebase: user.user.uid,
+        name: user.user.displayName,
+        isActive: false,
+        subscription: {
+          _id: '5be445285a2b5e412c910af8'
+        }
+      };
+      return this.userService.createUser(data, user.user.refreshToken).subscribe(userco => {
+        console.log(userco);
+      });
+    });
   }
 
 }

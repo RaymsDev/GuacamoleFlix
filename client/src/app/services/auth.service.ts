@@ -13,6 +13,7 @@ export class AuthService {
   isAuth: boolean;
   getHttpOptions: Observable<IHttpOptions>;
   userObservable: Observable<User>;
+  userDetails: firebase.User = null;
   constructor(public afAuth: AngularFireAuth) {
     this.userObservable = this.afAuth.authState;
     this.getHttpOptions = this.afAuth.idToken
@@ -41,6 +42,7 @@ export class AuthService {
     this.afAuth.idToken.subscribe(token => {
       console.log(token);
     });
+    return retour;
   }
   register(email, password): any {
     console.log('service auth register');
@@ -53,6 +55,15 @@ export class AuthService {
     console.log(retour);
   }
 
+  // isLoggedIn() {
+  //   if (this.userDetails === null) {
+  //     this.router.navigate(['/']);
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+
 }
 
 export interface User {
@@ -60,3 +71,4 @@ export interface User {
   isActive: boolean;
   idSubscription: string;
 }
+

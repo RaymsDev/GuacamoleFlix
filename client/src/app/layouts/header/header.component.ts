@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userObservable = this.authService.getUser();
+    console.log('this.userObservable');
     console.log(this.userObservable);
   }
   getUserAuth() {

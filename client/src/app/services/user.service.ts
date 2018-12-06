@@ -12,7 +12,10 @@ export class UserService {
   constructor(private client: HttpClient) { }
 
   getCurrentUser(firebaseId): Observable<any> {
-    return this.client.get(`${baseUrl}/current/${firebaseId}`);
+    const users = this.client.get(`${baseUrl}/current/${firebaseId}`);
+    console.log('users firebases');
+    console.log(users);
+    return users;
   }
 
   getUsers(): any {
@@ -44,14 +47,15 @@ export class UserService {
         .set('Content-Type', 'application/json')
         .set('Authorization', options)
     };
-    const retour = this.client.post(`${baseUrl}/`, data, httpOptions).pipe(
-      tap(user => console.log(`added hero w/ id=${user}`)),
-      catchError(this.handleError('addHero'))
+    const retour = this.client.post(`${baseUrl}/`, data, httpOptions ).pipe(
+      tap((user) => console.log(`added user w/ id=${user}`)),
+      catchError(this.handleError('addUser'))
     );
     console.log(retour);
     return retour;
   }
-  private handleError<T>(operation = 'operation', result?: T) {
+
+  private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.log(error); // log to console instead

@@ -1,20 +1,24 @@
 <div id="user">
-  <p>
-    user works!
-  </p>
+  <div *ngIf="userObservable | async as user">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title style="font-size:35px">{{user.displayName | uppercase}} </mat-card-title>
+      </mat-card-header>
+      <img *ngIf="user.photoURL" mat-card-image [src]="user.photoURL" alt="photoURL">
+      <img *ngIf="!(user.photoURL)" mat-card-image src="./../../../assets/small-logo.png" alt="photoURL">
+      <mat-card-content>
+        <h3> {{user.email}} </h3>
+        <p>Abonnement active: {{users.isActive}}</p>
+        <p>Nom de l'abonnement: {{users.subscription.name}}</p>
+        <p>Nombre de profile: {{users.subscription.authorizedProfiles}}</p>
+        <p>Reglement: {{users.subscription.periodicity}}</p>
+        <p>Prix: {{users.subscription.price}}</p>
 
-
-  <div *ngIf="userObservable | async">
-    <h1>Welcome {{ (userObservable | async)?.displayName }}!</h1>
-    <h2>{{ (userObservable | async)?.email }}</h2>
+        <p>Profiles: {{users.profiles.length}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="auth.signOut()">Logout</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-  <div *ngIf="!(userObservable | async)">
-    vous devez etre redirigez vers login
-  </div>
-
-  <button (click)="logout()" *ngIf="userObservable | async">
-    Logout
-  </button>
-
-  les users : {{ users | json }}
 </div>

@@ -9,7 +9,8 @@
       <a matLine routerLink="/register">Register</a>
     </span>
     <span *ngIf="(userObservable | async)">
-        <a matLine routerLink="/admin">Admin</a>
+      <a matLine routerLink="/admin">Admin</a>
+      <a matLine routerLink="/me">Mon Profile</a>
       <a matLine (click)="logout()">Logout</a>
     </span>
   </mat-toolbar-row>
