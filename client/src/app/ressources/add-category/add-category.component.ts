@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from './../../../../../both/models/category.model'
+import { CategoryService } from '../../services/category.service'
 
 @Component({
   selector: 'app-add-category',
@@ -10,22 +11,37 @@ export class AddCategoryComponent implements OnInit {
   Libelle: string
   Pegi: number
   AllCategory: Array<Category>
-  constructor() 
+  constructor(private gestionCategory:CategoryService) 
   { 
     this.AllCategory = []
   }
 
   ngOnInit() {
+    this.gestionCategory.getCategories().subscribe((allCategory: Array<Category>) => {
+      this.AllCategory = allCategory
+    })
   }
 
   AddCategory()
   {
-    console.log(this.Libelle)
-    console.log(this.Pegi)
     let cat = new Category();
     cat.name = this.Libelle
     cat.pegi = this.Pegi
-    this.AllCategory.push(cat)
+    this.gestionCategory.createNewCategory(cat).subscribe(categoryadd => {
+      console.log(categoryadd)
+      this.gestionCategory.getCategories().subscribe((allCategory: Array<Category>) => {
+        this.AllCategory = allCategory
+      })
+    })
+  }
+
+  deleteCat(id)
+  {
+    this.gestionCategory.deleteCategory(id).subscribe(() => {
+      this.gestionCategory.getCategories().subscribe((allCategory: Array<Category>) => {
+        this.AllCategory = allCategory
+      })
+    })
   }
 
 }

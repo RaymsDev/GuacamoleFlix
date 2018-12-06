@@ -44,4 +44,14 @@ export class VideoService {
       }));
 
   }
+
+  createNewVideo(video) : Observable<any>
+  {
+    return this.authService.getHttpOptions
+    .pipe(flatMap((httpOptions) => {
+      return this.httpClient.post(`${url}/`, video, httpOptions).pipe(
+
+      )
+    }))
+  }
 }

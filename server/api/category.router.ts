@@ -82,6 +82,7 @@ export class CategoryRouter implements IRouter {
   }
 
   public remove(req: Request, res: Response): void {
+    console.log(req.params.id)
     const id = req.params.id;
 
     if (!id) {
