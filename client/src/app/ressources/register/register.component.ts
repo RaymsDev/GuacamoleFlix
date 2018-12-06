@@ -11,7 +11,8 @@ import { ISubscription } from '../../../../../both/models/subscription.model';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  password: string;
+  email: string;
   constructor(private authService: AuthService, private userService: UserService) { }
 
 
