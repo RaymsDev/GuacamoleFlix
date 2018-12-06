@@ -1,40 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase/app';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  authState: auth.Auth = null;
-  userObservable: Observable<any>;
-  constructor(public afAuth: AngularFireAuth) {
-    this.userObservable = this.afAuth.auth.onAuthStateChanged(user => user
-      //   function(user) {
-      //   if (user) {
-      //     // User is signed in.
-      //     console.log('user connecté');
-      //     this.userObservable = user;
-      //   } else {
-      //     // No user is signed in.
-      //     console.log('user non connecté');
-      //   }
-      // }
+  userToken: string;
+  user: Observable<User>;
+  userObservable: Observable<User>;
+  userDetails: firebase.User = null;
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
+    this.userObservable = this.afAuth.authState;
+    this.afAuth.idToken.subscribe(token => this.userToken = token);
+    this.afAuth.authState.subscribe(
+      (user) => {
+        if (user) {
+          this.userDetails = user;
+          console.log('this.userDetails');
+          console.log(this.userDetails);
+        } else {
+          this.userDetails = null;
+        }
+      }
     );
-
   }
 
-  // get currentUserObservable(): any {
-  //   return
-  // }
-  get authenticated(): boolean {
-    return this.userObservable !== null;
-  }
-  get currentUserObservable(): any {
-    return this.afAuth.auth;
-  }
-  getUser(): Observable<any> {
+  getUser(): Observable<User> {
     return this.userObservable;
   }
   login(email, password): any {
@@ -42,7 +37,7 @@ export class AuthService {
     const retour = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
     console.log(retour);
   }
-  loginGoogle(): any {
+  loginGoogle() {
     console.log('service auth login google');
     const retour = this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     console.log(retour);
@@ -60,8 +55,17 @@ export class AuthService {
     console.log('service auth logout');
     const retour = this.afAuth.auth.signOut();
     console.log(retour);
-    this.userObservable = null;
   }
+
+  isLoggedIn() {
+    if (this.userDetails === null) {
+      this.router.navigate(['/']);
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }
 
 export interface User {
@@ -69,3 +73,4 @@ export interface User {
   isActive: boolean;
   idSubscription: string;
 }
+
