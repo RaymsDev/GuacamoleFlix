@@ -3,11 +3,15 @@
 #login
 {
     width: 60%;
-    margin-top: 10%; 
+    margin-top: 10%;
     margin-left: 20%;
 
     mat-card
     {
         background-color: $light;
     }
+}
+mat-form-field {
+  width: 90%;
+  margin: 2%;
 }
