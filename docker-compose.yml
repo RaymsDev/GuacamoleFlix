@@ -16,7 +16,7 @@ services:
     front:
       restart: always
       container_name : front
-      build: 
+      build:
         context: .
         dockerfile: ./Dockerfile-client
       expose:
@@ -25,7 +25,7 @@ services:
         proxy-network:
     back:
       restart: always
-      build: 
+      build:
         context: .
         dockerfile: ./Dockerfile-server
       container_name: back
@@ -33,13 +33,6 @@ services:
         - "3000"
       depends_on:
         - mongo
-      environment:
-        - DB_NAME=guacamoleflix
-        - MONGODB_URI=mongodb://mongo:27017/guacamoleflix
-        - MONGODB_USER=mongo_admin
-        - MONGODB_PASS=MyStrongPassword
-        - SERVER_PORT=3000
-        - ENV=production
       networks:
         proxy-network:
     mongo:
@@ -49,10 +42,6 @@ services:
         - mongo-data:/data/db
       ports:
         - "27017:27017"
-      environment:
-        - MONGO_INITDB_DATABASE=guacamoleflix
-        - MONGO_INITDB_ROOT_USERNAME=mongo_admin
-        - MONGO_INITDB_ROOT_PASSWORD=MyStrongPassword
       networks:
         proxy-network:
 volumes:
