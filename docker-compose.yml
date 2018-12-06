@@ -20,7 +20,7 @@ services:
         context: .
         dockerfile: ./Dockerfile-client
       expose:
-       - "4201"
+       - "80"
       networks:
         proxy-network:
     back:

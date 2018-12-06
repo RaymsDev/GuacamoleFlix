@@ -1,4 +1,4 @@
-FROM node:8 as build
+FROM node:8 as builder
 
 # Create app directory
 WORKDIR /usr/src/app/client
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app/client
 # where available (npm@5+)
 ADD ./client/package*.json ./
 
-RUN npm install
+RUN npm install --silent
 # If you are building your code for production
 # RUN npm install --only=production
 
@@ -16,4 +16,16 @@ RUN npm install
 ADD ./client ./
 ADD ./both ./../both
 
-CMD [ "npm", "run","docker" ]
+CMD [ "npm", "run","build:prod" ]
+
+# production environment
+FROM nginx:1.14-alpine
+RUN rm -rf /etc/nginx/conf.d
+COPY conf /etc/nginx
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /usr/src/app/client/dist/client /usr/share/nginx/html
+# expose port 80
+EXPOSE 80
+
+# run nginx
+CMD ["nginx", "-g", "daemon off;"]

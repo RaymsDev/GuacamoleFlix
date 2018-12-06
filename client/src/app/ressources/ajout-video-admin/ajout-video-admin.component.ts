@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Category } from '../../../../../both/models/category.model'
+import { Category } from '../../../../../both/models/category.model';
 
 @Component({
   selector: 'app-ajout-video-admin',
@@ -8,28 +8,37 @@ import { Category } from '../../../../../both/models/category.model'
   styleUrls: ['./ajout-video-admin.component.scss']
 })
 export class AjoutVideoAdminComponent implements OnInit {
-  Title: String
-  UrlVideo: String
-  AllCategorie: Array<String>
-  LimitAge: String
-  Description: String
+  Title: string;
+  UrlVideo: string;
+  AllCategorie: Array<string>;
+  LimitAge: string;
+  Description: string;
+  Humour: boolean;
+  Action: boolean;
+  Vlog: boolean;
+  Horreur: boolean;
+  Animal: boolean;
+  JeuxV: boolean;
+  Voyage: boolean;
+  Beaute: boolean;
+  Sport: boolean;
+  Histoire: boolean;
+  Musique: boolean;
+  Autre: boolean;
 
-  constructor() 
-  {
-    this.Title = ""
-    this.UrlVideo = ""
+  constructor() {
+    this.Title = '';
+    this.UrlVideo = '';
   }
 
   ngOnInit() {
   }
 
-  AjoutVideo() : void
-  {
-    
+  AjoutVideo(): void {
+
   }
 
-  CreateListCategorie() : Array<Category>
-  {
-    return null
+  CreateListCategorie(): Array<Category> {
+    return null;
   }
 }
