@@ -26,16 +26,7 @@ export class AuthService {
       }));
   }
 
-  // get currentUserObservable(): any {
-  //   return
-  // }
-  get authenticated(): boolean {
-    return this.userObservable !== null;
-  }
-  get currentUserObservable(): any {
-    return this.afAuth.auth;
-  }
-  getUser(): Observable<any> {
+  getUser(): Observable<User> {
     return this.userObservable;
   }
   login(email, password): any {
@@ -43,7 +34,7 @@ export class AuthService {
     const retour = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
     console.log(retour);
   }
-  loginGoogle(): any {
+  loginGoogle() {
     console.log('service auth login google');
     const retour = this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     console.log(retour);
@@ -61,8 +52,17 @@ export class AuthService {
     console.log('service auth logout');
     const retour = this.afAuth.auth.signOut();
     console.log(retour);
-    this.userObservable = null;
   }
+
+  // isLoggedIn() {
+  //   if (this.userDetails === null) {
+  //     this.router.navigate(['/']);
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+
 }
 
 export interface User {
@@ -70,3 +70,4 @@ export interface User {
   isActive: boolean;
   idSubscription: string;
 }
+
