@@ -13,14 +13,8 @@ import { ISubscription } from '../../../../../both/models/subscription.model';
 export class RegisterComponent implements OnInit {
   password: string;
   email: string;
+  name: string;
   constructor(private authService: AuthService, private userService: UserService) { }
-
-
-  emailFC = new FormControl('', [Validators.required, Validators.email]);
-  hide = true;
-  email = '';
-  password = '';
-  name = '';
 
   ngOnInit() {
   }
