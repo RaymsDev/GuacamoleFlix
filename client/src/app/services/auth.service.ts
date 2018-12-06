@@ -13,6 +13,7 @@ export class AuthService {
   isAuth: boolean;
   getHttpOptions: Observable<IHttpOptions>;
   userObservable: Observable<User>;
+  userDetails: firebase.User = null;
   constructor(public afAuth: AngularFireAuth) {
     this.userObservable = this.afAuth.authState;
     this.getHttpOptions = this.afAuth.idToken
