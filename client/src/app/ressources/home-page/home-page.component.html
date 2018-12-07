@@ -1,6 +1,6 @@
 <div class="myContainer">
   <div *ngIf="!isAuth">
-    Veuillez vous authentifier
+    <span i18n="@@home-please-auth">Veuillez vous authentifier </span>
   </div>
   <div *ngIf="isAuth">
     <div *ngFor="let item of categoryVideoList">
