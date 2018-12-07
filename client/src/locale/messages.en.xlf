@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="login-title" datatype="html">
+        <source> Login</source>
+        <target>Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/login/login.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-button-form" datatype="html">
+        <source>Se connecter</source>
+        <target>Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/login/login.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ou-title" datatype="html">
+        <source>Ou?</source>
+        <target>Or?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/login/login.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/register/register.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-google-button" datatype="html">
+        <source>Login with google</source>
+        <target>Login with google</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/login/login.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/register/register.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pasdecomte-text" datatype="html">
+        <source>Vous n&apos;avez pas de compte? créez en un <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/> ici <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <target>You do not have an account? Create in one <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/> here <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/login/login.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register-title-form" datatype="html">
+        <source> Creer votre compte</source>
+        <target> Register</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/register/register.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register-button-form" datatype="html">
+        <source>Creer son compte</source>
+        <target>Create an account</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/register/register.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dejacomte-text" datatype="html">
+        <source>Vous avez déja un compte? connectez vous <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/> ici <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <target>Already have an account? Connect <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/> here <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/register/register.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user-abonnement-active" datatype="html">
+        <source>Abonnement active: </source>
+        <target>Subscription actived: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user-abonnement-name" datatype="html">
+        <source>Nom de l&apos;abonnement: </source>
+        <target>Subscription's name: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user-abonnement-profile" datatype="html">
+        <source>Nombre de profile:</source>
+        <target>Number of authorized profiles:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user-abonnement-periodicity" datatype="html">
+        <source>Reglement:</source>
+        <target>Periodicity:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user-abonnement-price" datatype="html">
+        <source>Prix: </source>
+        <target>Price: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="user-profiles" datatype="html">
+        <source>Profiles:</source>
+        <target>Profiles:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logout-button" datatype="html">
+        <source>Logout</source>
+        <target>Logout</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home-button" datatype="html">
+        <source>Home</source>
+        <target>Home</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-button" datatype="html">
+        <source>Login</source>
+        <target>Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register-button" datatype="html">
+        <source>Register</source>
+        <target>Register</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="admin-button" datatype="html">
+        <source>Admin</source>
+        <target>Admin</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile-button" datatype="html">
+        <source>Mon Profile</source>
+        <target>My Profile</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-add-button" datatype="html">
+        <source>Ajouter une vidéo</source>
+        <target>Add a video</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/nav-admin/nav-admin.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categories-gerer-button" datatype="html">
+        <source>Gérer les catégories</source>
+        <target>Manage categories</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/nav-admin/nav-admin.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-gestion-button" datatype="html">
+        <source>Gestion des vidéos</source>
+        <target>Manage videos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/nav-admin/nav-admin.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-title-label" datatype="html">
+        <source>Titre de la vidéo</source>
+        <target>Title of the video</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-url-label" datatype="html">
+        <source>Adresse url de la vidéo</source>
+        <target>Url address of the video</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorie-video-label" datatype="html">
+        <source>Catégorie de la vidéo</source>
+        <target>Categorie of the video</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="desciption-label" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-add-label" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Ajouter la vidéo</source>
+        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Add video</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home-please-auth" datatype="html">
+        <source>Veuillez vous authentifier </source>
+        <target>Please authenticate yourself </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/home-page/home-page.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+       <trans-unit id="wacth-title" datatype="html">
+        <source>Watch on any device</source>
+        <target>Watch on any device</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/home-page/home-page.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="stream-title" datatype="html">
+        <source>Stream on your phone, tablet, laptop, and TV without paying more.</source>
+        <target>Stream on your phone, tablet, laptop, and TV without paying more.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/home-page/home-page.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register-watch" datatype="html">
+        <source>REGISTER FOR WATCH VIDEOS</source>
+        <target>REGISTER FOR WATCH VIDEOS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/home-page/home-page.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorie-label" datatype="html">
+        <source>Libellé de la catégorie</source>
+        <target>Category label</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Pegi-label" datatype="html">
+        <source>PEGI</source>
+        <target>PEGI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Pegi-option-aucun" datatype="html">
+        <source>Aucun</source>
+        <target>None</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Pegi-option-10" datatype="html">
+        <source>interdit aux -10 ans</source>
+        <target>forbidden to -10 years</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Pegi-option-12" datatype="html">
+        <source>interdit aux -12 ans</source>
+        <target>forbidden to -12 years</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Pegi-option-16" datatype="html">
+        <source>interdit aux -16 ans</source>
+        <target>forbidden to -16 years</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Pegi-option-18" datatype="html">
+        <source>interdit aux -18 ans</source>
+        <target>forbidden to -18 years</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorie-add-button" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Ajouter la catégorie</source>
+        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Add categorie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="number-label" datatype="html">
+        <source>#</source>
+        <target>#</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="libellé-label" datatype="html">
+        <source>Libellé</source>
+        <target>Label</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gerer-label" datatype="html">
+        <source>Gerer</source>
+        <target>Manage</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorie-sup-label" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Supprimer la catégorie</source>
+        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Delete categorie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

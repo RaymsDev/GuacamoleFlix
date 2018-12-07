@@ -2,24 +2,24 @@
 <div id="add-video">
     <div class="col-md-8 offset-md-2" id="add-video">
         <div class="form-group col-md-6 offset-md-3">
-            <label id="titreInput" for="title">Titre de la vidéo</label>
+            <label i18n="@@video-title-label" id="titreInput" for="title">Titre de la vidéo</label>
             <input type="text" class="form-control" [(ngModel)]="Title" id="title" placeholder="Ex : Meilleurs plaquage de TOP14 - 2018"/>
         </div>
         <div id="groupe-url" class="form-group col-md-6 offset-md-3">
-            <label id="titreInput" for="url">Adresse url de la vidéo</label>
+            <label i18n="@@video-url-label" id="titreInput" for="url">Adresse url de la vidéo</label>
             <input type="text" class="form-control" [(ngModel)]="UrlVideo" id="url" placeholder="Ex : https://www.youtube.com/watch?v=pnpLVgRXUK8t=5533s"/>
         </div>
 
         <div id="add-categ" class="form-group col-md-6 offset-md-3">
-                <label id="titreInput" for="sel1">Catégorie de la vidéo</label>
+                <label i18n="@@categorie-video-label" id="titreInput" for="sel1">Catégorie de la vidéo</label>
                 <select class="form-control" id="sel1" [(ngModel)]="idCat">
                   <option title="PEGI {{cat.pegi}}" *ngFor="let cat of AllCategorie; let i = index" value="{{i}}">{{cat.name}}</option>
                 </select>
         </div>
         <div id="description" class="form-group col-md-8 offset-md-2">
-            <label id="titreInput" for="exampleTextarea">Description</label>
+            <label i18n="@@desciption-label" id="titreInput" for="exampleTextarea">Description</label>
             <textarea class="form-control" [(ngModel)]="Description" id="description" rows="4"></textarea>
         </div>
-        <a (click)="AjoutVideo()" id="ajouter" class="btn btn-success col-md-2 offset-md-5"><span class="glyphicon glyphicon-plus"></span> Ajouter la vidéo</a>
+        <a i18n="@@video-add-label" (click)="AjoutVideo()" id="ajouter" class="btn btn-success col-md-2 offset-md-5"><span class="glyphicon glyphicon-plus"></span> Ajouter la vidéo</a>
     </div>
 </div>

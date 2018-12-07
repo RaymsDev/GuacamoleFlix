@@ -8,16 +8,16 @@
       <img *ngIf="!(user.photoURL)" mat-card-image src="./../../../assets/small-logo.png" alt="photoURL">
       <mat-card-content *ngIf="userInfo">
         <h3> {{user.email}} </h3>
-        <p>Abonnement active: {{userInfo.isActive}}</p>
-        <p>Nom de l'abonnement: {{userInfo.subscription ? userInfo.subscription.name :""}}</p>
-        <p>Nombre de profile: {{userInfo.subscription ? userInfo.subscription.authorizedProfiles : ""}}</p>
-        <p>Reglement: {{userInfo.subscription ? userInfo.subscription.periodicity : ""}}</p>
-        <p>Prix: {{ userInfo.subscription ? userInfo.subscription.price : ""}}</p>
+        <p i18n="@@user-abonnement-active">Abonnement active: {{userInfo.isActive}}</p>
+        <p i18n="@@user-abonnement-name">Nom de l'abonnement: {{userInfo.subscription ? userInfo.subscription.name :""}}</p>
+        <p i18n="@@user-abonnement-profile">Nombre de profile: {{userInfo.subscription ? userInfo.subscription.authorizedProfiles : ""}}</p>
+        <p i18n="@@user-abonnement-periodicity">Reglement: {{userInfo.subscription ? userInfo.subscription.periodicity : ""}}</p>
+        <p i18n="@@user-abonnement-price">Prix: {{ userInfo.subscription ? userInfo.subscription.price : ""}}</p>
 
-        <p>Profiles: {{userInfo.profiles.length}}</p>
+        <p i18n="@@user-profiles">Profiles: {{userInfo.profiles.length}}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="authService.logout()">Logout</button>
+        <button i18n="@@logout-button" mat-button (click)="authService.logout()">Logout</button>
       </mat-card-actions>
     </mat-card>
   </div>

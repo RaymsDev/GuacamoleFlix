@@ -1,11 +1,11 @@
 <div class="myContainer">
   <div *ngIf="!isAuth" class="offer-container">
     <div class="offer">
-      <h1>Watch on any device</h1>
-      <h2>Stream on your phone, tablet, laptop, and TV without paying more.</h2>
+      <h1 i18n="@@wacth-title">Watch on any device</h1>
+      <h2 i18n="@@stream-title">Stream on your phone, tablet, laptop, and TV without paying more.</h2>
     </div>
     <div>
-      <button class="btn-transparent" (click)="goToRegister()">REGISTER FOR WATCH VIDEOS</button>
+      <button i18n="@@register-watch"class="btn-transparent" (click)="goToRegister()">REGISTER FOR WATCH VIDEOS</button>
     </div>
   </div>
   <div *ngIf="isAuth">
