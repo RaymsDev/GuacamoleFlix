@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomePageComponent implements OnInit {
   categoryVideoList: ICategoryVideo[];
+  isAuth: boolean;
   constructor(
     public authService: AuthService,
     public categoryService: CategoryService,
@@ -21,18 +22,25 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.getCategories().subscribe(categories => {
-      categories.forEach(c => {
-        this.videoService.getVideosByCategory(c).subscribe(videoList => {
-          this.categoryVideoList.push({
-            category: c,
-            videoList: videoList
+    this.authService.userObservable.subscribe((user) => {
+      this.isAuth = user ? true : false;
+      if (user) {
+        this.categoryService.getCategories().subscribe(categories => {
+          categories.forEach(c => {
+            this.videoService.getVideosByCategory(c).subscribe(videoList => {
+              this.categoryVideoList.push({
+                category: c,
+                videoList: videoList
+              });
+            });
           });
         });
-      });
+      }
     });
+
   }
 }
+
 
 
 interface ICategoryVideo {

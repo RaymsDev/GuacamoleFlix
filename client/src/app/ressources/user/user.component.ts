@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
+import { IUser } from '../../../../../both/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -11,29 +13,26 @@ import { Observable } from 'rxjs';
 export class UserComponent implements OnInit {
 
   userObservable: Observable<any>;
-  constructor(public authService: AuthService, public userService: UserService) { }
-  users;
-
+  constructor(public authService: AuthService, public userService: UserService, public router: Router) { }
+  userInfo: IUser;
   ngOnInit() {
     this.userObservable = this.authService.getUser();
     this.authService.getUser().subscribe(data => {
-      this.getCurrentUser(data.uid);
+      if (data.uid) {
+        this.getCurrentUser(data.uid);
+      } else {
+        this.router.navigate(['/']);
+      }
 
     });
   }
   getUserAuth() {
     return this.authService.getUser();
   }
-  getUsers() {
-  this.userService.getUsers().subscribe((data) => {
-      this.users = data; } );
-    console.log('this.users');
-    console.log(this.users);
-
-  }
   getCurrentUser(firebaseId) {
-  this.userService.getCurrentUser(firebaseId).subscribe((data) => {
-      this.users = data.data; } );
+    this.userService.getCurrentUser(firebaseId).subscribe((user) => {
+      this.userInfo = user;
+    });
 
   }
 

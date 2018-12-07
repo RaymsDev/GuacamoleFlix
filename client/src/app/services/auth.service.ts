@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase/app';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from, Subject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, } from 'rxjs/operators';
 import { IHttpOptions } from '../models/IHttpOptions.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  auth$: Subject<boolean>;
   isAuth: boolean;
-  getHttpOptions: Observable<IHttpOptions>;
   userObservable: Observable<User>;
   userDetails: firebase.User = null;
-  constructor(public afAuth: AngularFireAuth) {
+  getHttpOptions: Observable<IHttpOptions>;
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
+    this.isAuth = false;
+    this.auth$ = new Subject<boolean>();
     this.userObservable = this.afAuth.authState;
     this.getHttpOptions = this.afAuth.idToken
       .pipe(map(token => {
-        this.isAuth = token ? true : false;
+        const isAuthCurrent = token ? true : false;
+        if (this.isAuth !== isAuthCurrent) {
+          this.auth$.next(this.isAuth);
+        }
         return {
           headers: new HttpHeaders()
             .set('Authorization', token || '')
@@ -27,42 +34,28 @@ export class AuthService {
       }));
   }
 
+
+
+
   getUser(): Observable<User> {
     return this.userObservable;
   }
-  login(email, password): any {
-    console.log('service auth', email, password);
-    const retour = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
-    console.log(retour);
+  login(email, password) {
+    return from(this.afAuth.auth.signInWithEmailAndPassword(email, password));
   }
   loginGoogle() {
-    console.log('service auth login google');
-    const retour = this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-    console.log(retour);
-    this.afAuth.idToken.subscribe(token => {
-      console.log(token);
-    });
-    return retour;
+    return from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()));
   }
-  register(email, password): any {
-    console.log('service auth register');
-    return this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password);
+  register(email, password) {
+    return from(this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password));
   }
 
-  logout(): any {
-    console.log('service auth logout');
-    const retour = this.afAuth.auth.signOut();
-    console.log(retour);
+  logout() {
+    this.afAuth.auth.signOut()
+      .then(() => {
+        this.router.navigate(['/']);
+      });
   }
-
-  // isLoggedIn() {
-  //   if (this.userDetails === null) {
-  //     this.router.navigate(['/']);
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
 }
 

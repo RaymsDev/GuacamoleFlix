@@ -2,22 +2,22 @@
   <div *ngIf="userObservable | async as user">
     <mat-card class="example-card">
       <mat-card-header>
-        <mat-card-title style="font-size:35px">{{user.displayName | uppercase}} </mat-card-title>
+        <mat-card-title style="font-size:35px">{{user.displayName}} </mat-card-title>
       </mat-card-header>
       <img *ngIf="user.photoURL" mat-card-image [src]="user.photoURL" alt="photoURL">
       <img *ngIf="!(user.photoURL)" mat-card-image src="./../../../assets/small-logo.png" alt="photoURL">
-      <mat-card-content>
+      <mat-card-content *ngIf="userInfo">
         <h3> {{user.email}} </h3>
-        <p>Abonnement active: {{users.isActive}}</p>
-        <p>Nom de l'abonnement: {{users.subscription.name}}</p>
-        <p>Nombre de profile: {{users.subscription.authorizedProfiles}}</p>
-        <p>Reglement: {{users.subscription.periodicity}}</p>
-        <p>Prix: {{users.subscription.price}}</p>
+        <p>Abonnement active: {{userInfo.isActive}}</p>
+        <p>Nom de l'abonnement: {{userInfo.subscription ? userInfo.subscription.name :""}}</p>
+        <p>Nombre de profile: {{userInfo.subscription ? userInfo.subscription.authorizedProfiles : ""}}</p>
+        <p>Reglement: {{userInfo.subscription ? userInfo.subscription.periodicity : ""}}</p>
+        <p>Prix: {{ userInfo.subscription ? userInfo.subscription.price : ""}}</p>
 
-        <p>Profiles: {{users.profiles.length}}</p>
+        <p>Profiles: {{userInfo.profiles.length}}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="auth.signOut()">Logout</button>
+        <button mat-button (click)="authService.logout()">Logout</button>
       </mat-card-actions>
     </mat-card>
   </div>

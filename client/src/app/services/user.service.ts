@@ -1,68 +1,61 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { flatMap } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
+import { AuthService } from './auth.service';
+import { IVideo, Video } from '../../../../both/models/video.model';
+import { IUser } from '../../../../both/models/user.model';
 
 const baseUrl = `${environment.urlApi}/users`;
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private client: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
-  getCurrentUser(firebaseId): Observable<any> {
-    const users = this.client.get(`${baseUrl}/current/${firebaseId}`);
-    console.log('users firebases');
-    console.log(users);
-    return users;
+  getCurrentUser(firebaseId): Observable<IUser> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient
+          .get<IUser>(`${baseUrl}/current/${firebaseId}`, httpOptions);
+      }));
   }
 
-  getUsers(): any {
-    console.log('get user');
-    const users = this.client.get(`${baseUrl}`);
-    console.log(users);
-    return users;
+  getUsers(): Observable<IUser[]> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient
+          .get<IUser[]>(`${baseUrl}`, httpOptions);
+      }));
   }
 
-  getUser(id): Observable<any> {
-    return this.client.get(`${baseUrl}/${id}`);
+  getUser(id): Observable<IUser> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient.get<IUser>(`${baseUrl}/${id}`, httpOptions);
+      }));
   }
 
   deleteUser(id): Observable<any> {
-    return this.client.delete(`${baseUrl}/${id}`);
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient.delete(`${baseUrl}/${id}`, httpOptions);
+      }));
   }
 
-  updateUser(id, data, firebaseUser): Observable<any> {
-    return this.client.put(`${baseUrl}/${id}`, data, {
-      headers: {
-        authorisation: firebaseUser
-      }
-    });
+  updateUser(id, data): Observable<IUser> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient.put<IUser>(`${baseUrl}/${id}`, data, httpOptions);
+      }));
   }
 
-  createUser(data, options): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set('Authorization', options)
-    };
-    const retour = this.client.post(`${baseUrl}/`, data, httpOptions ).pipe(
-      tap((user) => console.log(`added user w/ id=${user}`)),
-      catchError(this.handleError('addUser'))
-    );
-    console.log(retour);
-    return retour;
-  }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.log(error); // log to console instead
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  createUser(data: IUser): Observable<IUser> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient
+          .post<IUser>(baseUrl, data, httpOptions);
+      }));
   }
 }

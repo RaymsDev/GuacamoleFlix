@@ -26,13 +26,16 @@ export class LoginComponent implements OnInit {
     this.hide = false;
   }
   login(email, password) {
-    console.log('login ts', email, password);
-
-    return this.authService.login(email, password);
+    this.authService.login(email, password)
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      });
   }
   loginGoogle() {
-    console.log('login google');
-
-    return this.authService.loginGoogle();
+    this.authService.loginGoogle()
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      });
   }
+
 }

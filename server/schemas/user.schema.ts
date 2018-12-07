@@ -35,6 +35,7 @@ const UserSchema: Schema = new Schema({
     type: Schema.Types.ObjectId
   }],
   subscription: {
+    default: null,
     ref: SubscriptionSchema.modelName,
     required: false,
     type: Schema.Types.ObjectId

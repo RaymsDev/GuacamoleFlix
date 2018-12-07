@@ -36,7 +36,7 @@ class UserRouter implements IRouter {
 
     UserController.select(id)
       .then((data) => {
-        res.status(HttpStatus.OK).json({ data });
+        res.status(HttpStatus.OK).json(data);
       })
       .catch((error) => {
         console.error(error);
@@ -54,7 +54,7 @@ class UserRouter implements IRouter {
 
     UserController.selectCurrent(firebaseId)
       .then((data) => {
-        res.status(HttpStatus.OK).json({ data });
+        res.status(HttpStatus.OK).json(data);
       })
       .catch((error) => {
         console.error(error);

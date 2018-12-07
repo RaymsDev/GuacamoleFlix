@@ -4,6 +4,7 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from './../../../../../both/models/user.model';
 import { ISubscription } from '../../../../../both/models/subscription.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,43 +16,36 @@ export class RegisterComponent implements OnInit {
   email: string;
   name: string;
   hide: boolean;
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.hide = false;
   }
   register(email, password, name) {
 
-    return this.authService.register(email, password).then(user => {
+    return this.authService.register(email, password).subscribe(user => {
       const data: IUser = {
         _id: null,
         idFirebase: user.user.uid,
         name: name,
         isActive: false,
-        subscription: {
-          _id: '5be445285a2b5e412c910af8'
-        }
       };
-      return this.userService.createUser(data, user.user.qa).subscribe(userco => {
-        console.log(userco);
+      return this.userService.createUser(data).subscribe(() => {
+        this.router.navigate(['/']);
       });
     });
   }
   loginGoogle() {
-    console.log('login google');
 
-    return this.authService.loginGoogle().then(user => {
+    return this.authService.loginGoogle().subscribe(user => {
       const data: IUser = {
         _id: null,
         idFirebase: user.user.uid,
         name: user.user.displayName,
         isActive: false,
-        subscription: {
-          _id: '5be445285a2b5e412c910af8'
-        }
       };
-      return this.userService.createUser(data, user.user.refreshToken).subscribe(userco => {
-        console.log(userco);
+      return this.userService.createUser(data).subscribe(userco => {
+        this.router.navigate(['/']);
       });
     });
   }

@@ -27,7 +27,7 @@ export class User implements IUser {
     this.idFirebase = data.idFirebase;
     this.isActive = data.isActive;
     this.name = data.name;
-    this.subscription = new Subscription(data.subscription);
+    this.subscription = data.subscription ? new Subscription(data.subscription) : null;
     this.profiles = data.profiles ? data.profiles.map(c => new Profile(c)) : new Array<IProfile>();
   }
 }

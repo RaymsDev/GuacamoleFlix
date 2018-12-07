@@ -1,8 +1,8 @@
 <div class="myContainer">
-  <div *ngIf="!authService.isAuth">
+  <div *ngIf="!isAuth">
     Veuillez vous authentifier
   </div>
-  <div *ngIf="authService.isAuth">
+  <div *ngIf="isAuth">
     <div *ngFor="let item of categoryVideoList">
       <h2>{{ item.category.name }}</h2>
       <app-carousel [videoList]="item.videoList"></app-carousel>
