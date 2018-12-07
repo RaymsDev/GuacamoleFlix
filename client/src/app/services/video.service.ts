@@ -44,6 +44,15 @@ export class VideoService {
       }));
 
   }
+  public getVideosSpotlight(): Observable<IVideo[]> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient
+          .get<IVideo[]>(`${url}/spotlight`, httpOptions)
+          .pipe(map(videos => videos.map(v => new Video(v))));
+      }));
+
+  }
 
   createNewVideo(video): Observable<any> {
     return this.authService.getHttpOptions

@@ -1,3 +1,53 @@
+@import './../../../palette.scss';
+
 .myContainer{
-  padding-left:  16px;
+
+  .offer-container{
+    color:$light;
+    display: flex;
+    width: 100%;
+    background-color: $light;
+    height: 93vh;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("./../../../assets/lot-avocado.jpg");
+    background-size: cover;
+
+    .offer{
+      h1{
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        margin-bottom: .5rem;
+      }
+
+      h2{
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+
+
+    }
+
+    .btn-transparent {
+      display: inline-block;
+      border: 5px solid rgba($color: $light, $alpha: 0.5);
+      border-radius: 40px;
+      padding: 15px 30px;
+      cursor: pointer;
+      background-color: rgba($color: $light, $alpha: 0.5);
+      color:#000000;
+      &:hover {
+        border: 5px solid $secondary;
+        background-color: $primary;
+        color:$dark;
+      }
+    }
+  }
+
+  .icon-tickets{
+    background-image: url("./../../../assets/tickets.png");
+    background-size: cover;
+    width: 10%;
+  }
 }

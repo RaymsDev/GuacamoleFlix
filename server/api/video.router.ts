@@ -62,6 +62,18 @@ class VideoRouter implements IRouter {
       });
   }
 
+  public spotlight(req: Request, res: Response): void {
+
+    VideoController.spotlight()
+      .then((data) => {
+        res.status(HttpStatus.OK).json(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      });
+  }
+
   public create(req: Request, res: Response): void {
     const video = new Video(req.body);
 
@@ -116,6 +128,7 @@ class VideoRouter implements IRouter {
 
   public routes(): void {
     this.router.get("/", this.list);
+    this.router.get("/spotlight", this.spotlight);
     this.router.get("/:id", this.select);
     this.router.get("/ByCategory/:id", this.selectByCategory);
     this.router.post("/", auth.isAdmin, this.create);

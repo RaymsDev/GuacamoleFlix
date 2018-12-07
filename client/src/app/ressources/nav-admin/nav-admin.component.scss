@@ -6,22 +6,22 @@
     top: 64px;
     bottom: 40%;
     width: 15%;
-    background-color: $secondary;
+    background-color: $light;
     min-height: 150px;
 
     .blocAdmin
     {
         width: 100%;
-        height: 33.33%;   
+        height: 33.33%;
         display: flex;
         border: solid 0.5px $light;
         min-height: 50px;
-        
+
         a
         {
            color: $dark;
            text-decoration: none;
-           font-size: 100%; 
+           font-size: 100%;
            font-weight: bold;
            margin: auto;
            margin-left: 10%;
@@ -38,10 +38,10 @@
 
     .blocAdmin:hover
     {
-        border-right: solid 3px #412d16;
+        border-right: solid 3px $dark;
         a
         {
-            color: #412d16;
+            color: $dark;
         }
     }
 }
@@ -64,7 +64,7 @@
             }
             .icon
             {
-                margin: auto;  
+                margin: auto;
             }
         }
     }
@@ -72,7 +72,7 @@
 
 @media only screen and (max-height: 400px) {
     #navAdmin {
-        
+
         .blocAdmin
         {
             display: flex;
