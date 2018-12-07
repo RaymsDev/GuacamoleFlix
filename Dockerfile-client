@@ -16,7 +16,7 @@ RUN npm install --silent
 ADD ./client ./
 ADD ./both ./../both
 
-CMD [ "npm", "run","build:prod" ]
+RUN npm run build:prod
 
 # production environment
 FROM nginx:1.14-alpine

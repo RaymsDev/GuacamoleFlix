@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  hide: boolean;
   constructor(private authService: AuthService,
     private router: Router) { }
 
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     Validators.email,
   ]);
   ngOnInit() {
+    this.hide = false;
   }
   login(email, password) {
     console.log('login ts', email, password);

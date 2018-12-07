@@ -14,9 +14,11 @@ export class RegisterComponent implements OnInit {
   password: string;
   email: string;
   name: string;
+  hide: boolean;
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
+    this.hide = false;
   }
   register(email, password, name) {
 
@@ -38,7 +40,7 @@ export class RegisterComponent implements OnInit {
   loginGoogle() {
     console.log('login google');
 
-    return this.authService.loginGoogle().then( user => {
+    return this.authService.loginGoogle().then(user => {
       const data: IUser = {
         _id: null,
         idFirebase: user.user.uid,

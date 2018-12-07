@@ -1,31 +1,30 @@
+<div id="login">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title style="font-size:35px; text-align:center;"> Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="login-form">
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre email" [(ngModel)]="email" name="useremail" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="userpswd" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          <br>
+          <button mat-button (click)="login(email, password)">Creer son compte</button>
+        </form>
+      </div>
+      <hr />
+    </mat-card-content>
+    <mat-card-actions>
+      <h2>Ou?</h2>
+      <button mat-icon-button (click)="loginGoogle()">Login with google</button>
+    </mat-card-actions>
+    <p>Vous n'avez pas de compte? créez en un <a matLine routerLink='/register'> ici </a></p>
+  </mat-card>
 
-<div  id="login">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title style="font-size:35px; text-align:center;"> Login</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="login-form">
-          <form>
-            <mat-form-field>
-              <input matInput placeholder="Entrez votre email" [(ngModel)]="email" name="useremail" required>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-              <input matInput placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="userpswd" [type]="hide ? 'password' : 'text'">
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </mat-form-field>
-            <br>
-            <button mat-button (click)="login(email, password)">Creer son compte</button>
-          </form>
-        </div>
-        <hr/>
-      </mat-card-content>
-      <mat-card-actions>
-        <h2>Ou?</h2>
-          <button mat-icon-button (click)="loginGoogle()">Login with google</button>
-      </mat-card-actions>
-      <p>Vous n'avez pas de compte? créez en un <a matLine routerLink='/register'> ici </a></p>
-    </mat-card>
-
-  </div>
+</div>
