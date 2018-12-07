@@ -2,9 +2,13 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/css?family=Roboto:700,900");
+
+*{
+  font-family: "Roboto";
+}
+
 body {
     margin: 0;
-    font-family: "Roboto";
 }
 
 body, html

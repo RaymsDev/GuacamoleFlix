@@ -4,6 +4,7 @@ import { ICategory } from '../../../../../both/models/category.model';
 import { IVideo } from '../../../../../both/models/video.model';
 import { VideoService } from 'src/app/services/video.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +17,8 @@ export class HomePageComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public categoryService: CategoryService,
-    public videoService: VideoService
+    public videoService: VideoService,
+    public router: Router
   ) {
     this.categoryVideoList = new Array<ICategoryVideo>();
   }
@@ -38,6 +40,10 @@ export class HomePageComponent implements OnInit {
       }
     });
 
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }
 

@@ -1,6 +1,12 @@
 <div class="myContainer">
-  <div *ngIf="!isAuth">
-    Veuillez vous authentifier
+  <div *ngIf="!isAuth" class="offer-container">
+    <div class="offer">
+      <h1>Watch on any device</h1>
+      <h2>Stream on your phone, tablet, laptop, and TV without paying more.</h2>
+    </div>
+    <div>
+      <button class="btn-transparent" (click)="goToRegister()">REGISTER FOR WATCH VIDEOS</button>
+    </div>
   </div>
   <div *ngIf="isAuth">
     <div *ngFor="let item of categoryVideoList">
