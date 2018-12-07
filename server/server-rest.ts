@@ -65,7 +65,6 @@ export class RestServer {
   private static initHeader(app: express.Express): void {
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       // Request methods you wish to allow
-      console.log('Request methods you wish to allow');
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
       res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');

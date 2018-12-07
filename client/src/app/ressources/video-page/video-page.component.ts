@@ -15,7 +15,7 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
   public playerHeight: number;
   public playerWidth: number;
   public watchingVideo: IVideo;
-  isGuacaplayShow: boolean;
+  public isGuacaplayShow: boolean;
   constructor(
     public videoService: VideoService,
     private route: ActivatedRoute,
@@ -32,6 +32,10 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.fitPage();
+  }
+
+  private fitPage() {
     const myContainer: HTMLElement = this.containerRef.nativeElement;
     this.playerHeight = myContainer.offsetHeight;
     this.playerWidth = myContainer.offsetWidth;
@@ -39,5 +43,13 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
 
   onGenericFinish(isFinish): void {
     this.isGuacaplayShow = false;
+    this.fitPage();
+  }
+
+  like(): void {
+    this.videoService.likeVideo(this.watchingVideo)
+      .subscribe(isLiked => {
+        this.watchingVideo.isLikedByUser = isLiked;
+      });
   }
 }

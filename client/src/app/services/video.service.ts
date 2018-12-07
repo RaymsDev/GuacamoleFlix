@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IVideo, Video } from '../../../../both/models/video.model';
+import { ILike } from '../../../../both/models/like.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -57,9 +58,14 @@ export class VideoService {
   createNewVideo(video): Observable<any> {
     return this.authService.getHttpOptions
       .pipe(flatMap((httpOptions) => {
-        return this.httpClient.post(`${url}/`, video, httpOptions).pipe(
+        return this.httpClient.post(`${url}/`, video, httpOptions);
+      }));
+  }
 
-        );
+  likeVideo(video): Observable<boolean> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient.post<boolean>(`${url}/like/${video._id}`, {}, httpOptions);
       }));
   }
 }
