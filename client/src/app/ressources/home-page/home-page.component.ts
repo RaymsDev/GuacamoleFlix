@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   categoryVideoList: ICategoryVideo[];
+  spotlightVideoList: IVideo[];
   isAuth: boolean;
   constructor(
     public authService: AuthService,
@@ -27,6 +28,10 @@ export class HomePageComponent implements OnInit {
     this.authService.userObservable.subscribe((user) => {
       this.isAuth = user ? true : false;
       if (user) {
+        this.videoService.getVideosSpotlight()
+          .subscribe(videoList => {
+            this.spotlightVideoList = videoList;
+          });
         this.categoryService.getCategories().subscribe(categories => {
           categories.forEach(c => {
             this.videoService.getVideosByCategory(c).subscribe(videoList => {

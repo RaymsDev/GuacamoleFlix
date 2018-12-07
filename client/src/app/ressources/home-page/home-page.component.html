@@ -9,6 +9,11 @@
     </div>
   </div>
   <div *ngIf="isAuth">
+    <div *ngIf="spotlightVideoList && spotlightVideoList.length > 0">
+      <h2>Spotlight Videos</h2>
+      <app-carousel [videoList]="spotlightVideoList"></app-carousel>
+    </div>
+
     <div *ngFor="let item of categoryVideoList">
       <h2>{{ item.category.name }}</h2>
       <app-carousel [videoList]="item.videoList"></app-carousel>

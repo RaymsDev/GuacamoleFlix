@@ -39,6 +39,27 @@ export class VideoController {
 
     return promise;
   }
+  // Get last 10 spotlighted video created
+  public static spotlight(): Promise<IVideo[]> {
+    const videoLimit = 10;
+    const promise = new Promise<IVideo[]>((resolve, reject) => {
+      VideoSchema.find({
+        isSpotlight: true
+      })
+        .sort('-createdAt')
+        .limit(videoLimit)
+        .populate("categories")
+        .then((videoList) => {
+          const videos = videoList.map((v) => new Video(v));
+          resolve(videos);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+
+    return promise;
+  }
 
   public static selectByCategory(id: any): Promise<IVideo[]> {
     const promise = new Promise<IVideo[]>((resolve, reject) => {

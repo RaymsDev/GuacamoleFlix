@@ -3,9 +3,9 @@ import {
   model,
   Schema
 } from 'mongoose';
+import plugin from 'mongoose-createdat-updatedat';
 import { IVideo } from '../../both/models/video.model';
 import categorySchema from './category.schema';
-
 export interface IVideoDBModel extends IVideo, Document { }
 
 const VideoSchema: Schema = new Schema({
@@ -14,7 +14,7 @@ const VideoSchema: Schema = new Schema({
     type: Schema.Types.ObjectId
   }],
   description: {
-    required: true,
+    required: false,
     type: String
   },
   image: {
@@ -40,5 +40,7 @@ const VideoSchema: Schema = new Schema({
     type: Number
   }
 });
+
+VideoSchema.plugin(plugin);
 
 export default model<IVideoDBModel>('Video', VideoSchema);
