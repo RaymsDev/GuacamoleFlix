@@ -5,7 +5,7 @@ import { ICategory, Category } from '../../../../both/models/category.model';
 import { environment } from 'src/environments/environment';
 import { map, tap, flatMap, catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-const baseUrl = `${window.location.hostname}/categories`;
+const baseUrl = `${environment.production ? window.location.hostname : environment.urlApi}/categories`;
 
 @Injectable({
   providedIn: 'root'
