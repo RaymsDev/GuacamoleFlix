@@ -75,48 +75,48 @@
         </context-group>
       </trans-unit>
       <trans-unit id="user-abonnement-active" datatype="html">
-        <source>Abonnement active: </source>
-        <target>Suscripción activada: </target>
+        <source>Abonnement active: <x id="INTERPOLATION" equiv-text="{{userInfo.isActive}}"/></source>
+        <target>Suscripción activada: <x id="INTERPOLATION" equiv-text="{{userInfo.isActive}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/user/user.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="user-abonnement-name" datatype="html">
-        <source>Nom de l&apos;abonnement: </source>
-        <target>Nombre de la suscripcion: </target>
+        <source>Nom de l&apos;abonnement: <x id="INTERPOLATION" equiv-text="{{userInfo.subscription ? userInfo.subscription.name :&quot;&quot;}}"/></source>
+        <target>Nombre de la suscripcion: <x id="INTERPOLATION" equiv-text="{{userInfo.subscription ? userInfo.subscription.name :&quot;&quot;}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/user/user.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="user-abonnement-profile" datatype="html">
-        <source>Nombre de profile:</source>
-        <target>Nombre de perfiles autorizados.:</target>
+        <source>Nombre de profile: <x id="INTERPOLATION" equiv-text="{{userInfo.subscription ? userInfo.subscription.authorizedProfiles : &quot;&quot;}}"/></source>
+        <target>Nombre de perfiles autorizados: <x id="INTERPOLATION" equiv-text="{{userInfo.subscription ? userInfo.subscription.authorizedProfiles : &quot;&quot;}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/user/user.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="user-abonnement-periodicity" datatype="html">
-        <source>Reglement:</source>
-        <target>Periodicidad:</target>
+        <source>Reglement: <x id="INTERPOLATION" equiv-text="{{userInfo.subscription ? userInfo.subscription.periodicity : &quot;&quot;}}"/></source>
+        <target>Periodicidad: <x id="INTERPOLATION" equiv-text="{{userInfo.subscription ? userInfo.subscription.periodicity : &quot;&quot;}}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/ressources/user/user.component.html</context>
+          <context context-type="targetfile">app/ressources/user/user.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="user-abonnement-price" datatype="html">
-        <source>Prix: </source>
-        <target>Precio: </target>
+        <source>Prix: <x id="INTERPOLATION" equiv-text="{{ userInfo.subscription ? userInfo.subscription.price : &quot;&quot;}}"/></source>
+        <target>Precio: <x id="INTERPOLATION" equiv-text="{{ userInfo.subscription ? userInfo.subscription.price : &quot;&quot;}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/user/user.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="user-profiles" datatype="html">
-        <source>Profiles:</source>
-        <target>Perfiles:</target>
+        <source>Profiles: <x id="INTERPOLATION" equiv-text="{{userInfo.profiles.length}}"/></source>
+        <target>Perfiles: <x id="INTERPOLATION" equiv-text="{{userInfo.profiles.length}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/user/user.component.html</context>
           <context context-type="linenumber">17</context>
