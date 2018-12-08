@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IVideo, Video } from '../../../../both/models/video.model';
+import { ILike } from '../../../../both/models/like.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -53,13 +54,35 @@ export class VideoService {
       }));
 
   }
+  public getRelatedVideos(video: IVideo): Observable<IVideo[]> {
+    const videoIdList = video.categories.reduce((accumulator, current, i) => {
+      if (i !== 0) {
+        accumulator += ',';
+      }
+
+      accumulator += current._id;
+      return accumulator;
+    }, '');
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient
+          .get<IVideo[]>(`${url}/RelatedVideos/${videoIdList}`, httpOptions)
+          .pipe(map(videos => videos.map(v => new Video(v))));
+      }));
+
+  }
 
   createNewVideo(video): Observable<any> {
     return this.authService.getHttpOptions
       .pipe(flatMap((httpOptions) => {
-        return this.httpClient.post(`${url}/`, video, httpOptions).pipe(
+        return this.httpClient.post(`${url}/`, video, httpOptions);
+      }));
+  }
 
-        );
+  likeVideo(video): Observable<boolean> {
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient.post<boolean>(`${url}/like/${video._id}`, {}, httpOptions);
       }));
   }
 }

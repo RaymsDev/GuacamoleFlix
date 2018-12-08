@@ -34,9 +34,12 @@ export class CategoryService {
   }
 
   deleteCategory(id): Observable<any> {
-    return this.httpClient.delete(`${baseUrl}/${id}`).pipe(
-      catchError(this.handleError('delete user'))
-    );
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient.delete(`${baseUrl}/${id}`, httpOptions).pipe(
+          catchError(this.handleError('delete user'))
+        );
+      }));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
