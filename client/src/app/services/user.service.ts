@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 import { IVideo, Video } from '../../../../both/models/video.model';
 import { IUser } from '../../../../both/models/user.model';
 
-const baseUrl = `${environment.urlApi}/users`;
+const baseUrl = `${window.location.hostname}/users`;
 @Injectable({
   providedIn: 'root'
 })

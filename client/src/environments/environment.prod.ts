@@ -9,5 +9,5 @@ export const environment = {
     messagingSenderId: '376625494881'
   },
 
-  urlApi: 'http://localhost/api'
+  urlApi: 'http://window.location.hostname/api'
 };

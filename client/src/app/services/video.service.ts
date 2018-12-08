@@ -8,7 +8,7 @@ import { map, flatMap } from 'rxjs/operators';
 import { ICategory } from '../../../../both/models/category.model';
 import { AuthService } from './auth.service';
 
-const url = `${environment.urlApi}/videos`;
+const url = `${window.location.hostname}/videos`;
 
 @Injectable({
   providedIn: 'root'
