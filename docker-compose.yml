@@ -53,8 +53,6 @@ services:
       container_name: back
       expose:
         - "3000"
-      env_file:
-        - .env
       depends_on:
         - mongo
       networks:
