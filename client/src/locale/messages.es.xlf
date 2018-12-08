@@ -136,7 +136,7 @@
       </trans-unit>
       <trans-unit id="home-button" datatype="html">
         <source>Home</source>
-        <target>Accueil</target>
+        <target>Recepcìon</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layouts/header/header.component.html</context>
           <context context-type="linenumber">6</context>

@@ -10,15 +10,37 @@ services:
         - 443:443
       depends_on:
         - back
-        - front
+        - front-fr
+        - front-en
+        - front-es
       networks:
         proxy-network:
-    front:
+    front-fr:
       restart: always
-      container_name : front
+      container_name : front-fr
       build:
         context: .
-        dockerfile: ./Dockerfile-client
+        dockerfile: ./Dockerfile-client-fr
+      expose:
+       - "80"
+      networks:
+        proxy-network:
+    front-en:
+      restart: always
+      container_name : front-en
+      build:
+        context: .
+        dockerfile: ./Dockerfile-client-en
+      expose:
+       - "80"
+      networks:
+        proxy-network:
+    front-es:
+      restart: always
+      container_name : front-es
+      build:
+        context: .
+        dockerfile: ./Dockerfile-client-es
       expose:
        - "80"
       networks:

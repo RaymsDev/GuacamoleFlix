@@ -1,0 +1,31 @@
+FROM node:8 as builder
+
+# Create app directory
+WORKDIR /usr/src/app/client
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+ADD ./client/package*.json ./
+
+RUN npm install --silent
+# If you are building your code for production
+# RUN npm install --only=production
+
+# Bundle app source
+ADD ./client ./
+ADD ./both ./../both
+
+RUN npm run build:prod:en
+
+# production environment
+FROM nginx:1.14-alpine
+RUN rm -rf /etc/nginx/conf.d
+COPY conf /etc/nginx
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /usr/src/app/client/dist/en /usr/share/nginx/html
+# expose port 80
+EXPOSE 80
+
+# run nginx
+CMD ["nginx", "-g", "daemon off;"]

@@ -2,6 +2,11 @@
 
 Projet d'école dans le cadre du cours Gestion de projet Fullstack
 
+## Postman
+
+Documentation de l'api REST:
+https://documenter.getpostman.com/view/1552186/RzfcNXC5
+
 ## Développement
 
 Nécessite Node.js LTS (carbon)
@@ -10,14 +15,16 @@ Nécessite Node.js LTS (carbon)
 ```shell
 $ cd ./client 
 $ npm install
+$ npm start
 ```
 
 ```shell
 $ cd ./server 
 $ npm install
+$ npm start
 ```
 
-dans chacun des dossiers pour pouvoir développer.
+pour tester l'application.
 
 Démarrage du container Docker MongoDB
 ```shell
@@ -29,6 +36,8 @@ Pour tester l'application:
 ```shell
 $ docker-compose up
 ```
+
+(Le build prends un certain temps car nous avons gérés l'i18n et donc 1 container par langue => à optimiser)
 
 ## Environnement
 Voici un exemple de fichier d'environnement ".env" à placer à la racine du projet
@@ -50,7 +59,6 @@ FIREBASE_PROJECT_ID=guacamoleflix
 
 ```
 
-## Postman
+## Google Analytics
 
-Documentation de l'api REST
-https://documenter.getpostman.com/view/1552186/RzfcNX7n
+L'application comporte Google Analytics afin d'avoir des informations et des statistiques sur le trafic des utilisateurs.
