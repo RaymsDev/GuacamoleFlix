@@ -54,6 +54,23 @@ export class VideoService {
       }));
 
   }
+  public getRelatedVideos(video: IVideo): Observable<IVideo[]> {
+    const videoIdList = video.categories.reduce((accumulator, current, i) => {
+      if (i !== 0) {
+        accumulator += ',';
+      }
+
+      accumulator += current._id;
+      return accumulator;
+    }, '');
+    return this.authService.getHttpOptions
+      .pipe(flatMap((httpOptions) => {
+        return this.httpClient
+          .get<IVideo[]>(`${url}/RelatedVideos/${videoIdList}`, httpOptions)
+          .pipe(map(videos => videos.map(v => new Video(v))));
+      }));
+
+  }
 
   createNewVideo(video): Observable<any> {
     return this.authService.getHttpOptions

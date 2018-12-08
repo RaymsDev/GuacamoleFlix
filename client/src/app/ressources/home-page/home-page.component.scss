@@ -1,12 +1,23 @@
 @import './../../../palette.scss';
 
 .myContainer{
-
+  background-color: black;
+  .carousel-name{
+    color:$light;
+    padding:16px 16px 0 16px;
+  }
+  .carousel-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .carousel-wrapper{
+      width: 80vw;
+    }
+  }
   .offer-container{
     color:$light;
     display: flex;
     width: 100%;
-    background-color: $light;
     height: 93vh;
     justify-content: center;
     align-items: center;

@@ -20,6 +20,27 @@ export class VideoController {
     return promise;
   }
 
+  // return last 10 related video by categoryList
+  public static getVideosByCategories(categoryIdList: string[]): Promise<IVideo[]> {
+    const videoLimit = 10;
+    const promise = new Promise<IVideo[]>((resolve, reject) => {
+      VideoSchema.find()
+        .where('categories')
+        .in(categoryIdList)
+        .sort('-createdAt')
+        .limit(videoLimit)
+        .then((videos) => {
+          const videoList = videos.map((v) => new Video(v));
+          resolve(videoList);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+
+    return promise;
+  }
+
   public static create(video: IVideo): Promise<IVideo> {
     const newVideo = new VideoSchema(video);
     return newVideo.save();

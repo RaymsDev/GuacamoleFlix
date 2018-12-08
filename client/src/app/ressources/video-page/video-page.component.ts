@@ -15,6 +15,7 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
   public playerHeight: number;
   public playerWidth: number;
   public watchingVideo: IVideo;
+  public relatedVideos: IVideo[];
   public isGuacaplayShow: boolean;
   constructor(
     public videoService: VideoService,
@@ -28,7 +29,9 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
     this.videoService.selectVideo(videoId)
       .subscribe(v => {
         this.watchingVideo = v;
+        this.getRelatedVideos(v);
       });
+
   }
 
   ngAfterViewInit(): void {
@@ -44,6 +47,17 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
   onGenericFinish(isFinish): void {
     this.isGuacaplayShow = false;
     this.fitPage();
+  }
+
+  getRelatedVideos(video: IVideo) {
+    this.videoService.getRelatedVideos(video)
+      .subscribe(videos => {
+        this.relatedVideos = videos.filter((v) => {
+          if (v._id !== video._id) {
+            return v;
+          }
+        });
+      });
   }
 
   like(): void {

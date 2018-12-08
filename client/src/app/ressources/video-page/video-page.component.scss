@@ -18,6 +18,8 @@
   }
 
   .video-details{
+    display: flex;
+    flex-direction: column;
     width: 80vw;
     color:white;
 
@@ -25,6 +27,8 @@
         background-color: black;
         cursor: pointer;
         margin: 16px;
+        padding: 0px;
+        width: 60px;
       }
 
       .btn-like{
@@ -40,5 +44,11 @@
         background-image: url('./../../../assets/unlike.png');
       }
 
+  }
+
+  .related-content{
+    color: white;
+    overflow: hidden;
+    width: 80vw;
   }
 }

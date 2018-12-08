@@ -23,6 +23,25 @@ class VideoRouter implements IRouter {
         res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
       });
   }
+  public getVideosByCategories(req: Request, res: Response): void {
+    const categoryIdListUnparsed: string = req.params.categoryIdList;
+    const categoryIdList = categoryIdListUnparsed.split(',');
+
+    if (!categoryIdList) {
+      console.error("Categogy Id List is missing");
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      return;
+    }
+
+    VideoController.getVideosByCategories(categoryIdList)
+      .then((videoList) => {
+        res.status(HttpStatus.OK).json(videoList);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+      });
+  }
 
   public selectByCategory(req: Request, res: Response): void {
     const categoryId = req.params.id;
@@ -149,6 +168,7 @@ class VideoRouter implements IRouter {
     this.router.get("/spotlight", this.spotlight);
     this.router.get("/:id", this.select);
     this.router.get("/ByCategory/:id", this.selectByCategory);
+    this.router.get("/RelatedVideos/:categoryIdList", this.getVideosByCategories);
     this.router.post("/", auth.isAdmin, this.create);
     this.router.post("/like/:videoId", this.like);
     this.router.put("/:id", auth.isAdmin, this.update);

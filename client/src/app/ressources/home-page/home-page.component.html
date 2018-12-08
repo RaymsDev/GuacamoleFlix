@@ -8,14 +8,14 @@
       <button class="btn-transparent" (click)="goToRegister()">REGISTER FOR WATCH VIDEOS</button>
     </div>
   </div>
-  <div *ngIf="isAuth">
-    <div *ngIf="spotlightVideoList && spotlightVideoList.length > 0">
-      <h2>Spotlight Videos</h2>
+  <div *ngIf="isAuth" class="carousel-container">
+    <div class="carousel-wrapper" *ngIf="spotlightVideoList && spotlightVideoList.length > 0">
+      <h2 class="carousel-name">Spotlight Videos</h2>
       <app-carousel [videoList]="spotlightVideoList"></app-carousel>
     </div>
 
-    <div *ngFor="let item of categoryVideoList">
-      <h2>{{ item.category.name }}</h2>
+    <div class="carousel-wrapper" *ngFor="let item of categoryVideoList">
+      <h2 class="carousel-name">{{ item.category.name }}</h2>
       <app-carousel [videoList]="item.videoList"></app-carousel>
     </div>
   </div>
