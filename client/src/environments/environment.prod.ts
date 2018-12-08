@@ -9,5 +9,5 @@ export const environment = {
     messagingSenderId: '376625494881'
   },
 
-  urlApi: 'http://guacaflix.laffuge.fr/api/'
+  urlApi: 'http://guacaflix.laffuge.fr/api'
 };
