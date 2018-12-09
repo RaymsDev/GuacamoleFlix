@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   hide: boolean;
+  errorMessage: string;
   constructor(private authService: AuthService,
     private router: Router) { }
 
@@ -29,13 +30,17 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password)
       .subscribe(() => {
         this.router.navigate(['/']);
-      });
+      }, ((error) => {
+        this.errorMessage = error;
+      }));
   }
   loginGoogle() {
     this.authService.loginGoogle()
       .subscribe(() => {
         this.router.navigate(['/']);
-      });
+      }, ((error) => {
+        this.errorMessage = error;
+      }));
   }
 
 }

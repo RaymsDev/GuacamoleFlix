@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   email: string;
   name: string;
   hide: boolean;
+  errorMessage: string;
   constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -33,7 +34,9 @@ export class RegisterComponent implements OnInit {
       return this.userService.createUser(data).subscribe(() => {
         this.router.navigate(['/']);
       });
-    });
+    }, ((error) => {
+      this.errorMessage = error;
+    }));
   }
   loginGoogle() {
 
@@ -47,7 +50,9 @@ export class RegisterComponent implements OnInit {
       return this.userService.createUser(data).subscribe(userco => {
         this.router.navigate(['/']);
       });
-    });
+    }, ((error) => {
+      this.errorMessage = error;
+    }));
   }
 
 }

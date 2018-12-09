@@ -2,13 +2,28 @@
 
 #login
 {
-    width: 60%;
-    margin-top: 10%;
-    margin-left: 20%;
-
-    mat-card
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 93vh;
+  background-image: url("./../../../assets/lot-avocado.jpg");
+  background-size: cover;
+  .login-card
     {
-        background-color: $light;
+      min-width: 30%;
+      background-color: $light;
+
+      .card-head{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .logo{
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+
+        }
+      }
     }
 }
 mat-form-field {
