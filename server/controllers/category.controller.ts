@@ -43,7 +43,7 @@ export class CategoryController {
   public static remove(id: any): Promise<boolean> {
     const promise = new Promise<boolean>((resolve, reject) => {
 
-      CategorySchema.remove({
+      CategorySchema.deleteOne({
         _id: id
       }).then(() => {
         resolve();

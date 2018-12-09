@@ -15,7 +15,7 @@ export class GestionVideosComponent implements OnInit {
 
   Libelle: string;
   categoryselect: string;
-  AllCategory: Array<Category>;
+  AllCategory: Array<ICategory>;
   categoryVideoList: ICategoryVideo[];
   constructor(private categoryService: CategoryService, public videoService: VideoService) {
     this.AllCategory = [];
@@ -23,10 +23,12 @@ export class GestionVideosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.getCategories().subscribe((allCategory: Array<Category>) => {
-      this.AllCategory = allCategory;
-    });
+    this.init();
+  }
+
+  init() {
     this.categoryService.getCategories().subscribe(categories => {
+      this.AllCategory = categories;
       categories.forEach(c => {
         this.videoService.getVideosByCategory(c).subscribe(videoList => {
           this.categoryVideoList.push({
@@ -38,20 +40,41 @@ export class GestionVideosComponent implements OnInit {
     });
   }
 
-  deleteVideo(id) {
-    this.videoService.deleteVideo(id).subscribe(() => {
-      this.categoryService.getCategories().subscribe(categories => {
-        this.categoryVideoList = [];
-        categories.forEach(c => {
-          this.videoService.getVideosByCategory(c).subscribe(videoList => {
-            this.categoryVideoList.push({
-              category: c,
-              videoList: videoList
-            });
-          });
-        });
-      });
+  getVideoList() {
+
+  }
+
+  deleteVideo(video: IVideo) {
+    this.videoService.deleteVideo(video._id).subscribe(() => {
+      this.categoryVideoList = this.removeVideoFromAllCategoryList(this.categoryVideoList, video);
     });
+  }
+
+  removeVideoFromAllCategoryList(categoryVideoList: ICategoryVideo[], video: IVideo) {
+    const res = categoryVideoList.reduce((accumulator, current) => {
+
+      const videoList = current.videoList.reduce((videoListAccumulator, currentVideo) => {
+        if (currentVideo._id !== video._id) {
+          return [
+            ...videoListAccumulator,
+            currentVideo
+          ];
+        }
+
+        return videoListAccumulator;
+      }, new Array<IVideo>());
+
+      return [
+        ...accumulator,
+        {
+          category: current.category,
+          videoList: videoList
+        }
+      ];
+
+    }, new Array<ICategoryVideo>());
+
+    return res;
   }
 }
 

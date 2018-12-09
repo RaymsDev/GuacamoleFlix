@@ -61,7 +61,6 @@ export class UserController {
         .populate('profiles')
         .then((v) => {
           const user = new User(v);
-          console.log(user);
           resolve(user);
         })
         .catch((error) => {
@@ -95,7 +94,7 @@ export class UserController {
   public static remove(id: any): Promise<boolean> {
     const promise = new Promise<boolean>((resolve, reject) => {
 
-      UserSchema.remove({
+      UserSchema.deleteOne({
         _id: id
       }).then(() => {
         resolve();

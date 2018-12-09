@@ -108,7 +108,7 @@ export class VideoController {
 
   public static remove(id: any): Promise<boolean> {
     const promise = new Promise<boolean>((resolve, reject) => {
-      VideoSchema.remove({
+      VideoSchema.deleteOne({
         _id: id
       })
         .then(() => {

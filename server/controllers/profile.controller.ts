@@ -43,7 +43,7 @@ export class ProfileController {
   public static remove(id: any): Promise<boolean> {
     const promise = new Promise<boolean>((resolve, reject) => {
 
-      ProfileSchema.remove({
+      ProfileSchema.deleteOne({
         _id: id
       }).then(() => {
         resolve();

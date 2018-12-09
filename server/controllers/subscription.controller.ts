@@ -42,7 +42,7 @@ export class SubscriptionController {
   public static remove(id: any): Promise<boolean> {
     const promise = new Promise<boolean>((resolve, reject) => {
 
-      SubscriptionSchema.remove({
+      SubscriptionSchema.deleteOne({
         _id: id
       }).then(() => {
         resolve();

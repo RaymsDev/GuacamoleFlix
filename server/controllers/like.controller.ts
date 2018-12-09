@@ -47,7 +47,7 @@ export class LikeController {
   public static remove(id: any): Promise<boolean> {
     const promise = new Promise<boolean>((resolve, reject) => {
 
-      LikeSchema.remove({
+      LikeSchema.deleteOne({
         _id: id
       }).then(() => {
         resolve();

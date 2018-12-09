@@ -159,7 +159,7 @@ class VideoRouter implements IRouter {
     }
 
     VideoController.remove(id)
-      .then(() => res.sendStatus(HttpStatus.OK))
+      .then(() => res.sendStatus(HttpStatus.NO_CONTENT))
       .catch(() => res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR));
   }
 

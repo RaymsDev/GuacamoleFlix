@@ -75,8 +75,7 @@ export class VideoService {
   public deleteVideo(id): Observable<any> {
     return this.authService.getHttpOptions
       .pipe(flatMap((httpOptions) => {
-        return this.httpClient.delete(`${url}/${id}`, httpOptions).pipe(
-        );
+        return this.httpClient.delete(`${url}/${id}`, httpOptions);
       }));
   }
 

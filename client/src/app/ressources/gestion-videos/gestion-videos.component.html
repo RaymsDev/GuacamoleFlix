@@ -8,8 +8,8 @@
           <option *ngFor="let cat of AllCategory" [value]="cat.name">{{cat.name}}</option>
         </select>
       </div>
-      <span *ngFor="let item of categoryVideoList">
-        <table [hidden]="item.category.name!==categoryselect"  id="table" class="table table-sm">
+      <span *ngFor="let categoryVideo of categoryVideoList">
+        <table [hidden]="categoryVideo.category.name!==categoryselect" id="table" class="table table-sm">
           <thead>
             <tr>
               <th i18n="@@video-title-label" scope="col">Nom de la video</th>
@@ -18,10 +18,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let video of item.videoList">
+            <tr *ngFor="let video of categoryVideo.videoList">
               <td>{{video.name}}</td>
               <td>{{video.likeCount}}</td>
-              <td><button i18n="@@supprimer-video" (click)="deleteVideo(video._id)" class="btn btn-danger"><span class="glyphicon glyphicon-minus-sign"></span>Supprimer
+              <td><button i18n="@@supprimer-video" (click)="deleteVideo(video)" class="btn btn-danger"><span class="glyphicon glyphicon-minus-sign"></span>Supprimer
                   la video</button></td>
             </tr>
           </tbody>
