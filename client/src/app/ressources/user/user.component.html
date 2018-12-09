@@ -1,27 +1,25 @@
 <div id="user">
-  <div *ngIf="userObservable | async as user">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title style="font-size:35px">{{user.displayName}} </mat-card-title>
-      </mat-card-header>
-      <img *ngIf="user.photoURL" mat-card-image [src]="user.photoURL" alt="photoURL">
-      <img *ngIf="!(user.photoURL)" mat-card-image src="./../../../assets/small-logo.png" alt="photoURL">
-      <mat-card-content *ngIf="userInfo">
-        <h3> {{user.email}} </h3>
-        <p i18n="@@user-abonnement-active">Abonnement active: {{userInfo.isActive}}</p>
-        <p i18n="@@user-abonnement-name">Nom de l'abonnement: {{userInfo.subscription ? userInfo.subscription.name
-          :""}}</p>
-        <p i18n="@@user-abonnement-profile">Nombre de profile: {{userInfo.subscription ?
-          userInfo.subscription.authorizedProfiles : ""}}</p>
-        <p i18n="@@user-abonnement-periodicity">Reglement: {{userInfo.subscription ? userInfo.subscription.periodicity
-          : ""}}</p>
-        <p i18n="@@user-abonnement-price">Prix: {{ userInfo.subscription ? userInfo.subscription.price : ""}}</p>
+  <mat-card *ngIf="userObservable | async as user" class="login-card">
+    <mat-card-header class="card-head">
+      <mat-card-title style="font-size:35px">{{user.displayName}} </mat-card-title>
+      <img class="logo" *ngIf="user.photoURL" mat-card-image [src]="user.photoURL" alt="photoURL">
+      <img class="logo" *ngIf="!(user.photoURL)" mat-card-image src="./../../../assets/small-logo.png" alt="photoURL">
+    </mat-card-header>
+    <mat-card-content *ngIf="userInfo">
+      <h3> {{user.email}} </h3>
+      <p i18n="@@user-abonnement-active">Abonnement active: {{userInfo.isActive}}</p>
+      <p i18n="@@user-abonnement-name">Nom de l'abonnement: {{userInfo.subscription ? userInfo.subscription.name
+        :""}}</p>
+      <p i18n="@@user-abonnement-profile">Nombre de profile: {{userInfo.subscription ?
+        userInfo.subscription.authorizedProfiles : ""}}</p>
+      <p i18n="@@user-abonnement-periodicity">Reglement: {{userInfo.subscription ? userInfo.subscription.periodicity
+        : ""}}</p>
+      <p i18n="@@user-abonnement-price">Prix: {{ userInfo.subscription ? userInfo.subscription.price : ""}}</p>
 
-        <p i18n="@@user-profiles">Profiles: {{userInfo.profiles.length}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button i18n="@@logout-button" mat-button (click)="authService.logout()">Logout</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+      <p i18n="@@user-profiles">Profiles: {{userInfo.profiles.length}}</p>
+    </mat-card-content>
+    <mat-card-actions class="button-container">
+      <button i18n="@@logout-button" mat-button (click)="authService.logout()">Logout</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

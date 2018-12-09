@@ -3,7 +3,7 @@
 #navAdmin
 {
     position: absolute;
-    top: 64px;
+    top: 10vh;
     bottom: 40%;
     width: 15%;
     background-color: $light;
@@ -49,7 +49,7 @@
 
 @media only screen and (max-width: 600px) {
     #navAdmin {
-        top: 56px;
+        top: 10vh;
     }
 }
 
