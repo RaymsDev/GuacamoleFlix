@@ -32,7 +32,17 @@
       .button-container{
         display: flex;
         justify-content: center;
+
+        button{
+          background-color: $primary;
+          color: $dark;
+          border: 5px solid $secondary;
+        }
       }
+
+
     }
+
+
 
 }

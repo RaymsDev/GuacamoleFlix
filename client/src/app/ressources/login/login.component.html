@@ -19,12 +19,16 @@
           <p class="mat-error">
             {{errorMessage}}
           </p>
-          <button i18n="@@login-button-form" mat-button (click)="login(email, password)">Se connecter</button>
+          <div class="button-container">
+            <button i18n="@@login-button-form" mat-button (click)="login(email, password)">Se connecter</button>
+          </div>
         </form>
       </div>
       <hr />
       <h2 i18n="@@ou-title">Ou?</h2>
-      <button i18n="@@login-google-button" mat-button (click)="loginGoogle()">Login with google</button>
+      <div class="button-container">
+        <button i18n="@@login-google-button" mat-button (click)="loginGoogle()">Login with google</button>
+      </div>
     </mat-card-content>
     <p i18n="@@pasdecomte-text">Vous n'avez pas de compte? créez en un <a matLine routerLink='/register'> ici </a></p>
   </mat-card>

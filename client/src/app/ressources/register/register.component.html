@@ -23,12 +23,16 @@
             {{errorMessage}}
           </p>
           <br>
-          <button mat-button i18n="@@register-button-form" (click)="register(email, password, name)">Creer son compte</button>
+          <div class="button-container">
+            <button mat-button i18n="@@register-button-form" (click)="register(email, password, name)">Creer son compte</button>
+          </div>
         </form>
       </div>
       <hr />
       <h2 i18n="@@ou-title">Ou?</h2>
-      <button i18n="@@login-google-button" mat-icon-button (click)="loginGoogle()">Creer votre compte avec Google</button>
+      <div class="button-container">
+        <button i18n="@@login-google-button" mat-button (click)="loginGoogle()">Creer votre compte avec Google</button>
+      </div>
     </mat-card-content>
     <p i18n="@@dejacomte-text">Vous avez déja un compte? connectez vous <a matLine routerLink='/login'> ici </a></p>
   </mat-card>
