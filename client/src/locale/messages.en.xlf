@@ -386,6 +386,14 @@
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="video-page-related-content" datatype="html">
+        <source>Related content</source>
+        <target>Related content</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/video-page/video-page.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
