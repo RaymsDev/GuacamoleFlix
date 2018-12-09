@@ -34,6 +34,7 @@ export class UserController {
         .populate('profiles')
         .then((v) => {
           const user = new User(v);
+
           resolve(user);
         })
         .catch((error) => {
@@ -53,6 +54,7 @@ export class UserController {
         .populate('profiles')
         .then((v) => {
           const user = new User(v);
+          console.log(user);
           resolve(user);
         })
         .catch((error) => {

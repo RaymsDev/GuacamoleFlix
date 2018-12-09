@@ -17,20 +17,14 @@ export class UserComponent implements OnInit {
   userInfo: IUser;
   ngOnInit() {
     this.userObservable = this.authService.getUser();
-    this.authService.getUser().subscribe(data => {
-      if (data.uid) {
-        this.getCurrentUser(data.uid);
-      } else {
-        this.router.navigate(['/']);
-      }
+    this.getCurrentUser();
 
-    });
   }
   getUserAuth() {
     return this.authService.getUser();
   }
-  getCurrentUser(firebaseId) {
-    this.userService.getCurrentUser(firebaseId).subscribe((user) => {
+  getCurrentUser() {
+    this.userService.getCurrentUserDetails().subscribe((user) => {
       this.userInfo = user;
     });
 

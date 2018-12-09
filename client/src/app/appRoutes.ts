@@ -21,7 +21,7 @@ export const appRoutes: Routes = [
   { path: 'admin', component: AjoutVideoAdminComponent, canActivate: [AuthGuard] },
   { path: 'gestion_user', component: GestionUsersComponent, canActivate: [AuthGuard] },
   { path: 'gestion_video', component: GestionVideosComponent, canActivate: [AuthGuard] },
-  { path: '', component: HomePageComponent,  pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: '', component: HomePageComponent, pathMatch: 'full', },
   { path: '**', redirectTo: '' }
 
 ];

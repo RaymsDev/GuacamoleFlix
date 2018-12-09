@@ -2,6 +2,7 @@
 
 .myContainer{
   background-color: black;
+  min-height: 93vh;
   .carousel-name{
     color:$light;
     padding:16px 16px 0 16px;
@@ -10,7 +11,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 93vh;
     .carousel-wrapper{
       width: 80vw;
     }

@@ -1,41 +1,53 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase/app';
-import { Observable, of, from, Subject } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
+import { Observable, of, from, } from 'rxjs';
+import { switchMap, flatMap } from 'rxjs/operators';
+
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map, } from 'rxjs/operators';
 import { IHttpOptions } from '../models/IHttpOptions.model';
 import { Router } from '@angular/router';
-
+import { UserService } from './user.service';
+import { IUser } from '../../../../both/models/user.model';
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.urlApi}/users`;
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  auth$: Subject<boolean>;
-  isAuth: boolean;
+  user: Observable<IUser>;
   userObservable: Observable<User>;
   userDetails: firebase.User = null;
   getHttpOptions: Observable<IHttpOptions>;
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
-    this.isAuth = false;
-    this.auth$ = new Subject<boolean>();
+  constructor(public afAuth: AngularFireAuth, public httpClient: HttpClient, private router: Router) {
     this.userObservable = this.afAuth.authState;
     this.getHttpOptions = this.afAuth.idToken
       .pipe(map(token => {
-        const isAuthCurrent = token ? true : false;
-        if (this.isAuth !== isAuthCurrent) {
-          this.auth$.next(this.isAuth);
-        }
         return {
           headers: new HttpHeaders()
             .set('Authorization', token || '')
             .set('Content-Type', 'application/json')
         };
       }));
+
+    this.user = this.afAuth.authState
+      .pipe(switchMap((firebaseUser) => {
+        if (firebaseUser) {
+          return this.getHttpOptions
+            .pipe(flatMap((httpOptions) => {
+              return this.httpClient
+                .get<IUser>(`${baseUrl}/current/${firebaseUser.uid}`, httpOptions);
+            }));
+        } else {
+          return of(null);
+        }
+      }));
   }
 
-
-
+  get isAuthenticated(): boolean {
+    return this.user !== null;
+  }
 
   getUser(): Observable<User> {
     return this.userObservable;
@@ -59,9 +71,4 @@ export class AuthService {
 
 }
 
-export interface User {
-  idFirebase: string;
-  isActive: boolean;
-  idSubscription: string;
-}
 
