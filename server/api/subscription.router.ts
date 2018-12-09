@@ -3,6 +3,7 @@ import { Request, Response, Router } from 'express';
 import HttpStatus from 'http-status-codes';
 import { Subscription } from '../../both/models/subscription.model';
 import { SubscriptionController } from '../controllers/subscription.controller';
+import auth from '../helpers/authentication.helper';
 import { IRouter } from '../models/router.interface';
 
 export class SubscriptionRouter implements IRouter {
@@ -100,9 +101,9 @@ export class SubscriptionRouter implements IRouter {
   public routes(): void {
     this.router.get("/", this.list);
     this.router.get("/:id", this.select);
-    this.router.post("/", this.create);
-    this.router.put("/:id", this.update);
-    this.router.delete("/:id", this.remove);
+    this.router.post("/", auth.isAdmin, this.create);
+    this.router.put("/:id", auth.isAdmin, this.update);
+    this.router.delete("/:id", auth.isAdmin, this.remove);
   }
 
 }

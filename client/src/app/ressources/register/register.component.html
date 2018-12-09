@@ -1,4 +1,4 @@
-<div  id="register">
+<div id="register">
   <mat-card>
     <mat-card-header>
       <mat-card-title i18n="@@register-title-form" style="font-size:35px"> Creer votre compte</mat-card-title>
@@ -7,7 +7,7 @@
       <div class="register-container">
         <form>
           <mat-form-field>
-            <input matInput placeholder="Entrez votre fullname"  [(ngModel)]="name" name="username">
+            <input matInput placeholder="Entrez votre fullname" [(ngModel)]="name" name="username">
           </mat-form-field>
           <br>
           <mat-form-field>
@@ -16,17 +16,17 @@
           <br>
           <mat-form-field>
             <input matInput placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="userpswd" [type]="hide ? 'password' : 'text'">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-icon class="hide-button" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
           <br>
           <button mat-button i18n="@@register-button-form" (click)="register(email, password, name)">Creer son compte</button>
         </form>
       </div>
-      <hr/>
+      <hr />
     </mat-card-content>
     <mat-card-actions>
       <h2 i18n="@@ou-title">Ou?</h2>
-        <button i18n="@@login-google-button" mat-icon-button (click)="loginGoogle()">Creer votre compte avec Google</button>
+      <button i18n="@@login-google-button" mat-icon-button (click)="loginGoogle()">Creer votre compte avec Google</button>
     </mat-card-actions>
     <p i18n="@@dejacomte-text">Vous avez déja un compte? connectez vous <a matLine routerLink='/login'> ici </a></p>
   </mat-card>

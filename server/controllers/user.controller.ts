@@ -22,7 +22,14 @@ export class UserController {
   }
 
   public static create(user: IUser): Promise<IUser> {
-    const newUser = new UserSchema(user);
+    const cleanUser = new User();
+    cleanUser.idFirebase = user.idFirebase;
+    cleanUser.isActive = true;
+    cleanUser.isAdmin = false;
+    cleanUser.name = user.name;
+    cleanUser.subscription = null;
+    cleanUser.profiles = [];
+    const newUser = new UserSchema(cleanUser);
     return newUser.save();
   }
 
@@ -34,6 +41,7 @@ export class UserController {
         .populate('profiles')
         .then((v) => {
           const user = new User(v);
+
           resolve(user);
         })
         .catch((error) => {
@@ -53,6 +61,7 @@ export class UserController {
         .populate('profiles')
         .then((v) => {
           const user = new User(v);
+          console.log(user);
           resolve(user);
         })
         .catch((error) => {

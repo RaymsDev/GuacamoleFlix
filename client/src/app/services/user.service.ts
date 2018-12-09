@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { flatMap, map } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { AuthService } from './auth.service';
 import { IVideo, Video } from '../../../../both/models/video.model';
@@ -20,6 +20,10 @@ export class UserService {
         return this.httpClient
           .get<IUser>(`${baseUrl}/current/${firebaseId}`, httpOptions);
       }));
+  }
+
+  getCurrentUserDetails() {
+    return this.authService.user;
   }
 
   getUsers(): Observable<IUser[]> {

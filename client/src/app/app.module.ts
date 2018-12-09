@@ -39,6 +39,7 @@ import { GuacaPlayComponent } from './ressources/guaca-play/guaca-play.component
 import { VideoService } from './services/video.service';
 import { CategoryService } from './services/category.service';
 import { VideoPageComponent } from './ressources/video-page/video-page.component';
+import { AdminGuard } from './services/admin.guard';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { VideoPageComponent } from './ressources/video-page/video-page.component
     MaterialModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AuthService, UserService, VideoService, CategoryService, AuthGuard],
+  providers: [AuthService, UserService, VideoService, CategoryService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

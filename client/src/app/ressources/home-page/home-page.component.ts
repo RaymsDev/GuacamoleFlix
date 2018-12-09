@@ -25,9 +25,9 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.userObservable.subscribe((user) => {
+    this.authService.user.subscribe((user) => {
       this.isAuth = user ? true : false;
-      if (user) {
+      if (this.isAuth) {
         this.videoService.getVideosSpotlight()
           .subscribe(videoList => {
             this.spotlightVideoList = videoList;

@@ -57,7 +57,6 @@ class AuthenticationHelper {
         next();
       })
       .catch((error) => {
-        console.error(error);
         res.sendStatus(HttpStatus.UNAUTHORIZED);
       });
   }
@@ -70,7 +69,6 @@ class AuthenticationHelper {
     this.app.auth().verifyIdToken(req.headers.authorization)
       .then(() => next())
       .catch((error) => {
-        console.error(error);
         res.sendStatus(HttpStatus.UNAUTHORIZED);
       });
   }

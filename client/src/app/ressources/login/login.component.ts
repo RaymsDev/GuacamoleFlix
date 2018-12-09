@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     Validators.email,
   ]);
   ngOnInit() {
-    this.hide = false;
+    this.hide = true;
   }
   login(email, password) {
     this.authService.login(email, password)
