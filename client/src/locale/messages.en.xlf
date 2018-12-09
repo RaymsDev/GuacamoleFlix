@@ -230,6 +230,22 @@
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="success-message" datatype="html">
+        <source>Add video success!</source>
+        <target>Add video success!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fail-message" datatype="html">
+        <source>Add video fail!</source>
+        <target>Add video fail!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="video-add-label" datatype="html">
         <source>Ajouter la vidéo</source>
         <target> Add video</target>
@@ -359,7 +375,7 @@
         <target>Add categorie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="number-label" datatype="html">
@@ -387,11 +403,19 @@
         </context-group>
       </trans-unit>
       <trans-unit id="categorie-sup-label" datatype="html">
-        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Supprimer la catégorie</source>
-        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Delete categorie</target>
+        <source>Supprimer la catégorie</source>
+        <target>Delete categorie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
           <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-page-related-content" datatype="html">
+        <source>Related content</source>
+        <target>Related content</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/video-page/video-page.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
     </body>

@@ -210,10 +210,22 @@
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="success-message" datatype="html">
+        <source>Add video success!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fail-message" datatype="html">
+        <source>Add video fail!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="video-add-label" datatype="html">
-        <source>
-        Ajouter la vidéo
-      </source>
+        <source>Ajouter la vidéo</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
           <context context-type="linenumber">24</context>
@@ -327,8 +339,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="categorie-add-button" datatype="html">
-        <source>
-        Ajouter la catégorie</source>
+        <source>Ajouter la catégorie</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="number-label" datatype="html">
+        <source>#</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
           <context context-type="linenumber">19</context>
@@ -342,11 +360,17 @@
         </context-group>
       </trans-unit>
       <trans-unit id="categorie-sup-label" datatype="html">
-        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Supprimer
-                la catégorie</source>
+        <source>Supprimer la catégorie</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
           <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="video-page-related-content" datatype="html">
+        <source>Related content</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/video-page/video-page.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
     </body>
