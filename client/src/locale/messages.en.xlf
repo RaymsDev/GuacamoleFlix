@@ -230,9 +230,25 @@
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="success-message" datatype="html">
+        <source>Add video success!</source>
+        <target>Add video success!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fail-message" datatype="html">
+        <source>Add video fail!</source>
+        <target>Add video fail!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="video-add-label" datatype="html">
-        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Ajouter la vidéo</source>
-        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Add video</target>
+        <source>Ajouter la vidéo</source>
+        <target>Add video</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
           <context context-type="linenumber">23</context>
@@ -331,11 +347,11 @@
         </context-group>
       </trans-unit>
       <trans-unit id="categorie-add-button" datatype="html">
-        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Ajouter la catégorie</source>
-        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Add categorie</target>
+        <source>Ajouter la catégorie</source>
+        <target>Add categorie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="number-label" datatype="html">
@@ -363,8 +379,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="categorie-sup-label" datatype="html">
-        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Supprimer la catégorie</source>
-        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Delete categorie</target>
+        <source>Supprimer la catégorie</source>
+        <target>Delete categorie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/add-category/add-category.component.html</context>
           <context context-type="linenumber">33</context>
