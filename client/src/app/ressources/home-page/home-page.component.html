@@ -10,7 +10,7 @@
   </div>
   <div *ngIf="isAuth" class="carousel-container">
     <div class="carousel-wrapper" *ngIf="spotlightVideoList && spotlightVideoList.length > 0">
-      <h2 class="carousel-name">Spotlight Videos</h2>
+      <h2 i18n="@@spotlight-title" class="carousel-name">Spotlight Videos</h2>
       <app-carousel [videoList]="spotlightVideoList"></app-carousel>
     </div>
 
