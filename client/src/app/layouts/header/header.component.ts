@@ -8,16 +8,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  userObservable: Observable<any>;
-  constructor(public authService: AuthService) {}
+  isAdmin = false;
+  isAuth = false;
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    this.userObservable = this.authService.getUser();
-    console.log('this.userObservable');
-    console.log(this.userObservable);
-  }
-  getUserAuth() {
-    return this.authService.getUser();
+    this.authService.user.subscribe(user => {
+      if (!user) {
+        this.isAuth = false;
+        return;
+      }
+
+      this.isAuth = true;
+      this.isAdmin = user.isAdmin;
+    });
   }
   logout() {
     return this.authService.logout();

@@ -8,18 +8,27 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
-  canActivate() {
-    return this.userService.getCurrentUserDetails()
-      .pipe(map((user) => {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> {
+
+    return this.authService.user.pipe(
+      take(1),
+      map(user => {
         if (!user) {
-          this.router.navigate(['/login']);
           return false;
         }
-        return true;
-      }))
-      .pipe(take(1));
+
+        return user.isAdmin;
+      }),
+      tap(isAuthAndAdmin => {
+        if (!isAuthAndAdmin) {
+          console.log('access denied => not admin');
+          this.router.navigate(['/login']);
+        }
+      }));
   }
 }

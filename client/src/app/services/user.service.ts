@@ -23,9 +23,7 @@ export class UserService {
   }
 
   getCurrentUserDetails() {
-    return this.authService.getUser().pipe(flatMap((user) => {
-      return this.getCurrentUser(user.uid);
-    }));
+    return this.authService.user;
   }
 
   getUsers(): Observable<IUser[]> {

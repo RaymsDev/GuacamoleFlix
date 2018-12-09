@@ -22,7 +22,14 @@ export class UserController {
   }
 
   public static create(user: IUser): Promise<IUser> {
-    const newUser = new UserSchema(user);
+    const cleanUser = new User();
+    cleanUser.idFirebase = user.idFirebase;
+    cleanUser.isActive = true;
+    cleanUser.isAdmin = false;
+    cleanUser.name = user.name;
+    cleanUser.subscription = null;
+    cleanUser.profiles = [];
+    const newUser = new UserSchema(cleanUser);
     return newUser.save();
   }
 

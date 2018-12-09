@@ -10,17 +10,18 @@ import { UserComponent } from './ressources/user/user.component';
 import { VideoPageComponent } from './ressources/video-page/video-page.component';
 
 import { AuthGuard } from './services/auth.guard';
+import { AdminGuard } from './services/admin.guard';
 
 
 export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'video/:id', component: VideoPageComponent },
-  { path: 'gestion_category', component: AddCategoryComponent },
+  { path: 'video/:id', component: VideoPageComponent, canActivate: [AuthGuard] },
+  { path: 'gestion_category', component: AddCategoryComponent, canActivate: [AdminGuard] },
   { path: 'me', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin', component: AjoutVideoAdminComponent, canActivate: [AuthGuard] },
-  { path: 'gestion_user', component: GestionUsersComponent, canActivate: [AuthGuard] },
-  { path: 'gestion_video', component: GestionVideosComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AjoutVideoAdminComponent, canActivate: [AdminGuard] },
+  { path: 'gestion_user', component: GestionUsersComponent, canActivate: [AdminGuard] },
+  { path: 'gestion_video', component: GestionVideosComponent, canActivate: [AdminGuard] },
   { path: '', component: HomePageComponent, pathMatch: 'full', },
   { path: '**', redirectTo: '' }
 
