@@ -21,6 +21,14 @@
         <label i18n="@@desciption-label" id="titreInput" for="exampleTextarea">Description</label>
         <textarea class="form-control" [(ngModel)]="Description" id="description" rows="6"></textarea>
       </div>
+
+      <div i18n="@@success-message" *ngIf="isSuccess" class="message message-success">
+        Add video success!
+      </div>
+      <div i18n="@@fail-message" *ngIf="isFail" class="message message-error">
+        Add video fail!
+      </div>
+
       <button i18n="@@video-add-label" (click)="AjoutVideo()" id="ajouter" class="btn btn-success">
         Ajouter la vidéo
       </button>

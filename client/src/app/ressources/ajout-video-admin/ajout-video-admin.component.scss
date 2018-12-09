@@ -27,6 +27,17 @@
         color:$dark;
       }
     }
+
+    .message{
+      margin-bottom:16px;
+    }
+
+    .message-success{
+      color:$secondary;
+    }
+    .message-error{
+      color:red;
+    }
   }
   textarea {
     resize: none;

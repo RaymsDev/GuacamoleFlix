@@ -17,7 +17,8 @@ export class AjoutVideoAdminComponent implements OnInit {
   LimitAge: string;
   Description: string;
   idCat: number;
-
+  isFail = false;
+  isSuccess = false;
   constructor(private gestionCategory: CategoryService, private gestionVideo: VideoService) {
     this.Title = '';
     this.UrlVideo = '';
@@ -42,7 +43,11 @@ export class AjoutVideoAdminComponent implements OnInit {
       isSpotlight: false
     });
     this.gestionVideo.createNewVideo(video).subscribe(() => {
-      console.log('video ajouté');
+      this.isSuccess = true;
+      this.isFail = false;
+    }, (error) => {
+      this.isFail = true;
+      this.isSuccess = false;
     });
   }
 
