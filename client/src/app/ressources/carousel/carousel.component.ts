@@ -11,9 +11,12 @@ export class CarouselComponent implements OnInit {
   @Input() videoList: IVideo[];
   constructor(private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   public navigate(video: IVideo): void {
-    this.router.navigate(['video', video._id]);
+    console.log(video);
+    this.router.navigate(['/video', video._id]);
   }
 }

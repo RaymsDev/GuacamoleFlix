@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { IVideo } from '../../../../../both/models/video.model';
 import { VideoService } from 'src/app/services/video.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 
 
@@ -17,20 +17,29 @@ export class VideoPageComponent implements OnInit, AfterViewInit {
   public watchingVideo: IVideo;
   public relatedVideos: IVideo[];
   public isGuacaplayShow: boolean;
+  public videoId: string;
   constructor(
     public videoService: VideoService,
     private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    this.isGuacaplayShow = true;
-    const videoId = this.route.snapshot.params['id'];
-    this.videoService.selectVideo(videoId)
-      .subscribe(v => {
-        this.watchingVideo = v;
-        this.getRelatedVideos(v);
-      });
+
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      this.videoId = params.get('id');
+      this.isGuacaplayShow = true;
+      const videoId = this.route.snapshot.params['id'];
+      this.videoService.selectVideo(videoId)
+        .subscribe(v => {
+          this.watchingVideo = v;
+          this.getRelatedVideos(v);
+        });
+    });
+
+
+
 
   }
 
