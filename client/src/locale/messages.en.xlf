@@ -248,10 +248,34 @@
       </trans-unit>
       <trans-unit id="video-add-label" datatype="html">
         <source>Ajouter la vidéo</source>
-        <target>Add video</target>
+        <target> Add video</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/ressources/ajout-video-admin/ajout-video-admin.component.html</context>
           <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="supprimer-video" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Supprimer la video</source>
+        <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Delete video</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/gestion-videos/gestion-videos.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="select-categorie" datatype="html">
+        <source>Selectionner la categorie</source>
+        <target>Select category</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/gestion-videos/gestion-videos.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+       <trans-unit id="related-content" datatype="html">
+        <source>Related content</source>
+        <target>Related content</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/ressources/video-page/video-page.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="home-please-auth" datatype="html">
