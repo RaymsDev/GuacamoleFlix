@@ -6,7 +6,14 @@
           <img class="tile__img" src="{{video.thumbnail}}" alt="" />
         </div>
         <div class="tile__details">
-          <div class="tile__title">{{ video.name }} | {{video.likeCount}} like </div>
+          <div class="tile__title">
+            <div class="video-title">
+              {{ video.name }}
+            </div>
+            <div class="video-like">
+              {{video.likeCount}} like
+            </div>
+          </div>
         </div>
       </div>
     </div>

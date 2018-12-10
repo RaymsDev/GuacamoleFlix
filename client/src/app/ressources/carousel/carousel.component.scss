@@ -116,7 +116,9 @@ a:hover {
   opacity: 1;
 }
 .tile__title {
+  white-space: normal;
   position: absolute;
+  width: 100%;
   bottom: 0;
   padding: 10px;
   color: #aaa;
