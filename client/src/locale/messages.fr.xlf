@@ -167,7 +167,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="profile-button" datatype="html">
-        <source>Mon Profile</source>
+        <source>Mon Profil</source>
         <target>Mon Profil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layouts/header/header.component.html</context>
