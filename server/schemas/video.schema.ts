@@ -19,7 +19,7 @@ const VideoSchema: Schema = new Schema({
     type: String
   },
   image: {
-    required: true,
+    required: false,
     type: String
   },
   isSpotlight: {

@@ -16,6 +16,7 @@ export class AjoutVideoAdminComponent implements OnInit {
   AllCategorie: Array<Category>;
   LimitAge: string;
   Description: string;
+  isSpotlight: boolean;
   idCat: number;
   isFail = false;
   isSuccess = false;
@@ -23,6 +24,7 @@ export class AjoutVideoAdminComponent implements OnInit {
     this.Title = '';
     this.UrlVideo = '';
     this.idCat = 0;
+    this.isSpotlight = false;
   }
 
   ngOnInit() {
@@ -39,8 +41,7 @@ export class AjoutVideoAdminComponent implements OnInit {
       categories: Cat,
       url: this.UrlVideo,
       description: this.Description,
-      image: 'https://www.google.fr/ne_vous_inquietez_pas_c_normal_url_pourris_a_cause_du_require#onestdesole#RIPguacaflix',
-      isSpotlight: false
+      isSpotlight: this.isSpotlight
     });
     this.gestionVideo.createNewVideo(video).subscribe(() => {
       this.isSuccess = true;

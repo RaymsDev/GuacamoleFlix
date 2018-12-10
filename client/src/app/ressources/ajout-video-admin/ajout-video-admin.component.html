@@ -17,6 +17,12 @@
           <option title="PEGI {{cat.pegi}}" *ngFor="let cat of AllCategorie; let i = index" value="{{i}}">{{cat.name}}</option>
         </select>
       </div>
+
+      <div class="form-group">
+        <label for="spotlight">Spotlight</label>
+        <input id="spotlight" type="checkbox" [(ngModel)]="isSpotlight" [ngModelOptions]="{standalone: true}" />
+      </div>
+
       <div id="description" class="form-group">
         <label i18n="@@desciption-label" id="titreInput" for="exampleTextarea">Description</label>
         <textarea class="form-control" [(ngModel)]="Description" id="description" rows="6"></textarea>

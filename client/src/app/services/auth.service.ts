@@ -59,7 +59,7 @@ export class AuthService {
     return from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()));
   }
   register(email, password) {
-    return from(this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password));
+    return from(this.afAuth.auth.createUserWithEmailAndPassword(email, password));
   }
 
   logout() {

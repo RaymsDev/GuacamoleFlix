@@ -50,7 +50,12 @@ export class RestServer {
         user: MONGODB_USER
       },
       authSource: "admin",
+      // wait 1 second before retrying
+      autoReconnect: true,
       dbName: DB_NAME,
+      reconnectInterval: 1000,
+      // retry to connect for 60 times
+      reconnectTries: 60,
       useNewUrlParser: true
     };
 
