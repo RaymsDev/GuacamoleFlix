@@ -30,7 +30,8 @@
         <tbody>
           <tr *ngFor="let cat of AllCategory; let idx">
             <td>{{cat.name}}</td>
-            <td>Interdit au -{{cat.pegi}} ans</td>
+            <td *ngIf="cat.pegi != 0">Interdit au -{{cat.pegi}} ans</td>
+            <td *ngIf="cat.pegi == 0"></td>
             <td><button i18n="@@categorie-sup-label" (click)="deleteCat(cat._id)" class="btn btn-danger"><span class="glyphicon glyphicon-minus-sign"></span>Supprimer
                 la catégorie</button></td>
           </tr>
