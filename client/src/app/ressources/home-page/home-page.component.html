@@ -1,0 +1,26 @@
+<div class="myContainer">
+  <div *ngIf="!isAuth" class="offer-container">
+    <div class="offer">
+      <h1 i18n="@@wacth-title">Watch on any device</h1>
+      <h2 i18n="@@stream-title">Stream on your phone, tablet, laptop, and TV without paying more.</h2>
+    </div>
+    <div>
+      <button i18n="@@register-watch" class="btn-transparent" (click)="goToRegister()">REGISTER FOR WATCH VIDEOS</button>
+    </div>
+  </div>
+  <div *ngIf="isAuth" class="carousel-container">
+    <div class="carousel-wrapper" *ngIf="spotlightVideoList && spotlightVideoList.length > 0">
+      <h2 i18n="@@spotlight-title" class="carousel-name">Spotlight Videos</h2>
+      <app-carousel [videoList]="spotlightVideoList"></app-carousel>
+    </div>
+
+    <div *ngFor="let item of categoryVideoList">
+      <div class="carousel-wrapper" *ngIf="item.videoList.length > 0">
+        <h2 class="carousel-name">{{ item.category.name }}</h2>
+        <app-carousel [videoList]="item.videoList"></app-carousel>
+      </div>
+    </div>
+
+  </div>
+
+</div>

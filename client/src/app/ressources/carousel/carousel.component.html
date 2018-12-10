@@ -1,0 +1,14 @@
+<div class="myContainer">
+  <div class="row">
+    <div class="row__inner">
+      <div class="tile" *ngFor="let video of videoList" (click)="navigate(video)">
+        <div class="tile__media">
+          <img class="tile__img" src="{{video.thumbnail}}" alt="" />
+        </div>
+        <div class="tile__details">
+          <div class="tile__title">{{ video.name }} | {{video.likeCount}} like </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

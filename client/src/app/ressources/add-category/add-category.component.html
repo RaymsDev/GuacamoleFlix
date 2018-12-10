@@ -1,0 +1,42 @@
+<app-nav-admin></app-nav-admin>
+<div class="myContainer">
+  <div id="add-category">
+    <div id="formulaire" class="card">
+      <div id="libelle-div" class="form-group">
+        <label i18n="@@categorie-label" for="Libelle">Libellé de la catégorie</label>
+        <input type="text" class="form-control" id="Libelle" [(ngModel)]="Libelle" placeholder="Humour, horreur etc..">
+      </div>
+      <div id="div-pegi" class="form-group">
+        <label i18n="@@Pegi-label" for="pegi">PEGI</label>
+        <select [(ngModel)]="Pegi" class="form-control" id="pegi">
+          <option i18n="@@Pegi-option-aucun" value="0">Aucun</option>
+          <option i18n="@@Pegi-option-10" value="10">interdit aux -10 ans</option>
+          <option i18n="@@Pegi-option-12" value="12">interdit aux -12 ans</option>
+          <option i18n="@@Pegi-option-16" value="16">interdit aux -16 ans</option>
+          <option i18n="@@Pegi-option-18" value="18">interdit aux -18 ans</option>
+        </select>
+      </div>
+      <button id="buttonadd" i18n="@@categorie-add-button" (click)="AddCategory()" class="btn btn-success">
+        Ajouter la catégorie
+      </button>
+      <table id="table" class="table table-sm">
+        <thead>
+          <tr>
+            <th i18n="@@libellé-label" scope="col">Libellé</th>
+            <th i18n="@@Pegi-label" scope="col">PEGI</th>
+            <th i18n="@@gerer-label" scope="col">Gerer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of AllCategory; let idx">
+            <td>{{cat.name}}</td>
+            <td>Interdit au -{{cat.pegi}} ans</td>
+            <td><button i18n="@@categorie-sup-label" (click)="deleteCat(cat._id)" class="btn btn-danger"><span class="glyphicon glyphicon-minus-sign"></span>Supprimer
+                la catégorie</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

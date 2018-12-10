@@ -1,0 +1,48 @@
+@import "./../../../palette.scss";
+
+#login
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 93vh;
+  background-image: url("./../../../assets/lot-avocado.jpg");
+  background-size: cover;
+  .login-card
+    {
+      color:$dark;
+      min-width: 30%;
+      background-color: $light;
+
+      .card-head{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .logo{
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+
+        }
+      }
+    }
+
+    .button-container{
+      display: flex;
+      justify-content:center;
+      button{
+        background-color: $primary;
+        color: $dark;
+        border: 5px solid $secondary;
+      }
+    }
+
+}
+mat-form-field {
+  width: 90%;
+  margin: 2%;
+}
+
+.hide-button{
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<div id="login">
+  <mat-card class="login-card">
+    <mat-card-header class="card-head">
+      <img mat-card-image class="logo" src="./../../../assets/small-logo.png" alt="photoURL">
+      <mat-card-title i18n="@@login-title" style="font-size:35px; text-align:center;"> Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="login-form">
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre email" [(ngModel)]="email" name="useremail" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="userpswd" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix class="hide-button" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          <br>
+          <p class="mat-error">
+            {{errorMessage}}
+          </p>
+          <div class="button-container">
+            <button i18n="@@login-button-form" mat-button (click)="login(email, password)">Se connecter</button>
+          </div>
+        </form>
+      </div>
+      <hr />
+      <h2 i18n="@@ou-title">Ou?</h2>
+      <div class="button-container">
+        <button i18n="@@login-google-button" mat-button (click)="loginGoogle()">Login with google</button>
+      </div>
+    </mat-card-content>
+    <p i18n="@@pasdecomte-text">Vous n'avez pas de compte? créez en un <a matLine routerLink='/register'> ici </a></p>
+  </mat-card>
+
+</div>

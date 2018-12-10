@@ -1,0 +1,22 @@
+<div class="myContainer">
+  <app-guaca-play *ngIf="isGuacaplayShow" (isRealease)="onGenericFinish($event)"></app-guaca-play>
+  <div class="video-container" [ngClass]="{'hide':isGuacaplayShow}" #containerRef>
+    <app-video-player *ngIf="!isGuacaplayShow" [playerWidth]="playerWidth" [playerHeight]="playerHeight" [video]="watchingVideo"></app-video-player>
+  </div>
+  <div class="video-details" *ngIf="!isGuacaplayShow">
+    <h1>{{watchingVideo.name}}</h1>
+
+    <div class="like-container" (click)="like()">
+      <div *ngIf="watchingVideo.isLikedByUser" class="btn-like like"></div>
+      <div *ngIf="!watchingVideo.isLikedByUser" class="btn-like unlike"></div>
+    </div>
+    <p><span *ngFor="let cat of watchingVideo.categories">[{{cat.name}}]</span></p>
+    <p>{{watchingVideo.description}}</p>
+
+  </div>
+
+  <div class="related-content" *ngIf="!isGuacaplayShow && relatedVideos && relatedVideos.length > 0">
+    <h3 i18n="@@video-page-related-content">Related content</h3>
+    <app-carousel [videoList]="relatedVideos"></app-carousel>
+  </div>
+</div>

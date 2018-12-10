@@ -1,0 +1,74 @@
+version: "3"
+services:
+    reverse-proxy:
+      image: nginx:latest
+      container_name: reverse-proxy
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf
+      ports:
+        - 80:80
+        - 443:443
+      depends_on:
+        - back
+        - front-fr
+        - front-en
+        - front-es
+      networks:
+        proxy-network:
+    front-fr:
+      restart: always
+      container_name : front-fr
+      build:
+        context: .
+        dockerfile: ./Dockerfile-client-fr
+      expose:
+       - "80"
+      networks:
+        proxy-network:
+    front-en:
+      restart: always
+      container_name : front-en
+      build:
+        context: .
+        dockerfile: ./Dockerfile-client-en
+      expose:
+       - "80"
+      networks:
+        proxy-network:
+    front-es:
+      restart: always
+      container_name : front-es
+      build:
+        context: .
+        dockerfile: ./Dockerfile-client-es
+      expose:
+       - "80"
+      networks:
+        proxy-network:
+    back:
+      restart: always
+      build:
+        context: .
+        dockerfile: ./Dockerfile-server
+      container_name: back
+      expose:
+        - "3000"
+      depends_on:
+        - mongo
+      networks:
+        proxy-network:
+    mongo:
+      image: mongo
+      container_name: mongo
+      volumes:
+        - mongo-data:/data/db
+      ports:
+        - "27017:27017"
+      env_file:
+        - .env
+      networks:
+        proxy-network:
+volumes:
+  mongo-data:
+networks:
+  proxy-network:

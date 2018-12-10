@@ -1,0 +1,40 @@
+<div id="register">
+  <mat-card class="login-card">
+    <mat-card-header class="card-head">
+      <img mat-card-image class="logo" src="./../../../assets/small-logo.png" alt="photoURL">
+      <mat-card-title i18n="@@register-title-form" style="font-size:35px"> Creer votre compte</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="register-container">
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre fullname" [(ngModel)]="name" name="username">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre email" [(ngModel)]="email" name="useremail" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="userpswd" [type]="hide ? 'password' : 'text'">
+            <mat-icon class="hide-button" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          <p class="mat-error">
+            {{errorMessage}}
+          </p>
+          <br>
+          <div class="button-container">
+            <button mat-button i18n="@@register-button-form" (click)="register(email, password, name)">Creer son compte</button>
+          </div>
+        </form>
+      </div>
+      <hr />
+      <h2 i18n="@@ou-title">Ou?</h2>
+      <div class="button-container">
+        <button i18n="@@login-google-button" mat-button (click)="loginGoogle()">Creer votre compte avec Google</button>
+      </div>
+    </mat-card-content>
+    <p i18n="@@dejacomte-text">Vous avez déja un compte? connectez vous <a matLine routerLink='/login'> ici </a></p>
+  </mat-card>
+
+</div>

@@ -1,0 +1,8 @@
+#.dockerignore
+**/.DS_Store
+**/.git
+**/.bowerrc
+**/bower_components
+**/node_modules
+**/npm-debug.log
+**/dist

@@ -1,0 +1,49 @@
+@import "./../../../palette.scss";
+
+/* Add a black background color to the top navigation */
+.topnav {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background-color: $dark;
+  height: 7vh;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer;
+  border: 5px solid $dark;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: $primary;
+  color: $dark;
+  border: 5px solid $secondary;
+}
+
+/* Add a color to the active/current link  */
+.topnav a.active {
+  background-color: $primary;
+  color: $dark;
+  border: 5px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+#logo {
+  width: 12%;
+}
+
+@media only screen and (max-width: 800px) {
+  #logo {
+    content: url("./../../../assets/small-logo.png");
+  }
+}
