@@ -24,12 +24,23 @@ $ npm install
 $ npm start
 ```
 
-pour tester l'application.
+pour tester l'application en mode dev.
 
-Démarrage du container Docker MongoDB
+## Démarrage du container Docker MongoDB
 ```shell
 $ docker-compose up mongo
 ```
+
+Si besoin vous pouvez ajouter hydrater la base de données avec la commande suivante:
+```shell
+$ mongorestore --host localhost --port 27017 --username mongo_admin --password 'MyStrongPassword' ./db_backup/
+```
+
+Les identifiants sont adaptés au container mongoDB fournit avec le projet.
+
+plus d"info sur la commande [ici](https://docs.mongodb.com/manual/tutorial/backup-and-restore-tools/)
+
+# Prod
 ## Docker
 
 Pour tester l'application:
@@ -61,4 +72,4 @@ FIREBASE_PROJECT_ID=guacamoleflix
 
 ## Google Analytics
 
-L'application comporte Google Analytics afin d'avoir des informations et des statistiques sur le trafic des utilisateurs.
+L'application comporte Google Analytics afin d'avoir des informations et des statistiques sur le trafic des utilisateurs sur l'application.
