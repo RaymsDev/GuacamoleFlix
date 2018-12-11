@@ -69,7 +69,7 @@ FIREBASE_PRIVATE_KEY=secret
 FIREBASE_PROJECT_ID=guacamoleflix
 
 ```
-
+ 
 ## Google Analytics
 
 L'application comporte Google Analytics afin d'avoir des informations et des statistiques sur le trafic des utilisateurs sur l'application.
